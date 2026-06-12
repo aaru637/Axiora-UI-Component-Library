@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@axon/ui-core": ["packages/ui-core/src/index.ts"],
+      "@axon/ui-core/*": ["packages/ui-core/src/*"],
+      "@axon/ui-hooks": ["packages/ui-hooks/src/index.ts"],
+      "@axon/ui-hooks/*": ["packages/ui-hooks/src/*"],
+      "@axon/ui-themes": ["packages/ui-themes/src/index.ts"],
+      "@axon/ui-themes/*": ["packages/ui-themes/src/*"],
+      "@axon/ui-tokens": ["packages/ui-tokens/src/index.ts"],
+      "@axon/ui-tokens/*": ["packages/ui-tokens/src/*"]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/src/**/*.tsx",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
+  ],
+  "exclude": ["**/dist", "**/node_modules", "storybook-static"]
+}
