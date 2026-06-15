@@ -1,11 +1,13 @@
-# AI-ASSISTED: Cursor
-# PROMPT: Add gitignore for UI component library monorepo
-# ACCEPTED-BY: dhinesh
-
 node_modules/
+.pnpm-store/
 dist/
+docs/
 storybook-static/
 .turbo/
 *.tsbuildinfo
 .DS_Store
 coverage/
+.vscode/
+.idea/
+.history/
+.history/

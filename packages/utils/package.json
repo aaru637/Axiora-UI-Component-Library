@@ -1,5 +1,5 @@
 {
-  "name": "@axon/ui-hooks",
+  "name": "@axon/utils",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -14,11 +14,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean --external react",
+    "build": "tsup src/index.ts --format esm --dts --clean",
     "lint": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run"
-  },
-  "peerDependencies": {
-    "react": "^19.0.0"
+    "test": "vitest run",
+    "build:docs": "typedoc",
+    "build:docs:watch": "typedoc --watch"
   }
 }
