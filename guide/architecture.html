@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Architecture Guide, folder structure, dependency boundaries, and build pipeline of the UI Component Library.">
+  <title>Architecture Guide - Axon UI Component Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>Axon UI</span>
+    </div>
+    <div class="header-controls">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="icon-btn hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub Repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html"><i class="fas fa-info-circle"></i>&nbsp; Introduction</a></li>
+          <li class="sidebar-item"><a href="setup.html"><i class="fas fa-tools"></i>&nbsp; Project Setup</a></li>
+          <li class="sidebar-item"><a href="architecture.html"><i class="fas fa-sitemap"></i>&nbsp; Architecture Guide</a></li>
+          <li class="sidebar-item"><a href="tokens.html"><i class="fas fa-palette"></i>&nbsp; Design Tokens</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Components</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="foundations.html"><i class="fas fa-cubes"></i>&nbsp; Foundations</a></li>
+          <li class="sidebar-item"><a href="forms.html"><i class="fas fa-edit"></i>&nbsp; Basic Forms</a></li>
+          <li class="sidebar-item"><a href="feedback.html"><i class="fas fa-exclamation-circle"></i>&nbsp; Feedback</a></li>
+          <li class="sidebar-item"><a href="overlays.html"><i class="fas fa-window-restore"></i>&nbsp; Overlays</a></li>
+          <li class="sidebar-item"><a href="navigation.html"><i class="fas fa-compass"></i>&nbsp; Navigation</a></li>
+          <li class="sidebar-item"><a href="data-display.html"><i class="fas fa-th-list"></i>&nbsp; Data Display</a></li>
+          <li class="sidebar-item"><a href="advanced.html"><i class="fas fa-magic"></i>&nbsp; Advanced</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Engineering Standards</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="accessibility.html"><i class="fas fa-universal-access"></i>&nbsp; Accessibility Guide</a></li>
+          <li class="sidebar-item"><a href="standards.html"><i class="fas fa-align-left"></i>&nbsp; Dev Standards</a></li>
+          <li class="sidebar-item"><a href="testing.html"><i class="fas fa-check-double"></i>&nbsp; Testing Guide</a></li>
+          <li class="sidebar-item"><a href="storybook.html"><i class="fas fa-book-open"></i>&nbsp; Storybook Guide</a></li>
+          <li class="sidebar-item"><a href="build-publish.html"><i class="fas fa-rocket"></i>&nbsp; Build & Publish</a></li>
+          <li class="sidebar-item"><a href="scaling.html"><i class="fas fa-network-wired"></i>&nbsp; Enterprise Scaling</a></li>
+          <li class="sidebar-item"><a href="roadmap.html"><i class="fas fa-map-signs"></i>&nbsp; Roadmap & Quality</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <main class="main-content content">
+        <h1>Architecture Guide</h1>
+        <p class="lead">An enterprise UI Component Library must be engineered with modularity, stability, and strict boundaries in mind. This page details the high-level code architecture and component dependencies of Axon UI.</p>
+        
+        <h2>High-Level Architecture</h2>
+        <p>The library is structured as a collection of modular packages linked in a mono-repository. This configuration guarantees that structural components, visual tokens, and graphical assets remain separated, allowing custom clients to import only what they need.</p>
+        
+        <div class="diagram-container">
+          <div class="mermaid">
+            graph TD
+              T[packages/tokens: Design Tokens & CSS Variables] --> R[packages/react: React Components]
+              I[packages/icons: SVGs & Icon Compiles] --> R
+              R --> APP1[apps/storybook: Documentation Playground]
+              R --> APP2[Client Applications]
+              style T fill:#818cf8,stroke:#6366f1,color:#fff
+              style I fill:#34d399,stroke:#10b981,color:#fff
+              style R fill:#60a5fa,stroke:#3b82f6,color:#fff
+          </div>
+        </div>
+
+        <h2>Package Architecture & Directory Layout</h2>
+        <p>To avoid circular imports and support atomic updates, we organize our workspaces packages under <code>packages/</code>. The folder tree is defined as follows:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Project Folder Structure</div>
+          <pre><code>axon-ui/
+├── packages/
+│   ├── tokens/                  # Design tokens source (JSON) & builds (CSS/JS)
+│   │   ├── src/                 # Global, Semantic, & Theme definitions
+│   │   ├── dist/                # Output formats (custom properties, ES6 modules)
+│   │   └── package.json
+│   ├── icons/                   # Raw SVG icons and compiled React wrappers
+│   │   ├── src/svg/             # SVG asset definitions
+│   │   ├── src/components/      # React functional wrappers
+│   │   └── package.json
+│   └── react/                   # Core React TypeScript Component Library
+│       ├── src/
+│       │   ├── index.ts         # Main barrel export
+│       │   └── components/      # UI components (Button, Modal, etc.)
+│       │       └── Button/
+│       │           ├── Button.tsx
+│       │           ├── Button.types.ts
+│       │           ├── Button.styles.css
+│       │           ├── Button.test.tsx
+│       │           └── index.ts
+│       ├── package.json
+│       └── vite.config.ts
+└── pnpm-workspace.yaml</code></pre>
+        </div>
+
+        <h2>Dependency Boundaries</h2>
+        <p>Enforcing clean, unidirectional dependency limits is the cornerstone of avoiding architectural debt. We enforce the following limits:</p>
+        <ul>
+          <li><strong>Tokens (<code>@axon/tokens</code>):</strong> Must have <strong>zero</strong> runtime dependencies. It should only contain design tokens (variables) compiled into JSON, CSS custom properties, and static JS/TS assets.</li>
+          <li><strong>Icons (<code>@axon/icons</code>):</strong> Depends on <code>@axon/tokens</code> only for token alignment. It holds visual icon assets.</li>
+          <li><strong>React Code (<code>@axon/react</code>):</strong> Depends on <code>@axon/tokens</code> and <code>@axon/icons</code>. It must <strong>not</strong> import application-level state management tools, and holds peer-dependency definitions for <code>react</code> and <code>react-dom</code>.</li>
+        </ul>
+
+        <div class="callout warning">
+          <div class="callout-title">
+            <i class="fas fa-exclamation-triangle"></i> Anti-Pattern Warning
+          </div>
+          <p>Never import code from a workspace package that resides higher in the stack. For example, a file inside <code>packages/tokens</code> must never import files from <code>packages/react</code>. Circular dependencies will break bundling, tree-shaking, and incremental builds.</p>
+        </div>
+
+        <h2>Component Lifecycle</h2>
+        <p>Axon UI components follow a strict rendering and execution lifecycle to maintain performance and prevent hydration mismatches during Server-Side Rendering (SSR):</p>
+        
+        <div class="diagram-container">
+          <div class="mermaid">
+            sequenceDiagram
+              participant C as Component (React)
+              participant D as DOM (Browser)
+              participant P as Provider (Theme)
+              
+              C->>P: Read current theme tokens
+              P-->>C: Inject CSS custom properties
+              C->>C: Calculate state & variant classes
+              C->>D: Initial Paint (A11y/ARIA bindings active)
+              C->>D: Mount hooks (Focus trapping, keyboard listeners active)
+              Note right of C: Active Lifecycle State
+              D->>C: User triggers action (Unmount)
+              C->>D: Remove event listeners & release focus
+          </div>
+        </div>
+
+        <p>To support SSR frameworks (like Next.js), components must remain <em>isomorphic</em>. They perform layout arithmetic (like bounding rect calculations) only inside layout effects or after mounting in client-side hooks, ensuring they render correctly on the server without crashing.</p>
+
+        <h2>Build Pipeline</h2>
+        <p>The library build pipeline uses a modern, fast compile stack to process tokens, icons, and React TSX into highly optimized bundles:</p>
+        
+        <ol>
+          <li><strong>Token Compilation:</strong> <code>@axon/tokens</code> compiles JSON source files into target styles formats (CSS Variables, Sass, and JS modules) using <em>Style Dictionary</em> or a custom node build script.</li>
+          <li><strong>Icon Bundling:</strong> Raw SVGs are run through SVGO (to clean markup and strip hardcoded fill properties) and compiled into functional React component wrappers using SVGR.</li>
+          <li><strong>React Compilation:</strong> React TypeScript code is bundled using <strong>Vite</strong> (powered by <code>esbuild</code> and Rollup plugins) to export dual-format modules (ESM for modern bundlers, and CommonJS for legacy systems), outputting type declaration files (<code>.d.ts</code>) using <code>vite-plugin-dts</code>.</li>
+        </ol>
+
+        <div class="callout note">
+          <div class="callout-title">
+            <i class="fas fa-info-circle"></i> Build Configuration
+          </div>
+          <p>We use **Tree Shaking** configuration in <code>package.json</code> by specifying <code>"sideEffects": ["*.css"]</code>. This tells bundlers like Webpack and Vite that our JavaScript modules are side-effect-free, enabling the compiler to strip unused components from the application bundle.</p>
+        </div>
+      </main>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-container">
+        <div class="toc-title">On This Page</div>
+        <ul class="toc-list"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

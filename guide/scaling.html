@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enterprise Scaling Guide: Monorepo workspaces, Turborepo setup, package boundaries, design governance, and contribution pipelines.">
+  <title>Enterprise Scaling - Axon UI Component Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>Axon UI</span>
+    </div>
+    <div class="header-controls">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="icon-btn hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub Repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html"><i class="fas fa-info-circle"></i>&nbsp; Introduction</a></li>
+          <li class="sidebar-item"><a href="setup.html"><i class="fas fa-tools"></i>&nbsp; Project Setup</a></li>
+          <li class="sidebar-item"><a href="architecture.html"><i class="fas fa-sitemap"></i>&nbsp; Architecture Guide</a></li>
+          <li class="sidebar-item"><a href="tokens.html"><i class="fas fa-palette"></i>&nbsp; Design Tokens</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Components</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="foundations.html"><i class="fas fa-cubes"></i>&nbsp; Foundations</a></li>
+          <li class="sidebar-item"><a href="forms.html"><i class="fas fa-edit"></i>&nbsp; Basic Forms</a></li>
+          <li class="sidebar-item"><a href="feedback.html"><i class="fas fa-exclamation-circle"></i>&nbsp; Feedback</a></li>
+          <li class="sidebar-item"><a href="overlays.html"><i class="fas fa-window-restore"></i>&nbsp; Overlays</a></li>
+          <li class="sidebar-item"><a href="navigation.html"><i class="fas fa-compass"></i>&nbsp; Navigation</a></li>
+          <li class="sidebar-item"><a href="data-display.html"><i class="fas fa-th-list"></i>&nbsp; Data Display</a></li>
+          <li class="sidebar-item"><a href="advanced.html"><i class="fas fa-magic"></i>&nbsp; Advanced</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Engineering Standards</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="accessibility.html"><i class="fas fa-universal-access"></i>&nbsp; Accessibility Guide</a></li>
+          <li class="sidebar-item"><a href="standards.html"><i class="fas fa-align-left"></i>&nbsp; Dev Standards</a></li>
+          <li class="sidebar-item"><a href="testing.html"><i class="fas fa-check-double"></i>&nbsp; Testing Guide</a></li>
+          <li class="sidebar-item"><a href="storybook.html"><i class="fas fa-book-open"></i>&nbsp; Storybook Guide</a></li>
+          <li class="sidebar-item"><a href="build-publish.html"><i class="fas fa-rocket"></i>&nbsp; Build & Publish</a></li>
+          <li class="sidebar-item"><a href="scaling.html"><i class="fas fa-network-wired"></i>&nbsp; Enterprise Scaling</a></li>
+          <li class="sidebar-item"><a href="roadmap.html"><i class="fas fa-map-signs"></i>&nbsp; Roadmap & Quality</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <main class="main-content content">
+        <h1>Enterprise Scaling Guide</h1>
+        <p class="lead">Scaling a UI Component Library across dozens of product teams and hundreds of applications requires robust tool caching, design governance, and contribution loops.</p>
+        
+        <h2>Monorepo Strategy (Turborepo)</h2>
+        <p>To speed up compile, lint, and test tasks in a monorepo workspace, we integrate **Turborepo** (or Nx). Turborepo caches task outputs. If a component's code has not changed since the last build, Turborepo skips compiling it, reducing CI build times by up to 90%.</p>
+
+        <h3>Example Cache Configuration</h3>
+        <div class="code-wrapper">
+          <div class="code-header">turbo.json</div>
+          <pre><code class="language-json">{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    }
+  }
+}</code></pre>
+        </div>
+
+        <h2>Package Boundaries</h2>
+        <p>Isolate structural elements from presentation templates using strict package boundaries:</p>
+        <ul>
+          <li><strong>Shared Utilities (<code>@axon/utils</code>):</strong> Code-only helpers (such as focus ring class builders or validation scripts).</li>
+          <li><strong>Shared Hooks (<code>@axon/hooks</code>):</strong> Headless React helpers (such as <code>useOutsideClick</code>, <code>useMediaQuery</code>).</li>
+          <li><strong>Shared Themes (<code>@axon/themes</code>):</strong> Color variables, dark mode styles, and brand logo packages.</li>
+        </ul>
+
+        <h2>Design Governance & Figma Sync</h2>
+        <p>Design drift occurs when design files and codebases fall out of sync. To resolve this, we enforce a strict token sync pipeline:</p>
+
+        <div class="diagram-container">
+          <svg viewBox="0 0 800 200" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <!-- Styling -->
+            <style>
+              .step-box { fill: var(--bg-secondary); stroke: var(--border-color); stroke-width: 2; rx: 8; }
+              .step-text { font-family: var(--font-sans); font-size: 14px; fill: var(--text-primary); font-weight: bold; }
+              .sub-text { font-family: var(--font-sans); font-size: 12px; fill: var(--text-secondary); }
+              .arrow-line { stroke: var(--primary-color); stroke-width: 2; fill: none; }
+            </style>
+            
+            <!-- Nodes -->
+            <rect x="20" y="50" width="180" height="100" class="step-box" />
+            <text x="110" y="90" text-anchor="middle" class="step-text">Figma Variables</text>
+            <text x="110" y="115" text-anchor="middle" class="sub-text">Designer edits color tokens</text>
+            
+            <rect x="310" y="50" width="180" height="100" class="step-box" />
+            <text x="400" y="90" text-anchor="middle" class="step-text">Token Export API</text>
+            <text x="400" y="115" text-anchor="middle" class="sub-text">JSON extracted automatically</text>
+            
+            <rect x="600" y="50" width="180" height="100" class="step-box" />
+            <text x="690" y="90" text-anchor="middle" class="step-text">Style Dictionary</text>
+            <text x="690" y="115" text-anchor="middle" class="sub-text">CSS compiled to codebase</text>
+            
+            <!-- Connectors -->
+            <path d="M 200 100 L 310 100" class="arrow-line" marker-end="url(#arrow)" />
+            <path d="M 490 100 L 600 100" class="arrow-line" marker-end="url(#arrow)" />
+            
+            <!-- Arrow markers -->
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--primary-color)" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <p>By automating token compilation through GitHub Actions, updates to colors or spacing inside Figma can be pushed directly to the codebase via pull requests, keeping design and code in sync automatically.</p>
+
+        <h2>Contribution Workflow</h2>
+        <p>Product teams should not modify the core library directly. Instead, they should submit requests and follow our contribution workflow:</p>
+        <ol>
+          <li><strong>Open Proposal Issue:</strong> Explain the feature request or bug report with mockups and architectural reasoning.</li>
+          <li><strong>Create Feature Branch:</strong> Fork the library repository and build code in accordance with our dev standards.</li>
+          <li><strong>Write Stories & Tests:</strong> Supply corresponding Vitest tests and Storybook playgrounds.</li>
+          <li><strong>Submit Pull Request (PR):</strong> PR triggers automated CI pipelines (lint check, unit tests, Chromatic visual checks).</li>
+          <li><strong>Governance Review:</strong> The core UI maintainer team reviews code before merging updates into the primary branch.</li>
+        </ol>
+
+        <div class="callout warning">
+          <div class="callout-title">
+            <i class="fas fa-exclamation-triangle"></i> Branching Warning
+          </div>
+          <p>Never bypass PR checks or force-push updates to the primary branch. Product applications rely on the stability of the UI library; even small stylesheet overrides can cause widespread layout breaks.</p>
+        </div>
+      </main>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-container">
+        <div class="toc-title">On This Page</div>
+        <ul class="toc-list"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Axon UI Component Library - Comprehensive documentation website, learning guide, setup manual, and component reference.">
+  <title>Introduction - Axon UI Component Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>Axon UI</span>
+    </div>
+    <div class="header-controls">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="icon-btn hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub Repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html"><i class="fas fa-info-circle"></i>&nbsp; Introduction</a></li>
+          <li class="sidebar-item"><a href="setup.html"><i class="fas fa-tools"></i>&nbsp; Project Setup</a></li>
+          <li class="sidebar-item"><a href="architecture.html"><i class="fas fa-sitemap"></i>&nbsp; Architecture Guide</a></li>
+          <li class="sidebar-item"><a href="tokens.html"><i class="fas fa-palette"></i>&nbsp; Design Tokens</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Components</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="foundations.html"><i class="fas fa-cubes"></i>&nbsp; Foundations</a></li>
+          <li class="sidebar-item"><a href="forms.html"><i class="fas fa-edit"></i>&nbsp; Basic Forms</a></li>
+          <li class="sidebar-item"><a href="feedback.html"><i class="fas fa-exclamation-circle"></i>&nbsp; Feedback</a></li>
+          <li class="sidebar-item"><a href="overlays.html"><i class="fas fa-window-restore"></i>&nbsp; Overlays</a></li>
+          <li class="sidebar-item"><a href="navigation.html"><i class="fas fa-compass"></i>&nbsp; Navigation</a></li>
+          <li class="sidebar-item"><a href="data-display.html"><i class="fas fa-th-list"></i>&nbsp; Data Display</a></li>
+          <li class="sidebar-item"><a href="advanced.html"><i class="fas fa-magic"></i>&nbsp; Advanced</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Engineering Standards</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="accessibility.html"><i class="fas fa-universal-access"></i>&nbsp; Accessibility Guide</a></li>
+          <li class="sidebar-item"><a href="standards.html"><i class="fas fa-align-left"></i>&nbsp; Dev Standards</a></li>
+          <li class="sidebar-item"><a href="testing.html"><i class="fas fa-check-double"></i>&nbsp; Testing Guide</a></li>
+          <li class="sidebar-item"><a href="storybook.html"><i class="fas fa-book-open"></i>&nbsp; Storybook Guide</a></li>
+          <li class="sidebar-item"><a href="build-publish.html"><i class="fas fa-rocket"></i>&nbsp; Build & Publish</a></li>
+          <li class="sidebar-item"><a href="scaling.html"><i class="fas fa-network-wired"></i>&nbsp; Enterprise Scaling</a></li>
+          <li class="sidebar-item"><a href="roadmap.html"><i class="fas fa-map-signs"></i>&nbsp; Roadmap & Quality</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <main class="main-content content">
+        <h1>Introduction</h1>
+        <p class="lead">Welcome to the Axon UI Component Library engineering manual. This is a comprehensive, production-ready implementation guide and reference portal designed to help engineering teams build, scale, and maintain an enterprise-grade UI library from the ground up.</p>
+        
+        <h2>What is a UI Component Library?</h2>
+        <p>A <strong>UI Component Library</strong> is a reusable, centralized set of design-matched, accessibly-coded software elements (such as buttons, inputs, modals, and grid elements) packaged together. These components act as construction blocks for software engineers. Instead of re-coding HTML, CSS, and interaction dynamics from scratch for every digital asset, developers import these verified components to assemble pages rapidly.</p>
+        <p>In modern web architectures, a UI component library is typically built using component-oriented frameworks (like React, Vue, Svelte, or Web Components) and packaged as a dependency (such as an NPM module) that can be imported across various internal software products.</p>
+
+        <h2>Why Organizations Build a Component Library</h2>
+        <p>As organizations scale beyond a single web app or small dev team, code duplication and design drift become severe. Creating a shared UI component library resolves these scaling bottlenecks by offering:</p>
+        <ul>
+          <li><strong>Singular Source of Truth:</strong> Aligning design and development by ensuring every application uses identical visual styles, layouts, and interactive behaviors.</li>
+          <li><strong>Increased Velocity:</strong> Enabling developers to assemble feature screens in minutes rather than spending hours debugging padding, alignment, and basic interactions.</li>
+          <li><strong>Guaranteed Accessibility:</strong> Building complex keyboard focus control, ARIA labeling, and screen-reader support directly into foundational code so product developers inherit accessibility out of the box.</li>
+          <li><strong>Consolidated Maintenance:</strong> Updating a button's design tokens or patching a security flaw in a dropdown component once at the library level automatically propagates updates to all down-stream web products upon package upgrades.</li>
+        </ul>
+
+        <h2>Benefits & Challenges</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Benefits</th>
+                <th>Challenges</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Rapid Time-to-Market:</strong> Reduces interface layout development time by 60-80%, letting teams focus on business logic.</td>
+                <td><strong>Initial Capital Cost:</strong> Setting up monorepos, builds, and standard components requires dedicated upfront engineering resources.</td>
+              </tr>
+              <tr>
+                <td><strong>Design Uniformity:</strong> Eradicates the visual differences across legacy and modern platforms.</td>
+                <td><strong>Adoption Resistance:</strong> Convincing product teams to replace custom elements with standard library elements.</td>
+              </tr>
+              <tr>
+                <td><strong>Enhanced Code Quality:</strong> Enables rigorous testing (unit, visual regression, accessibility) on a consolidated, highly audited codebase.</td>
+                <td><strong>Version Management:</strong> Managing breaking changes across a distributed suite of products without forcing constant emergency upgrades.</td>
+              </tr>
+              <tr>
+                <td><strong>Easier Tech Migrations:</strong> Abstracts browser-level rendering quirks and layout libraries away from application-level developers.</td>
+                <td><strong>Customization Trade-offs:</strong> Designing components that are flexible enough for edge-case features without over-complicating props APIs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Design System vs. Component Library</h2>
+        <p>It is common to confuse a <em>Design System</em> with a <em>UI Component Library</em>, but they represent different layers of the corporate product ecosystem. Understanding this separation is essential for design governance:</p>
+        
+        <div class="diagram-container">
+          <div class="mermaid">
+            graph TD
+              DS[Design System: Principles, Guidelines, Tone, Tokens] --> CL[Component Library: React + TS Components]
+              DS --> DB[Brand & Assets: Logos, Illustrations]
+              CL --> P1[Product Application A]
+              CL --> P2[Product Application B]
+              style DS fill:#6366f1,stroke:#4f46e5,color:#fff,stroke-width:2px
+              style CL fill:#0ea5e9,stroke:#0284c7,color:#fff,stroke-width:2px
+          </div>
+        </div>
+
+        <ul>
+          <li><strong>The Design System (Abstract Strategy):</strong> A holistic ecosystem of brand guidelines, design principles, editorial guidelines, UI/UX mockups, typography rules, and design tokens (variables representing colors, spacing, etc.). It exists in Figma files, product documentation websites, and code-agnostic databases.</li>
+          <li><strong>The UI Component Library (Concrete Implementation):</strong> The translation of the Design System's rules and tokens into actual, importable software components. The component library implements the UI mockups and applies the design tokens to interactive controls in a specific tech stack (e.g., React & TypeScript).</li>
+        </ul>
+
+        <div class="callout note">
+          <div class="callout-title">
+            <i class="fas fa-info-circle"></i> Architectural Rule
+          </div>
+          <p>Product teams should not build custom core UI elements. Instead, they should request components from the Axon UI core team or contribute patterns back to the central repository. This keeps visual debt to a minimum.</p>
+        </div>
+
+        <h2>How to Use This Documentation</h2>
+        <p>This documentation acts as a complete blueprint to guide you from initial project repository initialization through writing accessibility-compliant controls, configuring a monorepo, and publishing code to private NPM feeds. Browse through the guides in the sidebar sequentially or jump straight to specific component implementations in the Component sections.</p>
+      </main>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-container">
+        <div class="toc-title">On This Page</div>
+        <ul class="toc-list"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
