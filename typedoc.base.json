@@ -1,0 +1,7 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "exclude": ["**/*.{test,spec}.ts"],
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "readme": "none"
+}

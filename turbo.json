@@ -7,6 +7,13 @@
     },
     "lint": {
       "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "build:docs": {
+      "outputs": ["docs/**"]
     }
   }
 }
