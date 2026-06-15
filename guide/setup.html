@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Setup Guide and Technology Stack configuration for UI Component Library.">
+  <title>Project Setup - Axon UI Component Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>Axon UI</span>
+    </div>
+    <div class="header-controls">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="icon-btn hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub Repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html"><i class="fas fa-info-circle"></i>&nbsp; Introduction</a></li>
+          <li class="sidebar-item"><a href="setup.html"><i class="fas fa-tools"></i>&nbsp; Project Setup</a></li>
+          <li class="sidebar-item"><a href="architecture.html"><i class="fas fa-sitemap"></i>&nbsp; Architecture Guide</a></li>
+          <li class="sidebar-item"><a href="tokens.html"><i class="fas fa-palette"></i>&nbsp; Design Tokens</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Components</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="foundations.html"><i class="fas fa-cubes"></i>&nbsp; Foundations</a></li>
+          <li class="sidebar-item"><a href="forms.html"><i class="fas fa-edit"></i>&nbsp; Basic Forms</a></li>
+          <li class="sidebar-item"><a href="feedback.html"><i class="fas fa-exclamation-circle"></i>&nbsp; Feedback</a></li>
+          <li class="sidebar-item"><a href="overlays.html"><i class="fas fa-window-restore"></i>&nbsp; Overlays</a></li>
+          <li class="sidebar-item"><a href="navigation.html"><i class="fas fa-compass"></i>&nbsp; Navigation</a></li>
+          <li class="sidebar-item"><a href="data-display.html"><i class="fas fa-th-list"></i>&nbsp; Data Display</a></li>
+          <li class="sidebar-item"><a href="advanced.html"><i class="fas fa-magic"></i>&nbsp; Advanced</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Engineering Standards</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="accessibility.html"><i class="fas fa-universal-access"></i>&nbsp; Accessibility Guide</a></li>
+          <li class="sidebar-item"><a href="standards.html"><i class="fas fa-align-left"></i>&nbsp; Dev Standards</a></li>
+          <li class="sidebar-item"><a href="testing.html"><i class="fas fa-check-double"></i>&nbsp; Testing Guide</a></li>
+          <li class="sidebar-item"><a href="storybook.html"><i class="fas fa-book-open"></i>&nbsp; Storybook Guide</a></li>
+          <li class="sidebar-item"><a href="build-publish.html"><i class="fas fa-rocket"></i>&nbsp; Build & Publish</a></li>
+          <li class="sidebar-item"><a href="scaling.html"><i class="fas fa-network-wired"></i>&nbsp; Enterprise Scaling</a></li>
+          <li class="sidebar-item"><a href="roadmap.html"><i class="fas fa-map-signs"></i>&nbsp; Roadmap & Quality</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <main class="main-content content">
+        <h1>Project Setup Guide</h1>
+        <p class="lead">Building a robust UI Component Library requires a stable engineering environment. This section guides you through setting up a modern monorepo workspaces environment and configuring the essential toolchain.</p>
+        
+        <h2>Prerequisites & Node.js Setup</h2>
+        <p>Before initializing the project, ensure your development machine meets the following environment baselines:</p>
+        <ul>
+          <li><strong>Node.js:</strong> Active LTS version (v20.x or higher recommended). Verify your local setup using <code>node -v</code>.</li>
+          <li><strong>pnpm:</strong> We select **pnpm** as our default package manager. pnpm uses a content-addressable store to reduce disk footprint, provides fast dependency installation speeds, and enforces strict dependency isolation in monorepos. Install it globally using:</li>
+        </ul>
+
+        <div class="code-wrapper">
+          <div class="code-header">Terminal</div>
+          <pre><code class="language-bash">npm install -g pnpm</code></pre>
+        </div>
+
+        <h2>Package Manager Selection: Why pnpm?</h2>
+        <p>In a UI library, managing dependencies efficiently is vital. Traditional packages managers like npm or yarn v1 install dependencies in a flat node_modules tree. This flat layout enables <em>phantom dependencies</em>—where components can import packages not explicitly declared in their local <code>package.json</code> because they are hoisted from other packages. <strong>pnpm solves this</strong> by using symlinks to construct a strict node_modules hierarchy, ensuring each package only has access to imports it explicitly declares.</p>
+
+        <h2>Monorepo vs. Single Package</h2>
+        <p>For an enterprise UI suite, we highly recommend a <strong>Monorepo structure</strong> over a monolithic single package. Here is why:</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Monorepo Architecture</th>
+                <th>Single Package (Monolith)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Split into discrete packages (e.g., <code>@axon/tokens</code>, <code>@axon/react</code>, <code>@axon/icons</code>).</td>
+                <td>Everything bundled into a single NPM entry point.</td>
+              </tr>
+              <tr>
+                <td><strong>Pros:</strong> Independent versioning, product teams can import *only* tokens without importing React runtime. Clean code boundaries.</td>
+                <td><strong>Pros:</strong> Simple setup, single package to maintain.</td>
+              </tr>
+              <tr>
+                <td><strong>Cons:</strong> Marginally more complex build pipeline configuration.</td>
+                <td><strong>Cons:</strong> Bloated bundles, harder to scale, forces updates of everything at once.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Project Initialization</h2>
+        <p>Let's initialize a new monorepo workspace. Create a directory named <code>axon-ui</code> and set up the workspaces structure:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Terminal</div>
+          <pre><code class="language-bash">mkdir axon-ui && cd axon-ui
+pnpm init</code></pre>
+        </div>
+
+        <p>Create a <code>pnpm-workspace.yaml</code> file in the root to define package boundaries:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">pnpm-workspace.yaml</div>
+          <pre><code class="language-yaml">packages:
+  - 'packages/*'
+  - 'apps/*'</code></pre>
+        </div>
+
+        <p>Now create the standard folder structure inside your workspace directory:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Terminal</div>
+          <pre><code class="language-bash">mkdir -p packages/tokens packages/react packages/icons apps/storybook</code></pre>
+        </div>
+
+        <h2>Recommended Technology Stack</h2>
+        <p>To deliver a state-of-the-art developer experience, Axon UI is built on top of the following stack:</p>
+
+        <ul>
+          <li><strong>React (v18+):</strong> The core rendering engine, utilizing functional components and hooks.</li>
+          <li><strong>TypeScript (v5+):</strong> Enforces strict interface contracts and provides rich editor autocomplete.</li>
+          <li><strong>Vite:</strong> The extremely fast bundling engine that powers local component compiling and hot module replacement.</li>
+          <li><strong>Storybook:</strong> A sandboxed playground environment for writing, documenting, and visually validating UI components.</li>
+          <li><strong>Vitest:</strong> A modern testing framework designed to run with Vite, enabling fast unit and component integration tests.</li>
+          <li><strong>ESLint & Prettier:</strong> Automate code linting and style formatting to ensure a unified style footprint across developers.</li>
+          <li><strong>Husky:</strong> Manages Git Hooks (e.g., pre-commit hooks) to run type checkers and format tests prior to push.</li>
+          <li><strong>Changesets:</strong> A multi-package tool that automates semantic version management, changelog generation, and NPM publish operations.</li>
+        </ul>
+
+        <h2>Tool Configuration</h2>
+        <h3>1. Linting & Formatting</h3>
+        <p>Create a root <code>.prettierrc</code> file to standardize code formatting:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">.prettierrc</div>
+          <pre><code class="language-json">{
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2
+}</code></pre>
+        </div>
+
+        <h3>2. Husky Git Hooks</h3>
+        <p>Install Husky in the root workspace to run validation checks before commits are pushed:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Terminal</div>
+          <pre><code class="language-bash">pnpm add -wD husky
+pnpm exec husky init</code></pre>
+        </div>
+
+        <p>Inside <code>.husky/pre-commit</code>, add the linting validation action:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">.husky/pre-commit</div>
+          <pre><code class="language-bash">pnpm run lint
+pnpm run type-check</code></pre>
+        </div>
+
+        <h3>3. Changesets Integration</h3>
+        <p>Changesets helps manage versions and changelogs. Initialize it in the root workspace:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Terminal</div>
+          <pre><code class="language-bash">pnpm add -wD @changesets/cli
+pnpm changeset init</code></pre>
+        </div>
+
+        <p>This creates a <code>.changeset/config.json</code> file. Ensure the release configuration is set to link related packages and configure repository access prior to your first commit.</p>
+        
+        <div class="callout tip">
+          <div class="callout-title">
+            <i class="fas fa-lightbulb"></i> Pro Tip
+          </div>
+          <p>Always run install scripts from the root directory using <code>pnpm install</code>. In a workspaces setup, installing dependencies in nested directories directly can break the content-addressable link cache and lead to duplicate dependencies.</p>
+        </div>
+      </main>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-container">
+        <div class="toc-title">On This Page</div>
+        <ul class="toc-list"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

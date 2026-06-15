@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Storybook Guide: story creation using CSF v3, controls configuration, docs autogeneration, and visual testing.">
+  <title>Storybook Guide - Axon UI Component Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <span>Axon UI</span>
+    </div>
+    <div class="header-controls">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="icon-btn hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub Repository">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html"><i class="fas fa-info-circle"></i>&nbsp; Introduction</a></li>
+          <li class="sidebar-item"><a href="setup.html"><i class="fas fa-tools"></i>&nbsp; Project Setup</a></li>
+          <li class="sidebar-item"><a href="architecture.html"><i class="fas fa-sitemap"></i>&nbsp; Architecture Guide</a></li>
+          <li class="sidebar-item"><a href="tokens.html"><i class="fas fa-palette"></i>&nbsp; Design Tokens</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Components</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="foundations.html"><i class="fas fa-cubes"></i>&nbsp; Foundations</a></li>
+          <li class="sidebar-item"><a href="forms.html"><i class="fas fa-edit"></i>&nbsp; Basic Forms</a></li>
+          <li class="sidebar-item"><a href="feedback.html"><i class="fas fa-exclamation-circle"></i>&nbsp; Feedback</a></li>
+          <li class="sidebar-item"><a href="overlays.html"><i class="fas fa-window-restore"></i>&nbsp; Overlays</a></li>
+          <li class="sidebar-item"><a href="navigation.html"><i class="fas fa-compass"></i>&nbsp; Navigation</a></li>
+          <li class="sidebar-item"><a href="data-display.html"><i class="fas fa-th-list"></i>&nbsp; Data Display</a></li>
+          <li class="sidebar-item"><a href="advanced.html"><i class="fas fa-magic"></i>&nbsp; Advanced</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Engineering Standards</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="accessibility.html"><i class="fas fa-universal-access"></i>&nbsp; Accessibility Guide</a></li>
+          <li class="sidebar-item"><a href="standards.html"><i class="fas fa-align-left"></i>&nbsp; Dev Standards</a></li>
+          <li class="sidebar-item"><a href="testing.html"><i class="fas fa-check-double"></i>&nbsp; Testing Guide</a></li>
+          <li class="sidebar-item"><a href="storybook.html"><i class="fas fa-book-open"></i>&nbsp; Storybook Guide</a></li>
+          <li class="sidebar-item"><a href="build-publish.html"><i class="fas fa-rocket"></i>&nbsp; Build & Publish</a></li>
+          <li class="sidebar-item"><a href="scaling.html"><i class="fas fa-network-wired"></i>&nbsp; Enterprise Scaling</a></li>
+          <li class="sidebar-item"><a href="roadmap.html"><i class="fas fa-map-signs"></i>&nbsp; Roadmap & Quality</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <main class="main-content content">
+        <h1>Storybook Integration Guide</h1>
+        <p class="lead">Storybook provides an isolated playground to write, test, and document UI components in sandbox mode. This page details how to structure stories and generate interactive documentation.</p>
+        
+        <h2>Story Creation (CSF v3)</h2>
+        <p>We use the industry-standard **Component Story Format (CSF v3)** to structure component files. Under CSF v3, stories are defined as objects containing state and meta configurations rather than template helper functions.</p>
+
+        <h3>Example CSF v3 Story file</h3>
+        <div class="code-wrapper">
+          <div class="code-header">Button.stories.tsx</div>
+          <pre><code class="language-typescript">import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+// 1. Meta configuration
+const meta: Meta&lt;typeof Button&gt; = {
+  title: 'Forms/Button',
+  component: Button,
+  tags: ['autodocs'], // Automates docs view generation
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'danger', 'ghost']
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg']
+    },
+    isLoading: { control: 'boolean' },
+    disabled: { control: 'boolean' }
+  }
+};
+
+export default meta;
+type Story = StoryObj&lt;typeof Button&gt;;
+
+// 2. Stories objects definitions
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary Action'
+  }
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary Action'
+  }
+};
+
+export const LoadingState: Story = {
+  args: {
+    variant: 'primary',
+    isLoading: true,
+    children: 'Saving Record'
+  }
+};</code></pre>
+        </div>
+
+        <h2>Documentation Autogeneration</h2>
+        <p>By including the <code>'autodocs'</code> tag in your story meta definitions, Storybook automatically compiles your TypeScript interfaces and JSDoc comments to generate an interactive API props reference table. Document your props cleanly using JSDoc tags:</p>
+
+        <div class="code-wrapper">
+          <div class="code-header">Button.types.ts JSDoc markup</div>
+          <pre><code class="language-typescript">export interface ButtonProps {
+  /**
+   * The visual appearance variant class
+   * @default 'primary'
+   */
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
+  
+  /**
+   * Sets the button element active state to processing spinner
+   */
+  isLoading?: boolean;
+}</code></pre>
+        </div>
+
+        <h2>Component Playgrounds & Controls</h2>
+        <p>Using the <code>argTypes</code> controls panel, developers and designers can adjust color themes, toggles, text fields, and state selectors inside their web browser to preview component options in real-time, eliminating the need to write dummy test code.</p>
+
+        <h2>Visual Regression Testing</h2>
+        <p>By connecting Storybook to **Chromatic** (a cloud platform maintained by the creators of Storybook), every story is automatically rendered in virtual chrome/firefox viewports during Git commit pipelines. Chromatic takes screenshots of each view and flags visual modifications to keep designs consistent.</p>
+
+        <div class="callout note">
+          <div class="callout-title">
+            <i class="fas fa-info-circle"></i> Storybook Theme sync
+          </div>
+          <p>Configure the <code>storybook-addon-themes</code> plugin to match Storybook's playground background with your component's light/dark mode custom properties. This ensures components render correctly under both themes in the documentation viewer.</p>
+        </div>
+      </main>
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-container">
+        <div class="toc-title">On This Page</div>
+        <ul class="toc-list"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
