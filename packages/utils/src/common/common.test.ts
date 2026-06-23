@@ -1,7 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   EMPTY_STRING,
+  debounce,
   defaultIfNullOrUndefined,
+  generateUUID,
+  identity,
   isArray,
   isBoolean,
   isDate,
@@ -13,6 +16,9 @@ import {
   isObject,
   isString,
   isUndefined,
+  noop,
+  sleep,
+  throttle,
 } from "./common.utils";
 
 describe("Common Utils", () => {
@@ -327,5 +333,166 @@ describe("Common Utils", () => {
     expect(defaultIfNullOrUndefined({ name: "Axon" }, {})).toEqual({
       name: "Axon",
     });
+  });
+
+  /**
+   * noop
+   */
+  it("noop does nothing and returns undefined", () => {
+    expect(noop()).toBeUndefined();
+  });
+
+  /**
+   * identity
+   */
+  it("identity returns the same value for primitives", () => {
+    expect(identity(12)).toBe(12);
+    expect(identity("Axon")).toBe("Axon");
+    expect(identity(true)).toBe(true);
+    expect(identity(null)).toBe(null);
+    expect(identity(undefined)).toBe(undefined);
+  });
+
+  it("identity returns the same reference for objects and arrays", () => {
+    const obj = { name: "Axon" };
+    const arr = [1, 2, 3];
+    expect(identity(obj)).toBe(obj);
+    expect(identity(arr)).toBe(arr);
+  });
+
+  /**
+   * generateUUID
+   */
+  it("generateUUID returns a valid UUID v4 string", () => {
+    const uuid = generateUUID();
+    expect(uuid).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
+    );
+  });
+
+  it("generateUUID returns unique values on successive calls", () => {
+    const uuid1 = generateUUID();
+    const uuid2 = generateUUID();
+    expect(uuid1).not.toBe(uuid2);
+  });
+});
+
+describe("Common Utils (timers)", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  /**
+   * sleep
+   */
+  it("sleep resolves after the given number of milliseconds", async () => {
+    const promise = sleep(500);
+    vi.advanceTimersByTime(500);
+    await expect(promise).resolves.toBeUndefined();
+  });
+
+  it("sleep does not resolve before the wait period elapses", async () => {
+    let resolved = false;
+    const promise = sleep(500).then(() => {
+      resolved = true;
+    });
+    vi.advanceTimersByTime(499);
+    await Promise.resolve();
+    expect(resolved).toBe(false);
+    vi.advanceTimersByTime(1);
+    await promise;
+    expect(resolved).toBe(true);
+  });
+
+  /**
+   * debounce
+   */
+  it("debounce delays function execution until wait period elapses", () => {
+    const fn = vi.fn();
+    const debounced = debounce(fn, 100);
+    debounced();
+    expect(fn).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("debounce resets the timer on subsequent calls within wait period", () => {
+    const fn = vi.fn();
+    const debounced = debounce(fn, 100);
+    debounced();
+    vi.advanceTimersByTime(50);
+    debounced();
+    vi.advanceTimersByTime(50);
+    expect(fn).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(50);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("debounce passes arguments to the debounced function", () => {
+    const fn = vi.fn();
+    const debounced = debounce(fn, 100);
+    debounced("Axon", 42);
+    vi.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledWith("Axon", 42);
+  });
+
+  it("debounce preserves this context", () => {
+    const ctx = { value: 42 };
+    const fn = vi.fn(function (this: typeof ctx) {
+      expect(this).toBe(ctx);
+    });
+    const debounced = debounce(fn, 100);
+    debounced.call(ctx);
+    vi.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * throttle
+   */
+  it("throttle calls the function immediately on first invocation", () => {
+    const fn = vi.fn();
+    const throttled = throttle(fn, 100);
+    throttled();
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("throttle skips calls within the wait period", () => {
+    const fn = vi.fn();
+    const throttled = throttle(fn, 100);
+    throttled();
+    throttled();
+    throttled();
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("throttle allows a call after the wait period elapses", () => {
+    const fn = vi.fn();
+    const throttled = throttle(fn, 100);
+    throttled();
+    vi.advanceTimersByTime(100);
+    throttled();
+    expect(fn).toHaveBeenCalledTimes(2);
+  });
+
+  it("throttle passes arguments to the throttled function", () => {
+    const fn = vi.fn();
+    const throttled = throttle(fn, 100);
+    throttled("Axon", 42);
+    expect(fn).toHaveBeenCalledWith("Axon", 42);
+  });
+
+  it("throttle preserves this context", () => {
+    const ctx = { value: 42 };
+    const fn = vi.fn(function (this: typeof ctx) {
+      expect(this).toBe(ctx);
+    });
+    const throttled = throttle(fn, 100);
+    throttled.call(ctx);
+    expect(fn).toHaveBeenCalledTimes(1);
   });
 });
