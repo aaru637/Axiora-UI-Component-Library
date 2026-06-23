@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 /**
  * Common type-checking utilities.
  */
@@ -218,6 +220,147 @@ const defaultIfNullOrUndefined = <T>(
   defaultValue: T,
 ): unknown => (isNotNullOrUndefined(value) ? value : defaultValue);
 
+/**
+ * A no-operation function that does nothing.
+ *
+ * @example
+ * ```ts
+ * noop(); // does nothing
+ * ```
+ */
+const noop = (): void => {};
+
+/**
+ * Returns the value itself.
+ *
+ * @param value - The value to return.
+ * @returns The value itself.
+ *
+ * @example
+ * ```ts
+ * identity(12); // 12
+ * identity("Axon"); // "Axon"
+ * identity(true); // true
+ * identity(null); // null
+ * identity(undefined); // undefined
+ * ```
+ */
+const identity = <T>(value: T): T => value;
+
+/**
+ * Sleeps for a given number of milliseconds.
+ *
+ * @param ms - The number of milliseconds to sleep.
+ * @returns A promise that resolves after the given number of milliseconds.
+ *
+ * @example
+ * ```ts
+ * sleep(1000); // waits for 1 second
+ * ```
+ */
+const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+const debounce = <T extends (...args: Parameters<T>) => void>(
+  func: T,
+  wait: number,
+): T => {
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  return function (this: ThisType<T>, ...args: Parameters<T>) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  } as T;
+};
+
+/**
+ * Throttles a function to be called at most once every `wait` milliseconds.
+ *
+ * @param func - The function to throttle.
+ * @param wait - The number of milliseconds to wait.
+ * @returns The throttled function.
+ */
+const throttle = <T extends (...args: Parameters<T>) => void>(
+  func: T,
+  wait: number,
+): T => {
+  let lastCallTime = 0;
+  return function (this: ThisType<T>, ...args: Parameters<T>) {
+    const now = Date.now();
+    if (now - lastCallTime < wait) {
+      return;
+    }
+    lastCallTime = now;
+    func.apply(this, args);
+  } as T;
+};
+
+/**
+ * Generates a UUID.
+ *
+ * @returns A UUID.
+ *
+ * @example
+ * ```ts
+ * generateUUID(); // "123e4567-e89b-12d3-a456-426614174000"
+ * ```
+ */
+const generateUUID = (): string => {
+  return uuidv4();
+};
+
+/**
+ * Exports the common utilities.
+ */
+export interface CommonUtils {
+  readonly EMPTY_STRING: "";
+  isNull(value: unknown): value is null;
+  isNullOrUndefined(value: unknown): value is null | undefined;
+  isUndefined(value: unknown): value is undefined;
+  isNotNull(value: unknown): boolean;
+  isNotNullOrUndefined(value: unknown): boolean;
+  isString(value: unknown): value is string;
+  isNumber(value: unknown): value is number;
+  isBoolean(value: unknown): value is boolean;
+  isDate(value: unknown): value is Date;
+  isArray(value: unknown): value is unknown[];
+  isObject(value: unknown): value is object;
+  defaultIfNullOrUndefined<T>(value: unknown, defaultValue: T): unknown;
+  noop(): void;
+  identity<T>(value: T): T;
+  sleep(ms: number): Promise<void>;
+  debounce<T extends (...args: Parameters<T>) => void>(
+    func: T,
+    wait: number,
+  ): T;
+  throttle<T extends (...args: Parameters<T>) => void>(
+    func: T,
+    wait: number,
+  ): T;
+  generateUUID(): string;
+}
+
+export const commonUtils: CommonUtils = {
+  EMPTY_STRING,
+  isNull,
+  isNullOrUndefined,
+  isUndefined,
+  isNotNull,
+  isNotNullOrUndefined,
+  isString,
+  isNumber,
+  isBoolean,
+  isDate,
+  isArray,
+  isObject,
+  defaultIfNullOrUndefined,
+  noop,
+  identity,
+  sleep,
+  debounce,
+  throttle,
+  generateUUID,
+};
+
 export {
   EMPTY_STRING,
   isNull,
@@ -232,4 +375,10 @@ export {
   isArray,
   isObject,
   defaultIfNullOrUndefined,
+  noop,
+  identity,
+  sleep,
+  debounce,
+  throttle,
+  generateUUID,
 };
