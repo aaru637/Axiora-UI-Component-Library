@@ -1,7 +1,7 @@
 {
-  "name": "axon-ui-component-library",
+  "name": "axiora-ui-component-library",
   "version": "1.0.0",
-  "description": "Axon UI Component Library",
+  "description": "Axiora UI Component Library",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -13,7 +13,9 @@
     "test": "turbo run test",
     "test:watch": "vitest",
     "build:docs": "turbo run build:docs",
-    "build:docs:watch": "turbo run build:docs:watch"
+    "build:docs:watch": "turbo run build:docs:watch",
+    "publish:all": "pnpm build && pnpm -r publish --no-git-checks",
+    "publish:dry-run": "pnpm build && pnpm -r publish --dry-run --no-git-checks"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
@@ -24,9 +26,9 @@
   "packageManager": "pnpm@10.6.2",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-a11y": "^10.4.4",
-    "@storybook/addon-docs": "^10.4.4",
-    "@storybook/react-vite": "^10.4.4",
+    "@storybook/addon-a11y": "^10.4.6",
+    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/react-vite": "^10.4.6",
     "@types/node": "^25.9.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -39,7 +41,7 @@
     "prettier": "^3.8.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "storybook": "^10.4.4",
+    "storybook": "^10.4.6",
     "tsup": "^8.5.0",
     "turbo": "^2.9.18",
     "typedoc": "^0.28.5",

@@ -26,7 +26,7 @@ describe("Object Utils", () => {
    */
   it("isPlainObject returns true for plain objects", () => {
     expect(isPlainObject({})).toBe(true);
-    expect(isPlainObject({ name: "Axon" })).toBe(true);
+    expect(isPlainObject({ name: "Axiora UI" })).toBe(true);
     expect(isPlainObject(Object.create(null))).toBe(true);
   });
 
@@ -35,7 +35,7 @@ describe("Object Utils", () => {
     expect(isPlainObject(new Date())).toBe(false);
     expect(isPlainObject(null)).toBe(false);
     expect(isPlainObject(undefined)).toBe(false);
-    expect(isPlainObject("Axon")).toBe(false);
+    expect(isPlainObject("Axiora UI")).toBe(false);
     expect(isPlainObject(new Map())).toBe(false);
   });
 
@@ -43,28 +43,28 @@ describe("Object Utils", () => {
    * hasKey
    */
   it("hasKey returns true when the object owns the key", () => {
-    expect(hasKey({ name: "Axon" }, "name")).toBe(true);
+    expect(hasKey({ name: "Axiora UI" }, "name")).toBe(true);
   });
 
   it("hasKey returns false for nullish objects or missing keys", () => {
     expect(hasKey(null, "name")).toBe(false);
-    expect(hasKey({ name: "Axon" }, "age")).toBe(false);
+    expect(hasKey({ name: "Axiora UI" }, "age")).toBe(false);
   });
 
   /**
    * get
    */
   it("get returns the property value", () => {
-    expect(get({ name: "Axon", age: 20 }, "name")).toBe("Axon");
+    expect(get({ name: "Axiora UI", age: 20 }, "name")).toBe("Axiora UI");
   });
 
   it("get returns the default value for nullish objects or missing keys", () => {
     expect(
       get(null as { name: string; age: number } | null, "name", "default"),
     ).toBe("default");
-    expect(get({ name: "Axon", age: 20 }, "age", 0)).toBe(20);
+    expect(get({ name: "Axiora UI", age: 20 }, "age", 0)).toBe(20);
     expect(
-      get({ name: "Axon" } as { name: string; age?: number }, "age", 0),
+      get({ name: "Axiora UI" } as { name: string; age?: number }, "age", 0),
     ).toBe(0);
   });
 
@@ -77,10 +77,10 @@ describe("Object Utils", () => {
   });
 
   it("set assigns a nested value using a dot-separated path", () => {
-    const obj = { user: { name: "Axon" } };
+    const obj = { user: { name: "Axiora UI" } };
     set(obj, "user.age", 20);
 
-    expect(obj).toEqual({ user: { name: "Axon", age: 20 } });
+    expect(obj).toEqual({ user: { name: "Axiora UI", age: 20 } });
   });
 
   /**
@@ -116,16 +116,16 @@ describe("Object Utils", () => {
   });
 
   it("pick selects the requested keys", () => {
-    expect(pick({ name: "Axon", age: 20 }, ["name"])).toEqual({
-      name: "Axon",
+    expect(pick({ name: "Axiora UI", age: 20 }, ["name"])).toEqual({
+      name: "Axiora UI",
     });
     expect(
-      pick({ name: "Axon", age: 20, active: true }, ["name", "active"]),
-    ).toEqual({ name: "Axon", active: true });
+      pick({ name: "Axiora UI", age: 20, active: true }, ["name", "active"]),
+    ).toEqual({ name: "Axiora UI", active: true });
   });
 
   it("pick returns an empty object when no keys are provided", () => {
-    expect(pick({ name: "Axon" }, [])).toEqual({});
+    expect(pick({ name: "Axiora UI" }, [])).toEqual({});
   });
 
   /**
@@ -137,17 +137,17 @@ describe("Object Utils", () => {
   });
 
   it("omit removes the requested keys", () => {
-    expect(omit({ name: "Axon", age: 20 }, ["age"])).toEqual({
-      name: "Axon",
+    expect(omit({ name: "Axiora UI", age: 20 }, ["age"])).toEqual({
+      name: "Axiora UI",
     });
     expect(
-      omit({ name: "Axon", age: 20, active: true }, ["age", "active"]),
-    ).toEqual({ name: "Axon" });
+      omit({ name: "Axiora UI", age: 20, active: true }, ["age", "active"]),
+    ).toEqual({ name: "Axiora UI" });
   });
 
   it("omit returns all keys when omit list is empty", () => {
-    const obj = { name: "Axon", age: 20 };
-    expect(omit(obj, [])).toEqual({ name: "Axon", age: 20 });
+    const obj = { name: "Axiora UI", age: 20 };
+    expect(omit(obj, [])).toEqual({ name: "Axiora UI", age: 20 });
   });
 
   /**
@@ -234,7 +234,7 @@ describe("Object Utils", () => {
    * deepClone
    */
   it("deepClone clones plain objects deeply", () => {
-    const obj = { name: "Axon", nested: { value: 1 } };
+    const obj = { name: "Axiora UI", nested: { value: 1 } };
     const cloned = deepClone(obj);
 
     expect(cloned).toEqual(obj);
@@ -255,7 +255,7 @@ describe("Object Utils", () => {
     expect(deepClone(null)).toBe(null);
     expect(deepClone(undefined)).toBe(undefined);
     expect(deepClone(42)).toBe(42);
-    expect(deepClone("Axon")).toBe("Axon");
+    expect(deepClone("Axiora UI")).toBe("Axiora UI");
   });
 
   it("deepClone clones dates", () => {
@@ -271,7 +271,7 @@ describe("Object Utils", () => {
    * deepEqual / deepEquals
    */
   it("deepEqual returns true for structurally equal values", () => {
-    expect(deepEqual({ name: "Axon" }, { name: "Axon" })).toBe(true);
+    expect(deepEqual({ name: "Axiora UI" }, { name: "Axiora UI" })).toBe(true);
     expect(deepEqual([1, 2, 3], [1, 2, 3])).toBe(true);
     expect(deepEqual(new Date("2024-01-01"), new Date("2024-01-01"))).toBe(
       true,
@@ -279,7 +279,7 @@ describe("Object Utils", () => {
   });
 
   it("deepEqual returns false for different values", () => {
-    expect(deepEqual({ name: "Axon" }, { name: "Other" })).toBe(false);
+    expect(deepEqual({ name: "Axiora UI" }, { name: "Other" })).toBe(false);
     expect(deepEqual([1, 2], [1, 3])).toBe(false);
     expect(deepEqual(null, {})).toBe(false);
   });
@@ -304,13 +304,13 @@ describe("Object Utils", () => {
   });
 
   it("removeUndefined removes undefined properties", () => {
-    expect(removeUndefined({ a: 1, b: undefined, c: "Axon", d: null })).toEqual(
-      {
-        a: 1,
-        c: "Axon",
-        d: null,
-      },
-    );
+    expect(
+      removeUndefined({ a: 1, b: undefined, c: "Axiora UI", d: null }),
+    ).toEqual({
+      a: 1,
+      c: "Axiora UI",
+      d: null,
+    });
   });
 
   /**
@@ -322,10 +322,12 @@ describe("Object Utils", () => {
   });
 
   it("removeNull removes null properties", () => {
-    expect(removeNull({ a: 1, b: null, c: "Axon", d: undefined })).toEqual({
-      a: 1,
-      c: "Axon",
-      d: undefined,
-    });
+    expect(removeNull({ a: 1, b: null, c: "Axiora UI", d: undefined })).toEqual(
+      {
+        a: 1,
+        c: "Axiora UI",
+        d: undefined,
+      },
+    );
   });
 });

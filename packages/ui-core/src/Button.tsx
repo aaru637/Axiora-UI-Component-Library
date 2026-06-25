@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, CSSProperties } from "react";
 
-import { colors, spacing, typography } from "@axon/ui-tokens";
+import { colors, spacing, typography } from "@axiora-ui/ui-tokens";
 
 export type ButtonVariant = "primary" | "secondary" | "danger";
 

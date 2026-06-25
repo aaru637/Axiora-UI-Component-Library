@@ -11,11 +11,10 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: "light",
-      values: [
-        { name: "light", value: "#f8fafc" },
-        { name: "dark", value: "#0f172a" },
-      ],
+      options: {
+        light: { name: "light", value: "#f8fafc" },
+        dark: { name: "dark", value: "#0f172a" },
+      },
     },
     a11y: {
       test: "todo",
@@ -27,6 +26,12 @@ const preview: Preview = {
       storySort: {
         order: ["Tokens", "Themes", "Hooks", "Core"],
       },
+    },
+  },
+
+  initialGlobals: {
+    backgrounds: {
+      value: "light",
     },
   },
 };

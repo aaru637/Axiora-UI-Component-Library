@@ -40,7 +40,7 @@ describe("Common Utils", () => {
   it("isNull returns false for all non null values", () => {
     expect(isNull(undefined)).toBe(false);
     expect(isNull("")).toBe(false);
-    expect(isNull("Axon")).toBe(false);
+    expect(isNull("Axiora UI")).toBe(false);
     expect(isNull(0)).toBe(false);
     expect(isNull(false)).toBe(false);
     expect(isNull(Number.NaN)).toBe(false);
@@ -48,7 +48,7 @@ describe("Common Utils", () => {
     expect(isNull({})).toBe(false);
     expect(isNull(new Date())).toBe(false);
     expect(isNull(() => undefined)).toBe(false);
-    expect(isNull(Symbol("axon"))).toBe(false);
+    expect(isNull(Symbol("axiora-ui"))).toBe(false);
   });
 
   /**
@@ -61,7 +61,7 @@ describe("Common Utils", () => {
   it("isUndefined returns false for all non undefined values", () => {
     expect(isUndefined(null)).toBe(false);
     expect(isUndefined("")).toBe(false);
-    expect(isUndefined("Axon")).toBe(false);
+    expect(isUndefined("Axiora UI")).toBe(false);
     expect(isUndefined(0)).toBe(false);
     expect(isUndefined(false)).toBe(false);
     expect(isUndefined(Number.NaN)).toBe(false);
@@ -69,7 +69,7 @@ describe("Common Utils", () => {
     expect(isUndefined({})).toBe(false);
     expect(isUndefined(new Date())).toBe(false);
     expect(isUndefined(() => undefined)).toBe(false);
-    expect(isUndefined(Symbol("axon"))).toBe(false);
+    expect(isUndefined(Symbol("axiora-ui"))).toBe(false);
   });
 
   /**
@@ -85,7 +85,7 @@ describe("Common Utils", () => {
 
   it("isNullOrUndefined returns false for all other values", () => {
     expect(isNullOrUndefined("")).toBe(false);
-    expect(isNullOrUndefined("Axon")).toBe(false);
+    expect(isNullOrUndefined("Axiora UI")).toBe(false);
     expect(isNullOrUndefined(0)).toBe(false);
     expect(isNullOrUndefined(false)).toBe(false);
     expect(isNullOrUndefined(Number.NaN)).toBe(false);
@@ -93,7 +93,7 @@ describe("Common Utils", () => {
     expect(isNullOrUndefined({})).toBe(false);
     expect(isNullOrUndefined(new Date())).toBe(false);
     expect(isNullOrUndefined(() => undefined)).toBe(false);
-    expect(isNullOrUndefined(Symbol("axon"))).toBe(false);
+    expect(isNullOrUndefined(Symbol("axiora-ui"))).toBe(false);
   });
 
   /**
@@ -106,7 +106,7 @@ describe("Common Utils", () => {
   it("isNotNull returns true for all non null values", () => {
     expect(isNotNull(undefined)).toBe(true);
     expect(isNotNull("")).toBe(true);
-    expect(isNotNull("Axon")).toBe(true);
+    expect(isNotNull("Axiora UI")).toBe(true);
     expect(isNotNull(0)).toBe(true);
     expect(isNotNull(false)).toBe(true);
     expect(isNotNull(Number.NaN)).toBe(true);
@@ -114,7 +114,7 @@ describe("Common Utils", () => {
     expect(isNotNull({})).toBe(true);
     expect(isNotNull(new Date())).toBe(true);
     expect(isNotNull(() => undefined)).toBe(true);
-    expect(isNotNull(Symbol("axon"))).toBe(true);
+    expect(isNotNull(Symbol("axiora-ui"))).toBe(true);
   });
 
   /**
@@ -127,7 +127,7 @@ describe("Common Utils", () => {
 
   it("isNotNullOrUndefined returns true for all non nullish values", () => {
     expect(isNotNullOrUndefined("")).toBe(true);
-    expect(isNotNullOrUndefined("Axon")).toBe(true);
+    expect(isNotNullOrUndefined("Axiora UI")).toBe(true);
     expect(isNotNullOrUndefined(0)).toBe(true);
     expect(isNotNullOrUndefined(false)).toBe(true);
     expect(isNotNullOrUndefined(Number.NaN)).toBe(true);
@@ -135,7 +135,7 @@ describe("Common Utils", () => {
     expect(isNotNullOrUndefined({})).toBe(true);
     expect(isNotNullOrUndefined(new Date())).toBe(true);
     expect(isNotNullOrUndefined(() => undefined)).toBe(true);
-    expect(isNotNullOrUndefined(Symbol("axon"))).toBe(true);
+    expect(isNotNullOrUndefined(Symbol("axiora-ui"))).toBe(true);
   });
 
   /**
@@ -150,17 +150,17 @@ describe("Common Utils", () => {
     expect(isString(0)).toBe(false);
     expect(isString(false)).toBe(false);
     expect(isString(Number.NaN)).toBe(false);
-    expect(isString({ name: "Axon" })).toBe(false);
-    expect(isString(["Axon", "UI", "Component", "library"])).toBe(false);
+    expect(isString({ name: "Axiora UI" })).toBe(false);
+    expect(isString(["Axiora UI", "UI", "Component", "library"])).toBe(false);
     expect(isString(new Date())).toBe(false);
-    expect(isString(() => "Axon")).toBe(false);
-    expect(isString(Symbol("axon"))).toBe(false);
+    expect(isString(() => "Axiora UI")).toBe(false);
+    expect(isString(Symbol("axiora-ui"))).toBe(false);
   });
 
   it("isString returns true for string values", () => {
     expect(isString("")).toBe(true);
     expect(isString("   ")).toBe(true);
-    expect(isString("Axon UI Component Library")).toBe(true);
+    expect(isString("Axiora UI Component Library")).toBe(true);
   });
 
   /**
@@ -259,19 +259,19 @@ describe("Common Utils", () => {
   });
 
   it("isArray returns false for non array values", () => {
-    expect(isArray("Axon")).toBe(false);
+    expect(isArray("Axiora UI")).toBe(false);
     expect(isArray(12)).toBe(false);
     expect(isArray(false)).toBe(false);
-    expect(isArray({ name: "Axon" })).toBe(false);
+    expect(isArray({ name: "Axiora UI" })).toBe(false);
     expect(isArray(new Date())).toBe(false);
     expect(isArray(() => [])).toBe(false);
     expect(isArray(Symbol("array"))).toBe(false);
-    expect(isArray({ 0: "Axon", length: 1 })).toBe(false);
+    expect(isArray({ 0: "Axiora UI", length: 1 })).toBe(false);
   });
 
   it("isArray returns true for array values", () => {
     expect(isArray([])).toBe(true);
-    expect(isArray(["Axon", "UI", "Component", "library"])).toBe(true);
+    expect(isArray(["Axiora UI", "UI", "Component", "library"])).toBe(true);
     expect(isArray([1, 2, 3])).toBe(true);
     expect(isArray(new Array(3))).toBe(true);
   });
@@ -286,7 +286,7 @@ describe("Common Utils", () => {
 
   it("isObject returns false for arrays", () => {
     expect(isObject([])).toBe(false);
-    expect(isObject(["Axon"])).toBe(false);
+    expect(isObject(["Axiora UI"])).toBe(false);
   });
 
   it("isObject returns false for valid dates", () => {
@@ -295,7 +295,7 @@ describe("Common Utils", () => {
   });
 
   it("isObject returns false for non object values", () => {
-    expect(isObject("Axon")).toBe(false);
+    expect(isObject("Axiora UI")).toBe(false);
     expect(isObject(12)).toBe(false);
     expect(isObject(true)).toBe(false);
     expect(isObject(() => ({}))).toBe(false);
@@ -304,11 +304,11 @@ describe("Common Utils", () => {
 
   it("isObject returns true for plain and built in objects", () => {
     expect(isObject({})).toBe(true);
-    expect(isObject({ name: "Axon" })).toBe(true);
+    expect(isObject({ name: "Axiora UI" })).toBe(true);
     expect(isObject({ nested: { value: 1 } })).toBe(true);
     expect(isObject(Object.create(null))).toBe(true);
     expect(isObject(new Map())).toBe(true);
-    expect(isObject(/axon/)).toBe(true);
+    expect(isObject(/axiora@axiora-ui/)).toBe(true);
     expect(isObject(new Date("invalid"))).toBe(true);
   });
 
@@ -316,22 +316,22 @@ describe("Common Utils", () => {
    * defaultIfNullOrUndefined
    */
   it("defaultIfNullOrUndefined returns default value for null", () => {
-    expect(defaultIfNullOrUndefined(null, "Axon")).toBe("Axon");
+    expect(defaultIfNullOrUndefined(null, "Axiora UI")).toBe("Axiora UI");
   });
 
   it("defaultIfNullOrUndefined returns default value for undefined", () => {
-    expect(defaultIfNullOrUndefined(undefined, "Axon")).toBe("Axon");
+    expect(defaultIfNullOrUndefined(undefined, "Axiora UI")).toBe("Axiora UI");
   });
 
   it("defaultIfNullOrUndefined returns value for non nullish values", () => {
-    expect(defaultIfNullOrUndefined("", "Axon")).toBe("");
-    expect(defaultIfNullOrUndefined("Axon UI", "default")).toBe("Axon UI");
+    expect(defaultIfNullOrUndefined("", "Axiora UI")).toBe("");
+    expect(defaultIfNullOrUndefined("Axiora UI", "default")).toBe("Axiora UI");
     expect(defaultIfNullOrUndefined(0, 42)).toBe(0);
     expect(defaultIfNullOrUndefined(false, true)).toBe(false);
     expect(defaultIfNullOrUndefined(Number.NaN, 0)).toBe(Number.NaN);
     expect(defaultIfNullOrUndefined([], ["default"])).toEqual([]);
-    expect(defaultIfNullOrUndefined({ name: "Axon" }, {})).toEqual({
-      name: "Axon",
+    expect(defaultIfNullOrUndefined({ name: "Axiora UI" }, {})).toEqual({
+      name: "Axiora UI",
     });
   });
 
@@ -347,14 +347,14 @@ describe("Common Utils", () => {
    */
   it("identity returns the same value for primitives", () => {
     expect(identity(12)).toBe(12);
-    expect(identity("Axon")).toBe("Axon");
+    expect(identity("Axiora UI")).toBe("Axiora UI");
     expect(identity(true)).toBe(true);
     expect(identity(null)).toBe(null);
     expect(identity(undefined)).toBe(undefined);
   });
 
   it("identity returns the same reference for objects and arrays", () => {
-    const obj = { name: "Axon" };
+    const obj = { name: "Axiora UI" };
     const arr = [1, 2, 3];
     expect(identity(obj)).toBe(obj);
     expect(identity(arr)).toBe(arr);
@@ -435,9 +435,9 @@ describe("Common Utils (timers)", () => {
   it("debounce passes arguments to the debounced function", () => {
     const fn = vi.fn();
     const debounced = debounce(fn, 100);
-    debounced("Axon", 42);
+    debounced("Axiora UI", 42);
     vi.advanceTimersByTime(100);
-    expect(fn).toHaveBeenCalledWith("Axon", 42);
+    expect(fn).toHaveBeenCalledWith("Axiora UI", 42);
   });
 
   it("debounce preserves this context", () => {
@@ -482,8 +482,8 @@ describe("Common Utils (timers)", () => {
   it("throttle passes arguments to the throttled function", () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
-    throttled("Axon", 42);
-    expect(fn).toHaveBeenCalledWith("Axon", 42);
+    throttled("Axiora UI", 42);
+    expect(fn).toHaveBeenCalledWith("Axiora UI", 42);
   });
 
   it("throttle preserves this context", () => {

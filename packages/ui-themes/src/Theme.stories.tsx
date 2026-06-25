@@ -62,7 +62,9 @@ export const Light: Story = {
 
 export const Dark: Story = {
   args: { theme: darkTheme },
-  parameters: {
-    backgrounds: { default: "dark" },
+  globals: {
+    backgrounds: {
+      value: "dark",
+    },
   },
 };

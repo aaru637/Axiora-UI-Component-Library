@@ -12,7 +12,7 @@ import { EMPTY_STRING, isNullOrUndefined } from "../common/common.utils";
  * isEmptyString(null);   // true
  * isEmptyString("");     // true
  * isEmptyString("   ");  // false
- * isEmptyString("Axon"); // false
+ * isEmptyString("Axiora UI"); // false
  * ```
  */
 const isEmptyString = (value: string | null | undefined): boolean =>
@@ -30,7 +30,7 @@ const isEmptyString = (value: string | null | undefined): boolean =>
  * isNotEmptyString(null);   // false
  * isNotEmptyString("");     // false
  * isNotEmptyString("   ");  // true
- * isNotEmptyString("Axon"); // true
+ * isNotEmptyString("Axiora UI"); // true
  * ```
  */
 const isNotEmptyString = (value: string | null | undefined): boolean =>
@@ -45,7 +45,7 @@ const isNotEmptyString = (value: string | null | undefined): boolean =>
  *
  * @example
  * ```ts
- * capitalizeWord("axon"); // "Axon"
+ * capitalizeWord("axiora-ui"); // "Axiora UI"
  * capitalizeWord("a");    // "A"
  * capitalizeWord(null);   // null
  * ```
@@ -213,7 +213,7 @@ const titleCase = (
  *
  * @example
  * ```ts
- * trim("  Axon  "); // "Axon"
+ * trim("  Axiora UI  "); // "Axiora UI"
  * trim(null);       // null
  * ```
  */
@@ -251,8 +251,8 @@ const truncate = (
  *
  * @example
  * ```ts
- * contains("Axon UI", "UI"); // true
- * contains("Axon UI", "React"); // false
+ * contains("Axiora UI", "UI"); // true
+ * contains("Axiora UI", "React"); // false
  * contains(null, "UI");      // false
  * ```
  */
@@ -269,9 +269,9 @@ const contains = (value: string | null | undefined, search = ""): boolean => {
  *
  * @example
  * ```ts
- * startsWith("Axon UI", "Axon"); // true
- * startsWith("Axon UI", "UI");   // false
- * startsWith(null, "Axon");      // false
+ * startsWith("Axiora UI", "Axiora UI"); // true
+ * startsWith("Axiora UI", "UI");   // false
+ * startsWith(null, "Axiora UI");      // false
  * ```
  */
 const startsWith = (value: string | null | undefined, prefix = ""): boolean => {
@@ -287,8 +287,8 @@ const startsWith = (value: string | null | undefined, prefix = ""): boolean => {
  *
  * @example
  * ```ts
- * endsWith("Axon UI", "UI");   // true
- * endsWith("Axon UI", "Axon"); // false
+ * endsWith("Axiora UI", "UI");   // true
+ * endsWith("Axiora UI", "Axiora UI"); // false
  * endsWith(null, "UI");        // false
  * ```
  */
@@ -349,7 +349,7 @@ const removeSpaces = (
  *
  * @example
  * ```ts
- * reverseString("Axon"); // "noxA"
+ * reverseString("Axiora UI"); // "noxA"
  * reverseString(null);   // null
  * ```
  */
@@ -398,7 +398,7 @@ const maskString = (
  * @example
  * ```ts
  * extractInitials("John Doe"); // "J"
- * extractInitials("axon");     // "A"
+ * extractInitials("axiora-ui");     // "A"
  * extractInitials(null);         // null
  * ```
  */
@@ -446,9 +446,9 @@ const slugify = (
  *
  * @example
  * ```ts
- * formatTemplate("Hello {name}!", { name: "Axon" }); // "Hello Axon!"
+ * formatTemplate("Hello {name}!", { name: "Axiora UI" }); // "Hello Axiora UI!"
  * formatTemplate("Hello {name}!", {});                 // "Hello !"
- * formatTemplate(null, { name: "Axon" });              // null
+ * formatTemplate(null, { name: "Axiora UI" });              // null
  * ```
  */
 const formatTemplate = (

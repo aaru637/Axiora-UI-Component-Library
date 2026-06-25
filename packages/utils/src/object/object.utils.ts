@@ -140,7 +140,7 @@ const merge = <T extends object, U extends object>(
  *
  * @example
  * ```ts
- * pick({ name: "Axon", age: 20 }, ["name"]); // { name: "Axon" }
+ * pick({ name: "Axiora UI", age: 20 }, ["name"]); // { name: "Axiora UI" }
  * pick(null, ["name"]);                      // null
  * ```
  */
@@ -168,7 +168,7 @@ const pick = <T extends object, K extends keyof T>(
  *
  * @example
  * ```ts
- * omit({ name: "Axon", age: 20 }, ["age"]); // { name: "Axon" }
+ * omit({ name: "Axiora UI", age: 20 }, ["age"]); // { name: "Axiora UI" }
  * ```
  */
 const omit = <T extends Record<string, unknown>, K extends keyof T>(

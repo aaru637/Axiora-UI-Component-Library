@@ -1,7 +1,17 @@
 {
-  "name": "@axon/ui-themes",
+  "name": "@axiora-ui/ui-themes",
   "version": "1.0.0",
-  "private": true,
+  "description": "Light and dark theme objects for the Axiora UI design system.",
+  "author": "axiora-ui",
+  "license": "MIT",
+  "keywords": [
+    "axiora-ui",
+    "design-system",
+    "themes",
+    "light-theme",
+    "dark-theme",
+    "typescript"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -11,14 +21,18 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean --external @axon/ui-tokens",
+    "build": "tsup src/index.ts --format esm --dts --clean --external @axiora-ui/ui-tokens",
     "lint": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run"
   },
   "dependencies": {
-    "@axon/ui-tokens": "workspace:*"
+    "@axiora-ui/ui-tokens": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

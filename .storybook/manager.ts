@@ -4,7 +4,7 @@ import { create } from "storybook/theming/create";
 addons.setConfig({
   theme: create({
     base: "light",
-    brandTitle: "Axon UI",
+    brandTitle: "Axiora UI",
     brandUrl: "./",
   }),
 });
