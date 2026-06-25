@@ -53,7 +53,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "Color tokens used across Axon UI components.",
+        component: "Color tokens used across Axiora UI components.",
       },
     },
   },

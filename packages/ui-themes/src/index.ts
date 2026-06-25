@@ -1,4 +1,4 @@
-import { colors, spacing, typography } from "@axon/ui-tokens";
+import { colors, spacing, typography } from "@axiora-ui/ui-tokens";
 
 export const lightTheme = {
   name: "light",

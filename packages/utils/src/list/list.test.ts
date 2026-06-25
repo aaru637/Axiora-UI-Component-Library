@@ -17,9 +17,9 @@ import {
 } from "./list.utils";
 
 const users = [
-  { id: 1, name: "Ada", email: "ada@axon.com", role: "admin" },
-  { id: 2, name: "Bob", email: "bob@axon.com", role: "user" },
-  { id: 3, name: "Cara", email: "ada@axon.com", role: "user" },
+  { id: 1, name: "Ada", email: "ada@axiora-ui.com", role: "admin" },
+  { id: 2, name: "Bob", email: "bob@axiora-ui.com", role: "user" },
+  { id: 3, name: "Cara", email: "ada@axiora-ui.com", role: "user" },
 ];
 
 describe("List Utils", () => {
@@ -31,8 +31,8 @@ describe("List Utils", () => {
 
   it("filterBy and exists work with property values", () => {
     expect(filterBy(users, "role", "user")).toHaveLength(2);
-    expect(exists(users, "email", "bob@axon.com")).toBe(true);
-    expect(exists(users, "email", "missing@axon.com")).toBe(false);
+    expect(exists(users, "email", "bob@axiora-ui.com")).toBe(true);
+    expect(exists(users, "email", "missing@axiora-ui.com")).toBe(false);
   });
 
   it("removeBy and updateBy modify list items", () => {
@@ -52,9 +52,9 @@ describe("List Utils", () => {
     expect(groupBy(users, "role")?.user).toHaveLength(2);
     expect(countBy(users, "role")).toEqual({ admin: 1, user: 2 });
     expect(pluck(users, "email")).toEqual([
-      "ada@axon.com",
-      "bob@axon.com",
-      "ada@axon.com",
+      "ada@axiora-ui.com",
+      "bob@axiora-ui.com",
+      "ada@axiora-ui.com",
     ]);
     expect(distinctBy(users, "email")).toHaveLength(2);
     expect(indexBy(users, "id")?.["2"].name).toBe("Bob");
@@ -69,7 +69,7 @@ describe("List Utils", () => {
 
   it("search matches text across multiple keys", () => {
     expect(search(users, "bob", ["name", "email"])).toHaveLength(1);
-    expect(search(users, "axon", ["name", "email"])).toHaveLength(3);
+    expect(search(users, "axiora-ui", ["name", "email"])).toHaveLength(3);
     expect(search(users, "", ["name"])).toHaveLength(3);
   });
 

@@ -4,14 +4,14 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@axon/ui-core": ["packages/ui-core/src/index.ts"],
-      "@axon/ui-core/*": ["packages/ui-core/src/*"],
-      "@axon/ui-hooks": ["packages/ui-hooks/src/index.ts"],
-      "@axon/ui-hooks/*": ["packages/ui-hooks/src/*"],
-      "@axon/ui-themes": ["packages/ui-themes/src/index.ts"],
-      "@axon/ui-themes/*": ["packages/ui-themes/src/*"],
-      "@axon/ui-tokens": ["packages/ui-tokens/src/index.ts"],
-      "@axon/ui-tokens/*": ["packages/ui-tokens/src/*"]
+      "@axiora-ui/ui-core": ["packages/ui-core/src/index.ts"],
+      "@axiora-ui/ui-core/*": ["packages/ui-core/src/*"],
+      "@axiora-ui/ui-hooks": ["packages/ui-hooks/src/index.ts"],
+      "@axiora-ui/ui-hooks/*": ["packages/ui-hooks/src/*"],
+      "@axiora-ui/ui-themes": ["packages/ui-themes/src/index.ts"],
+      "@axiora-ui/ui-themes/*": ["packages/ui-themes/src/*"],
+      "@axiora-ui/ui-tokens": ["packages/ui-tokens/src/index.ts"],
+      "@axiora-ui/ui-tokens/*": ["packages/ui-tokens/src/*"]
     }
   },
   "include": [

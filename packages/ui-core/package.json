@@ -1,7 +1,18 @@
 {
-  "name": "@axon/ui-core",
+  "name": "@axiora-ui/ui-core",
   "version": "1.0.0",
-  "private": true,
+  "description": "Core React UI components for the Axiora UI design system.",
+  "author": "axiora-ui",
+  "license": "MIT",
+  "keywords": [
+    "axiora-ui",
+    "design-system",
+    "react",
+    "components",
+    "ui",
+    "button",
+    "typescript"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -11,18 +22,22 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean --external react,react-dom,@axon/ui-tokens",
+    "build": "tsup src/index.ts --format esm --dts --clean --external react,react-dom,@axiora-ui/ui-tokens",
     "lint": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run"
   },
   "dependencies": {
-    "@axon/ui-tokens": "workspace:*"
+    "@axiora-ui/ui-tokens": "workspace:*"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

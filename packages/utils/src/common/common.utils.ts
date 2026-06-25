@@ -99,7 +99,7 @@ const isNotNullOrUndefined = (value: unknown): boolean =>
  *
  * @example
  * ```ts
- * isString("Axon"); // true
+ * isString("Axiora UI"); // true
  * isString("");     // true
  * isString(12);     // false
  * isString(null);   // false
@@ -193,7 +193,7 @@ const isArray = <T = unknown>(value: unknown): value is T[] =>
  *
  * @example
  * ```ts
- * isObject({ name: "Axon" }); // true
+ * isObject({ name: "Axiora UI" }); // true
  * isObject([]);               // false
  * isObject(new Date());       // false
  * isObject(null);             // false
@@ -239,7 +239,7 @@ const noop = (): void => {};
  * @example
  * ```ts
  * identity(12); // 12
- * identity("Axon"); // "Axon"
+ * identity("Axiora UI"); // "Axiora UI"
  * identity(true); // true
  * identity(null); // null
  * identity(undefined); // undefined

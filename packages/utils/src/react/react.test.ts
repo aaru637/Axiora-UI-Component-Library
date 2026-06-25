@@ -53,8 +53,8 @@ describe("React Utils", () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, { clipboard: { writeText } });
 
-    await expect(copyToClipboard("Axon")).resolves.toBe(true);
-    expect(writeText).toHaveBeenCalledWith("Axon");
+    await expect(copyToClipboard("Axiora UI")).resolves.toBe(true);
+    expect(writeText).toHaveBeenCalledWith("Axiora UI");
   });
 
   it("downloadFile creates a downloadable anchor", () => {

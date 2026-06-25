@@ -1,7 +1,18 @@
 {
-  "name": "@axon/ui-tokens",
+  "name": "@axiora-ui/ui-tokens",
   "version": "1.0.0",
-  "private": true,
+  "description": "Design tokens for the Axiora UI design system — colors, spacing, and typography.",
+  "author": "axiora-ui",
+  "license": "MIT",
+  "keywords": [
+    "axiora-ui",
+    "design-system",
+    "design-tokens",
+    "colors",
+    "spacing",
+    "typography",
+    "typescript"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -11,11 +22,15 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
     "lint": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

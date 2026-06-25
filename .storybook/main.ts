@@ -25,10 +25,32 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          "@axon/ui-core": path.resolve(dirname, "../packages/ui-core/src"),
-          "@axon/ui-hooks": path.resolve(dirname, "../packages/ui-hooks/src"),
-          "@axon/ui-themes": path.resolve(dirname, "../packages/ui-themes/src"),
-          "@axon/ui-tokens": path.resolve(dirname, "../packages/ui-tokens/src"),
+          "@axiora-ui/ui-core": path.resolve(
+            dirname,
+            "../packages/ui-core/src",
+          ),
+          "@axiora-ui/ui-hooks": path.resolve(
+            dirname,
+            "../packages/ui-hooks/src",
+          ),
+          "@axiora-ui/ui-themes": path.resolve(
+            dirname,
+            "../packages/ui-themes/src",
+          ),
+          "@axiora-ui/ui-tokens": path.resolve(
+            dirname,
+            "../packages/ui-tokens/src",
+          ),
+        },
+      },
+      server: {
+        watch: {
+          ignored: [
+            "**/node_modules/**",
+            "**/.pnpm-store/**",
+            "**/dist/**",
+            "**/.turbo/**",
+          ],
         },
       },
     });

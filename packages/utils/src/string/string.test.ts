@@ -49,9 +49,9 @@ describe("String Utils", () => {
   });
 
   it("isEmptyString returns false for non empty strings", () => {
-    expect(isEmptyString("Axon")).toBe(false);
-    expect(isEmptyString(" Axon ")).toBe(false);
-    expect(isEmptyString("Axon UI Component Library")).toBe(false);
+    expect(isEmptyString("Axiora UI")).toBe(false);
+    expect(isEmptyString(" Axiora UI ")).toBe(false);
+    expect(isEmptyString("Axiora UI Component Library")).toBe(false);
   });
 
   /**
@@ -78,9 +78,9 @@ describe("String Utils", () => {
   });
 
   it("isNotEmptyString returns true for non empty strings", () => {
-    expect(isNotEmptyString("Axon")).toBe(true);
-    expect(isNotEmptyString(" Axon ")).toBe(true);
-    expect(isNotEmptyString("Axon UI Component Library")).toBe(true);
+    expect(isNotEmptyString("Axiora UI")).toBe(true);
+    expect(isNotEmptyString(" Axiora UI ")).toBe(true);
+    expect(isNotEmptyString("Axiora UI Component Library")).toBe(true);
   });
 
   /**
@@ -97,7 +97,7 @@ describe("String Utils", () => {
   });
 
   it("capitalizeWord capitalizes the first character of a word", () => {
-    expect(capitalizeWord("axon")).toBe("Axon");
+    expect(capitalizeWord("axiora-ui")).toBe("Axiora-ui");
     expect(capitalizeWord("HELLO")).toBe("HELLO");
   });
 
@@ -115,7 +115,7 @@ describe("String Utils", () => {
 
   it("capitalize capitalizes each word separated by spaces", () => {
     expect(capitalize("hello world")).toBe("Hello World");
-    expect(capitalize("axon ui library")).toBe("Axon Ui Library");
+    expect(capitalize("axiora-ui ui library")).toBe("Axiora-ui Ui Library");
   });
 
   it("capitalize uses a custom separator", () => {
@@ -133,7 +133,7 @@ describe("String Utils", () => {
 
   it("camelCase converts space separated words", () => {
     expect(camelCase("hello world")).toBe("helloWorld");
-    expect(camelCase("axon ui library")).toBe("axonUiLibrary");
+    expect(camelCase("axiora-ui ui library")).toBe("axioraUiUiLibrary");
   });
 
   it("camelCase converts underscore and hyphen separated words", () => {
@@ -156,7 +156,7 @@ describe("String Utils", () => {
 
   it("snakeCase replaces spaces with underscores by default", () => {
     expect(snakeCase("hello world")).toBe("hello_world");
-    expect(snakeCase("axon ui library")).toBe("axon_ui_library");
+    expect(snakeCase("axiora-ui ui library")).toBe("axiora-ui_ui_library");
   });
 
   it("snakeCase uses a custom separator", () => {
@@ -190,7 +190,7 @@ describe("String Utils", () => {
 
   it("pascalCase converts space separated words", () => {
     expect(pascalCase("hello world")).toBe("HelloWorld");
-    expect(pascalCase("axon ui")).toBe("AxonUi");
+    expect(pascalCase("axiora-ui ui")).toBe("AxioraUiUi");
   });
 
   it("pascalCase converts underscore and hyphen separated words", () => {
@@ -212,7 +212,7 @@ describe("String Utils", () => {
 
   it("titleCase capitalizes the first letter of each word", () => {
     expect(titleCase("hello world")).toBe("Hello World");
-    expect(titleCase("axon ui library")).toBe("Axon Ui Library");
+    expect(titleCase("axiora-ui ui library")).toBe("Axiora-Ui Ui Library");
   });
 
   it("titleCase lowercases uppercase input before title casing", () => {
@@ -228,9 +228,9 @@ describe("String Utils", () => {
   });
 
   it("trim removes leading and trailing whitespace", () => {
-    expect(trim("  Axon  ")).toBe("Axon");
-    expect(trim("\tAxon\n")).toBe("Axon");
-    expect(trim("Axon")).toBe("Axon");
+    expect(trim("  Axiora UI  ")).toBe("Axiora UI");
+    expect(trim("\tAxiora UI\n")).toBe("Axiora UI");
+    expect(trim("Axiora UI")).toBe("Axiora UI");
   });
 
   /**
@@ -243,7 +243,7 @@ describe("String Utils", () => {
 
   it("truncate shortens a string to maxLength and appends ellipsis", () => {
     expect(truncate("hello world", 5)).toBe("hello...");
-    expect(truncate("Axon", 2)).toBe("Ax...");
+    expect(truncate("Axiora UI", 2)).toBe("Ax...");
   });
 
   it("truncate appends ellipsis even when the string fits within maxLength", () => {
@@ -260,16 +260,16 @@ describe("String Utils", () => {
   });
 
   it("contains returns true when the search substring is found", () => {
-    expect(contains("Axon UI", "UI")).toBe(true);
-    expect(contains("Axon UI", "Axon")).toBe(true);
+    expect(contains("Axiora UI", "UI")).toBe(true);
+    expect(contains("Axiora UI", "Axiora UI")).toBe(true);
   });
 
   it("contains returns false when the search substring is not found", () => {
-    expect(contains("Axon UI", "React")).toBe(false);
+    expect(contains("Axiora UI", "React")).toBe(false);
   });
 
   it("contains returns true for an empty search string on non nullish values", () => {
-    expect(contains("Axon", "")).toBe(true);
+    expect(contains("Axiora UI", "")).toBe(true);
   });
 
   /**
@@ -281,15 +281,15 @@ describe("String Utils", () => {
   });
 
   it("startsWith returns true when the prefix matches", () => {
-    expect(startsWith("Axon UI", "Axon")).toBe(true);
+    expect(startsWith("Axiora UI", "Axiora UI")).toBe(true);
   });
 
   it("startsWith returns false when the prefix does not match", () => {
-    expect(startsWith("Axon UI", "UI")).toBe(false);
+    expect(startsWith("Axiora UI", "UI")).toBe(false);
   });
 
   it("startsWith returns true for an empty prefix on non nullish values", () => {
-    expect(startsWith("Axon", "")).toBe(true);
+    expect(startsWith("Axiora UI", "")).toBe(true);
   });
 
   /**
@@ -301,15 +301,15 @@ describe("String Utils", () => {
   });
 
   it("endsWith returns true when the suffix matches", () => {
-    expect(endsWith("Axon UI", "UI")).toBe(true);
+    expect(endsWith("Axiora UI", "UI")).toBe(true);
   });
 
   it("endsWith returns false when the suffix does not match", () => {
-    expect(endsWith("Axon UI", "Axon")).toBe(false);
+    expect(endsWith("Axiora UI", "Axiora")).toBe(false);
   });
 
   it("endsWith returns true for an empty suffix on non nullish values", () => {
-    expect(endsWith("Axon", "")).toBe(true);
+    expect(endsWith("Axiora UI", "")).toBe(true);
   });
 
   /**
@@ -356,7 +356,7 @@ describe("String Utils", () => {
   });
 
   it("reverseString reverses the character order", () => {
-    expect(reverseString("Axon")).toBe("noxA");
+    expect(reverseString("Axiora UI")).toBe("IU aroixA");
     expect(reverseString("12345")).toBe("54321");
   });
 
@@ -396,7 +396,7 @@ describe("String Utils", () => {
 
   it("extractInitials returns the uppercase first character", () => {
     expect(extractInitials("John Doe")).toBe("J");
-    expect(extractInitials("axon")).toBe("A");
+    expect(extractInitials("axiora-ui")).toBe("A");
   });
 
   /**
@@ -409,7 +409,7 @@ describe("String Utils", () => {
 
   it("slugify converts a string to a lowercase hyphenated slug", () => {
     expect(slugify("Hello World!")).toBe("hello-world");
-    expect(slugify("Axon UI Library")).toBe("axon-ui-library");
+    expect(slugify("Axiora UI Library")).toBe("axiora-ui-library");
   });
 
   it("slugify trims whitespace and normalizes underscores", () => {
@@ -425,17 +425,20 @@ describe("String Utils", () => {
    * formatTemplate
    */
   it("formatTemplate returns nullish templates unchanged", () => {
-    expect(formatTemplate(null, { name: "Axon" })).toBe(null);
-    expect(formatTemplate(undefined, { name: "Axon" })).toBe(undefined);
+    expect(formatTemplate(null, { name: "Axiora UI" })).toBe(null);
+    expect(formatTemplate(undefined, { name: "Axiora UI" })).toBe(undefined);
   });
 
   it("formatTemplate replaces placeholders with matching values", () => {
-    expect(formatTemplate("Hello {name}!", { name: "Axon" })).toBe(
-      "Hello Axon!",
+    expect(formatTemplate("Hello {name}!", { name: "Axiora UI" })).toBe(
+      "Hello Axiora UI!",
     );
     expect(
-      formatTemplate("{greeting} {name}", { greeting: "Hi", name: "Axon" }),
-    ).toBe("Hi Axon");
+      formatTemplate("{greeting} {name}", {
+        greeting: "Hi",
+        name: "Axiora UI",
+      }),
+    ).toBe("Hi Axiora UI");
   });
 
   it("formatTemplate replaces missing keys with an empty string", () => {
@@ -448,7 +451,11 @@ describe("String Utils", () => {
 
   it("formatTemplate supports a custom placeholder regex", () => {
     expect(
-      formatTemplate("Hello {{name}}!", { name: "Axon" }, /\{\{(\w+)\}\}/g),
-    ).toBe("Hello Axon!");
+      formatTemplate(
+        "Hello {{name}}!",
+        { name: "Axiora UI" },
+        /\{\{(\w+)\}\}/g,
+      ),
+    ).toBe("Hello Axiora UI!");
   });
 });

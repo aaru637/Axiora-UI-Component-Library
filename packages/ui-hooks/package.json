@@ -1,7 +1,17 @@
 {
-  "name": "@axon/ui-hooks",
+  "name": "@axiora-ui/ui-hooks",
   "version": "1.0.0",
-  "private": true,
+  "description": "Reusable React hooks for the Axiora UI design system.",
+  "author": "axiora-ui",
+  "license": "MIT",
+  "keywords": [
+    "axiora-ui",
+    "design-system",
+    "react",
+    "hooks",
+    "use-toggle",
+    "typescript"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -11,7 +21,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean --external react",
@@ -20,5 +31,8 @@
   },
   "peerDependencies": {
     "react": "^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
