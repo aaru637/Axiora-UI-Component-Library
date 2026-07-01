@@ -1,3 +1,9 @@
-export { colors } from "./colors";
-export { spacing } from "./spacing";
-export { typography } from "./typography";
+export * from "./colors/colors";
+export * from "./spacing/spacing";
+export * from "./typography/typography";
+export * from "./scale/scale";
+export * from "./shadow/shadow";
+export * from "./zIndex/zIndex";
+export * from "./breakpoints/breakpoints";
+export * from "./duration/duration";
+export * from "./opacity/opacity";
