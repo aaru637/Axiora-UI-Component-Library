@@ -9,18 +9,18 @@ function ThemePreview({ theme }: { theme: Theme }) {
         backgroundColor: theme.colors.background,
         color: theme.colors.foreground,
         fontFamily: theme.typography.fontFamily.sans,
-        padding: theme.spacing.lg,
-        borderRadius: theme.spacing.sm,
+        padding: theme.spacing[6],
+        borderRadius: theme.spacing[2],
         minWidth: "20rem",
       }}
     >
-      <h3 style={{ margin: `0 0 ${theme.spacing.md}` }}>{theme.name} theme</h3>
+      <h3 style={{ margin: `0 0 ${theme.spacing[4]}` }}>{theme.name} theme</h3>
       <div
         style={{
           backgroundColor: theme.colors.surface,
-          padding: theme.spacing.md,
-          borderRadius: theme.spacing.sm,
-          marginBottom: theme.spacing.md,
+          padding: theme.spacing[4],
+          borderRadius: theme.spacing[2],
+          marginBottom: theme.spacing[4],
         }}
       >
         Surface card
@@ -30,11 +30,11 @@ function ThemePreview({ theme }: { theme: Theme }) {
         style={{
           backgroundColor: theme.colors.primary,
           border: "none",
-          borderRadius: theme.spacing.sm,
+          borderRadius: theme.spacing[2],
           color: "#ffffff",
           cursor: "pointer",
-          fontSize: theme.typography.fontSize.md,
-          padding: `${theme.spacing.sm} ${theme.spacing.md}`,
+          fontSize: theme.typography.fontSize.base,
+          padding: `${theme.spacing[2]} ${theme.spacing[4]}`,
         }}
       >
         Primary action

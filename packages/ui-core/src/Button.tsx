@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, CSSProperties } from "react";
 
-import { colors, spacing, typography } from "@axiora-ui/ui-tokens";
+import { colorPrimitive, spacing, typography } from "@axiora-ui/ui-tokens";
 
 export type ButtonVariant = "primary" | "secondary" | "danger";
 
@@ -10,27 +10,27 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, CSSProperties> = {
   primary: {
-    backgroundColor: colors.primary,
+    backgroundColor: colorPrimitive.blue[600],
     color: "#ffffff",
   },
   secondary: {
-    backgroundColor: colors.neutral[100],
-    color: colors.neutral[900],
+    backgroundColor: colorPrimitive.gray[100],
+    color: colorPrimitive.gray[900],
   },
   danger: {
-    backgroundColor: colors.danger,
+    backgroundColor: colorPrimitive.red[600],
     color: "#ffffff",
   },
 };
 
 const baseStyle: CSSProperties = {
   border: "none",
-  borderRadius: spacing.sm,
+  borderRadius: spacing[2],
   cursor: "pointer",
   fontFamily: typography.fontFamily.sans,
-  fontSize: typography.fontSize.md,
+  fontSize: typography.fontSize.base,
   fontWeight: typography.fontWeight.medium,
-  padding: `${spacing.sm} ${spacing.md}`,
+  padding: `${spacing[2]} ${spacing[4]}`,
 };
 
 export function Button({
