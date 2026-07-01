@@ -1,6 +1,8 @@
 # @axiora-ui/ui-themes
 
-Theme layer of the Axiora UI design system. Composes raw design tokens from `@axiora-ui/ui-tokens` into complete, named theme objects — one for light mode and one for dark mode. Consumers can pass these theme objects to components or a theme context to drive appearance.
+Theme layer of the Axiora UI design system. Composes raw primitive tokens from `@axiora-ui/ui-tokens` into complete, named theme objects — one for light mode and one for dark mode. Consumers can pass these theme objects to components or a theme context to drive appearance.
+
+This is also where **semantic meaning** gets attached to colors: `@axiora-ui/ui-tokens` only exports a raw hue/shade palette (`colorPrimitive`), so this package picks specific shades (`colorPrimitive.blue[600]`, `colorPrimitive.gray[500]`, ...) and gives them semantic names (`primary`, `secondary`, `neutral`, ...).
 
 ---
 
@@ -82,6 +84,8 @@ import { darkTheme } from "@axiora-ui/ui-themes";
 </ThemeProvider>;
 ```
 
+> This `ThemeProvider` is a minimal example to wire up yourself — it isn't exported from this package yet. See [Planned Additions](#planned-additions).
+
 ---
 
 ## Themes Reference
@@ -100,18 +104,21 @@ Default theme for light-mode interfaces.
 import { lightTheme } from "@axiora-ui/ui-themes";
 ```
 
-| Property            | Value                                  | Notes                              |
-| ------------------- | -------------------------------------- | ---------------------------------- |
-| `name`              | `"light"`                              | Theme identifier                   |
-| `colors.background` | `colors.neutral[50]` (`#f8fafc`)       | Page-level background              |
-| `colors.foreground` | `colors.neutral[900]` (`#0f172a`)      | Primary text and icons             |
-| `colors.surface`    | `#ffffff`                              | Card, modal, and panel backgrounds |
-| `colors.primary`    | `#2563eb`                              | Inherited from tokens              |
-| `colors.secondary`  | `#64748b`                              | Inherited from tokens              |
-| `colors.success`    | `#16a34a`                              | Inherited from tokens              |
-| `colors.danger`     | `#dc2626`                              | Inherited from tokens              |
-| `spacing`           | `{ xs, sm, md, lg, xl }`               | Full spacing scale from tokens     |
-| `typography`        | `{ fontFamily, fontSize, fontWeight }` | Full typography scale from tokens  |
+| Property             | Value                                                | Notes                               |
+| -------------------- | ----------------------------------------------------- | ------------------------------------ |
+| `name`               | `"light"`                                             | Theme identifier                     |
+| `colors.background`  | `colorPrimitive.gray[50]` (`#f9fafb`)                 | Page-level background                |
+| `colors.foreground`  | `colorPrimitive.gray[900]` (`#111827`)                | Primary text and icons               |
+| `colors.surface`     | `#ffffff`                                             | Card, modal, and panel backgrounds   |
+| `colors.primary`     | `colorPrimitive.blue[600]` (`#2563eb`)                | Primary actions, links, focus rings  |
+| `colors.secondary`   | `colorPrimitive.gray[500]` (`#6b7280`)                | Secondary actions, muted text        |
+| `colors.success`     | `colorPrimitive.green[600]` (`#16a34a`)               | Confirmation, positive states        |
+| `colors.danger`      | `colorPrimitive.red[600]` (`#dc2626`)                 | Errors, destructive actions          |
+| `colors.neutral[50]`  | `colorPrimitive.gray[50]` (`#f9fafb`)                 | Surface backgrounds, disabled states |
+| `colors.neutral[100]` | `colorPrimitive.gray[100]` (`#f3f4f6`)                | Surface backgrounds, disabled states |
+| `colors.neutral[900]` | `colorPrimitive.gray[900]` (`#111827`)                | Primary text                         |
+| `spacing`            | Full `spacing` scale from `@axiora-ui/ui-tokens`      | 4px-based, steps `0`–`64`             |
+| `typography`         | Full `typography` scale from `@axiora-ui/ui-tokens`   | `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing` |
 
 ---
 
@@ -123,18 +130,18 @@ Theme for dark-mode interfaces. Inverts the background/foreground pair and uses 
 import { darkTheme } from "@axiora-ui/ui-themes";
 ```
 
-| Property            | Value                                  | Notes                              |
-| ------------------- | -------------------------------------- | ---------------------------------- |
-| `name`              | `"dark"`                               | Theme identifier                   |
-| `colors.background` | `colors.neutral[900]` (`#0f172a`)      | Page-level background              |
-| `colors.foreground` | `colors.neutral[50]` (`#f8fafc`)       | Primary text and icons             |
-| `colors.surface`    | `#1e293b`                              | Card, modal, and panel backgrounds |
-| `colors.primary`    | `#2563eb`                              | Same as light — adjust if needed   |
-| `colors.secondary`  | `#64748b`                              | Same as light                      |
-| `colors.success`    | `#16a34a`                              | Same as light                      |
-| `colors.danger`     | `#dc2626`                              | Same as light                      |
-| `spacing`           | `{ xs, sm, md, lg, xl }`               | Shared with light theme            |
-| `typography`        | `{ fontFamily, fontSize, fontWeight }` | Shared with light theme            |
+| Property             | Value                                                | Notes                               |
+| -------------------- | ----------------------------------------------------- | ------------------------------------ |
+| `name`               | `"dark"`                                              | Theme identifier                     |
+| `colors.background`  | `colorPrimitive.gray[900]` (`#111827`)                | Page-level background                |
+| `colors.foreground`  | `colorPrimitive.gray[50]` (`#f9fafb`)                  | Primary text and icons               |
+| `colors.surface`     | `#1e293b`                                             | Card, modal, and panel backgrounds   |
+| `colors.primary`     | `colorPrimitive.blue[600]` (`#2563eb`)                | Same as light — adjust if needed     |
+| `colors.secondary`   | `colorPrimitive.gray[500]` (`#6b7280`)                | Same as light                        |
+| `colors.success`     | `colorPrimitive.green[600]` (`#16a34a`)               | Same as light                        |
+| `colors.danger`      | `colorPrimitive.red[600]` (`#dc2626`)                 | Same as light                        |
+| `spacing`            | Shared with light theme                              |                                       |
+| `typography`         | Shared with light theme                              |                                       |
 
 ---
 
@@ -157,17 +164,29 @@ Because both theme objects use `as const`, the type system knows the exact liter
 
 ## How It Works
 
-Each theme spreads the full `colors` token object and then overrides three semantic properties that change between light and dark:
+A local `semanticColors` object picks specific shades out of `colorPrimitive` and gives them semantic names. Each theme then spreads that object and overrides the three properties that differ between light and dark:
 
 ```ts
-import { colors, spacing, typography } from "@axiora-ui/ui-tokens";
+import { colorPrimitive, spacing, typography } from "@axiora-ui/ui-tokens";
+
+const semanticColors = {
+  primary: colorPrimitive.blue[600],
+  secondary: colorPrimitive.gray[500],
+  success: colorPrimitive.green[600],
+  danger: colorPrimitive.red[600],
+  neutral: {
+    50: colorPrimitive.gray[50],
+    100: colorPrimitive.gray[100],
+    900: colorPrimitive.gray[900],
+  },
+} as const;
 
 export const lightTheme = {
   name: "light",
   colors: {
-    ...colors, // primary, secondary, success, danger, neutral
-    background: colors.neutral[50],
-    foreground: colors.neutral[900],
+    ...semanticColors,
+    background: semanticColors.neutral[50],
+    foreground: semanticColors.neutral[900],
     surface: "#ffffff",
   },
   spacing,
@@ -177,16 +196,19 @@ export const lightTheme = {
 
 `spacing` and `typography` are the same objects in both themes — they are not overridden because spacing and type scales do not change between light and dark mode.
 
+Changing a brand color means changing which `colorPrimitive` shade `semanticColors` points to — components never reference `colorPrimitive` directly, only `theme.colors.*`.
+
 ---
 
 ## Planned Additions
 
 The following are natural next steps for this package as the design system grows:
 
-- **CSS variable injection** — A helper that writes theme values into CSS custom properties (e.g. `--color-background`) so styled-components or plain CSS can consume them.
+- **`ThemeProvider` / `useTheme`** — Ship the context provider shown in [Usage](#usage) from this package instead of asking consumers to hand-roll it.
+- **`createTheme(overrides)`** — A factory that deep-merges partial overrides (e.g. a consuming app's brand colors) onto `lightTheme` or `darkTheme`.
+- **CSS variable injection** — A helper that writes theme values into CSS custom properties (e.g. `--color-primary`) so plain CSS or CSS-in-JS can consume them, and so brand colors can be swapped at runtime without a rebuild.
 - **`systemTheme`** — A theme that follows `prefers-color-scheme` automatically.
 - **High-contrast theme** — An accessibility-focused variant for users who prefer higher contrast.
-- **Custom theme factory** — A `createTheme(overrides)` function that merges partial overrides onto `lightTheme` or `darkTheme`.
 
 ---
 

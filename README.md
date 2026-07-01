@@ -269,6 +269,18 @@ To publish a single package only:
 pnpm --filter @axiora-ui/ui-tokens publish --no-git-checks
 ```
 
+### Publishing only the packages that changed version
+
+`pnpm -r publish` (what `publish:all` runs) automatically **skips any package whose current version is already on the registry** — it doesn't error, it just moves on. So running `pnpm publish:all` after bumping only some packages is always safe: unchanged packages (still at their last-published version) are skipped, and only the ones you bumped actually publish. Use `--force` only if you deliberately want to attempt republishing an existing version (it will still be rejected by npm).
+
+To publish multiple specific packages in a single command — e.g. only the ones you just bumped — repeat `--filter` once per package:
+
+```bash
+pnpm build && pnpm --filter @axiora-ui/ui-core --filter @axiora-ui/ui-themes --filter @axiora-ui/ui-tokens publish --no-git-checks
+```
+
+This builds everything (so dependency `dist/` output is fresh) but only runs `publish` against the named packages, regardless of their version. Add or remove `--filter <package>` flags to change the set.
+
 ### Publish order
 
 Due to inter-package dependencies, always publish in this order if publishing manually:
