@@ -75,25 +75,27 @@ import type { ButtonProps, ButtonVariant } from "@axiora-ui/ui-core";
 
 #### Variants
 
-| Variant     | Background                        | Text                  | Use for                     |
-| ----------- | --------------------------------- | --------------------- | --------------------------- |
-| `primary`   | `colors.primary` (`#2563eb`)      | White                 | Main call-to-action         |
-| `secondary` | `colors.neutral[100]` (`#f1f5f9`) | `colors.neutral[900]` | Secondary or cancel actions |
-| `danger`    | `colors.danger` (`#dc2626`)       | White                 | Destructive actions         |
+Colors are picked directly from the `colorPrimitive` scale in `@axiora-ui/ui-tokens` (see that package's README for the full palette).
+
+| Variant     | Background                              | Text                                 | Use for                     |
+| ----------- | ---------------------------------------- | -------------------------------------- | --------------------------- |
+| `primary`   | `colorPrimitive.blue[600]` (`#2563eb`)  | White                                 | Main call-to-action         |
+| `secondary` | `colorPrimitive.gray[100]` (`#f3f4f6`)  | `colorPrimitive.gray[900]` (`#111827`) | Secondary or cancel actions |
+| `danger`    | `colorPrimitive.red[600]` (`#dc2626`)   | White                                 | Destructive actions         |
 
 #### Base Styles
 
 Applied to all variants regardless of which is chosen:
 
-| Property       | Token                          | Value                                  |
-| -------------- | ------------------------------ | -------------------------------------- |
-| `border`       | —                              | `none`                                 |
-| `borderRadius` | `spacing.sm`                   | `0.5rem` (8px)                         |
-| `cursor`       | —                              | `pointer`                              |
-| `fontFamily`   | `typography.fontFamily.sans`   | `system-ui, -apple-system, sans-serif` |
-| `fontSize`     | `typography.fontSize.md`       | `1rem` (16px)                          |
-| `fontWeight`   | `typography.fontWeight.medium` | `500`                                  |
-| `padding`      | `spacing.sm spacing.md`        | `0.5rem 1rem`                          |
+| Property       | Token                          | Value                                                      |
+| -------------- | ------------------------------- | ------------------------------------------------------------ |
+| `border`       | —                               | `none`                                                       |
+| `borderRadius` | `spacing[2]`                    | `8px`                                                        |
+| `cursor`       | —                               | `pointer`                                                    |
+| `fontFamily`   | `typography.fontFamily.sans`    | `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif` |
+| `fontSize`     | `typography.fontSize.base`      | `16px`                                                       |
+| `fontWeight`   | `typography.fontWeight.medium`  | `500`                                                        |
+| `padding`      | `spacing[2] spacing[4]`         | `8px 16px`                                                   |
 
 #### Examples
 
