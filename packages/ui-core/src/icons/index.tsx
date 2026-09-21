@@ -1,9 +1,5 @@
 import type { SVGProps } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Inline SVG icons for shadcn-style components
-// ACCEPTED-BY: dhinesh
-
 type IconProps = SVGProps<SVGSVGElement>;
 
 export function ChevronDownIcon(props: IconProps) {

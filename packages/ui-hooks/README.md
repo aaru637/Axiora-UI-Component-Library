@@ -1,9 +1,5 @@
 # @axiora-ui/ui-hooks
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Refresh ui-hooks README current status
-     ACCEPTED-BY: dhinesh -->
-
 ## 📊 Implementation Status
 
 ### ✅ Partially Implemented - UI Hooks Ready

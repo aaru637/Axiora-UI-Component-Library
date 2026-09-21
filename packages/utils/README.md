@@ -1,9 +1,5 @@
 # @axiora-ui/utils
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Refresh utils README status section
-     ACCEPTED-BY: dhinesh -->
-
 ## 📊 Implementation Status
 
 ### ✅ Fully Implemented - Production Ready

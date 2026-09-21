@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Badge } from "./Badge";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Badge Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Badge",
   component: Badge,

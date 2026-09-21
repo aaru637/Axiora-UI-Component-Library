@@ -6,10 +6,6 @@ import {
   type ReactNode,
 } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused mergeStyles import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export const TooltipProvider = TooltipPrimitive.Provider;
 export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;

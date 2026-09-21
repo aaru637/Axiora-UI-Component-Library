@@ -3,10 +3,6 @@ import { Label } from "./Label";
 import { fieldWrapperStyle, inputFocusHandlers } from "./styles/formStyles";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Use CSS classes for theme-aware native select in light/dark mode
-// ACCEPTED-BY: dhinesh
-
 export interface NativeSelectOption {
   value: string;
   label: string;

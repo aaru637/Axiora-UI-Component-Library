@@ -7,10 +7,6 @@ import {
 import { ChevronDownIcon } from "./icons";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Accordion component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Accordion = AccordionPrimitive.Root;
 
 export const AccordionItem = forwardRef<

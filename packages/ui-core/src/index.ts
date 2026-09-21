@@ -1,7 +1,3 @@
-// AI-ASSISTED: Cursor
-// PROMPT: Remove DropdownMenu exports
-// ACCEPTED-BY: dhinesh
-
 /* Styles — consumers must import '@axiora-ui/ui-core/styles.css' once */
 
 /* Form */
@@ -120,6 +116,16 @@ export {
 export { Badge } from "./Badge";
 export type { BadgeProps, BadgeVariant } from "./Badge";
 
+export { Tag, Chip } from "./Tag";
+export type { TagProps, TagVariant, ChipProps, ChipVariant } from "./Tag";
+
+export { useTableSort } from "./hooks/useTableSort";
+export type {
+  SortDirection,
+  SortState,
+  UseTableSortOptions,
+} from "./hooks/useTableSort";
+
 export { Alert, AlertTitle, AlertDescription } from "./Alert";
 export type { AlertProps, AlertVariant } from "./Alert";
 
@@ -147,6 +153,7 @@ export {
   TableCell,
   TableCaption,
 } from "./Table";
+export type { TableHeadProps } from "./Table";
 
 export { Pagination } from "./Pagination";
 export type { PaginationProps } from "./Pagination";

@@ -2,10 +2,6 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { themeVars } from "./styles/themeVars";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Separator component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Separator = forwardRef<
   HTMLDivElement,
   ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>

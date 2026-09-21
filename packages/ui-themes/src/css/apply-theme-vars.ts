@@ -1,10 +1,6 @@
 import { scale } from "@axiora-ui/ui-tokens";
 import type { ResolvedTheme } from "../utils/mergeTheme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Export theme CSS var keys; reliable var application
-// ACCEPTED-BY: dhinesh
-
 export const themeCssVarKeys = [
   "--color-primary",
   "--color-primary-hover",

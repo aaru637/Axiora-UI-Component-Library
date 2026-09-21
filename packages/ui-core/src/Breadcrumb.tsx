@@ -8,10 +8,6 @@ import { ChevronRightIcon } from "./icons";
 import { themeVars } from "./styles/themeVars";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Breadcrumb component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export function Breadcrumb(props: HTMLAttributes<HTMLElement>) {
   return <nav aria-label="Breadcrumb" {...props} />;
 }

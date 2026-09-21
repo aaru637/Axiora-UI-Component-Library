@@ -5,10 +5,6 @@ import {
   type CSSProperties,
 } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused mergeStyles import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export const Tabs = TabsPrimitive.Root;
 
 export const TabsList = forwardRef<

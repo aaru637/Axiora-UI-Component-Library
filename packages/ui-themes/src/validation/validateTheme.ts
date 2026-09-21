@@ -2,10 +2,6 @@ import { scale } from "@axiora-ui/ui-tokens";
 import { z } from "zod";
 import type { ThemeConfig } from "../types/theme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Deep-partial validation for nested color groups (feedback, menu, text)
-// ACCEPTED-BY: dhinesh
-
 const hexColor = z
   .string()
   .regex(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i, "must be a valid hex color");

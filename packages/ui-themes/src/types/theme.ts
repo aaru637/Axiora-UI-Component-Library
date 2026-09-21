@@ -1,9 +1,5 @@
 import type { scale } from "@axiora-ui/ui-tokens";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Fix theme types — background typo, simplify mode/radius unions
-// ACCEPTED-BY: dhinesh
-
 export interface ThemeColors {
   primary: string;
   primaryHover?: string;

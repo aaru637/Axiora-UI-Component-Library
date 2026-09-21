@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Avatar Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Avatar",
   tags: ["autodocs"],

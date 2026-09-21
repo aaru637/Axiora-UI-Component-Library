@@ -6,10 +6,6 @@ import type {
   ThemeConfig,
 } from "../types/theme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Implement mergeTheme with deep merge for nested color groups
-// ACCEPTED-BY: dhinesh
-
 function mergeColors(
   base: ThemeColors,
   override?: DeepPartialThemeColors,

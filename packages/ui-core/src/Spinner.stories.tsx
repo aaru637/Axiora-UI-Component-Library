@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Spinner } from "./Spinner";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Spinner Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Spinner",
   component: Spinner,

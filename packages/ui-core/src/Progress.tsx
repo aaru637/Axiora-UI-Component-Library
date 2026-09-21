@@ -1,10 +1,6 @@
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Progress component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Progress = forwardRef<
   HTMLDivElement,
   ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>

@@ -8,10 +8,6 @@ import {
 } from "../packages/ui-themes/src/presets/sampleThemes";
 import "../packages/ui-core/src/styles/components.css";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Sync canvas background with theme mode; single ThemeProvider
-// ACCEPTED-BY: dhinesh
-
 function ThemedStoryWrapper({
   themeKey,
   children,

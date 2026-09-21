@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Progress } from "./Progress";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Progress Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Progress",
   component: Progress,

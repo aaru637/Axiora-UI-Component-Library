@@ -1,12 +1,8 @@
 # @axiora-ui/ui-core
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Update ui-core README with all implemented components and theming setup
-     ACCEPTED-BY: dhinesh -->
-
 React UI components for the Axiora design system — shadcn-inspired, built on **Radix UI**, styled with **CSS custom properties** from `@axiora-ui/ui-themes`.
 
-**Status:** ✅ **33 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
+**Status:** ✅ **34 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
 
 ---
 
@@ -60,12 +56,12 @@ Without both steps, components render but won't follow your theme (labels, surfa
 
 ## Component inventory
 
-| Category       | Components                                                                                                                                           | Storybook |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| **Form**       | `Button`, `Label`, `Input`, `Textarea`, `Select` (+ compound API), `NativeSelect`, `Checkbox`, `RadioGroup` / `Radio`, `Switch`, `Slider`, `Toggle`  | ✅ All    |
-| **Overlay**    | `Dialog`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`                                                                            | ✅ All    |
-| **Layout**     | `Card`, `Badge`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
-| **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                   | ✅ All    |
+| Category       | Components                                                                                                                                                           | Storybook |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| **Form**       | `Button`, `Label`, `Input`, `Textarea`, `Select` (+ compound API), `NativeSelect`, `Checkbox`, `RadioGroup` / `Radio`, `Switch`, `Slider`, `Toggle`                  | ✅ All    |
+| **Overlay**    | `Dialog`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`                                                                                            | ✅ All    |
+| **Layout**     | `Card`, `Badge`, `Tag` / `Chip`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
+| **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                                   | ✅ All    |
 
 ### Highlights
 
@@ -73,6 +69,9 @@ Without both steps, components render but won't follow your theme (labels, surfa
 - **Switch** — Button-like track (secondary off, primary on) for settings toggles
 - **Toggle** — Formatting chip (subtle border; primary tint when pressed) for toolbar actions
 - **AlertDialog** — Native alert-dialog primitives; Cancel (secondary) + Action (primary/danger)
+- **Table** — Sortable column headers via `sortable`, `sortDirection`, `onSort` on `TableHead`
+- **Tag / Chip** — Dismissable filter labels with `default`, `secondary`, and `outline` variants
+- **useTableSort** — Client-side column sorting hook for tables
 - **Form fields** — Shared label, helper text, and error styling via `.ax-label`, `.ax-input`, etc.
 
 ---
@@ -151,6 +150,76 @@ import {
 </AlertDialog>
 ```
 
+### Data display (Table, Tag, Pagination)
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  Tag,
+  Pagination,
+  useTableSort,
+} from "@axiora-ui/ui-core";
+
+const rows = [
+  { name: "Alice", role: "Admin", status: "Active" },
+  { name: "Bob", role: "Editor", status: "Pending" },
+];
+
+function UserTable() {
+  const { sortedData, sortKey, sortDirection, toggleSort } = useTableSort(
+    rows,
+    {
+      initialKey: "name",
+    },
+  );
+
+  return (
+    <>
+      <div className="ax-tag-group">
+        <Tag variant="secondary" onDismiss={() => {}}>
+          Active
+        </Tag>
+        <Tag variant="outline" onDismiss={() => {}}>
+          Admin
+        </Tag>
+      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead
+              sortable
+              sortDirection={sortKey === "name" ? sortDirection : undefined}
+              onSort={() => toggleSort("name")}
+            >
+              Name
+            </TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead>Status</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sortedData.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.role}</TableCell>
+              <TableCell>{row.status}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <Pagination page={1} pageCount={5} onPageChange={() => {}} />
+    </>
+  );
+}
+```
+
+See **Core/Table → DataDisplay** in Storybook for a full Card + Tags + Table + Pagination example.
+
 ### Button variants
 
 | Variant     | Use for             |
@@ -218,10 +287,15 @@ Browse **Core/** for all component stories. Use the **Theme** toolbar to preview
 | -------------- | -------------------------------------------------- |
 | `Toast`        | Non-blocking notifications                         |
 | `Drawer`       | Side panel                                         |
-| `Tag` / `Chip` | Dismissable filter labels                          |
 | `DropdownMenu` | Removed from scope (use `ContextMenu` or `Select`) |
 
-Unit tests for individual components are planned; theming and validation are covered in `@axiora-ui/ui-themes`.
+All 34 components have Vitest coverage (render, variants, interactions). Run:
+
+```bash
+pnpm test --filter @axiora-ui/ui-core
+```
+
+Theming and validation are also covered in `@axiora-ui/ui-themes`.
 
 ---
 

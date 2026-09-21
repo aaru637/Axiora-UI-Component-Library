@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Skeleton } from "./Skeleton";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Skeleton Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Skeleton",
   component: Skeleton,

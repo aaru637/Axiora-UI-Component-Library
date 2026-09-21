@@ -1,10 +1,6 @@
 import type { CSSProperties, HTMLAttributes } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Skeleton loading placeholder component
-// ACCEPTED-BY: dhinesh
-
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   width?: CSSProperties["width"];
   height?: CSSProperties["height"];

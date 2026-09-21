@@ -1,9 +1,5 @@
 # Axiora UI - Implementation Status
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Mark Phase 1 complete; update ui-core/ui-themes progress and roadmap
-     ACCEPTED-BY: dhinesh -->
-
 **Last Updated:** 2026-09-21  
 **Implementation Strategy:** UI-First Approach  
 **Version:** 1.1.0
@@ -18,7 +14,7 @@
 | `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes     | ThemeProvider, CSS vars, validation, brand presets |
 | `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes     | 12 modules, 300+ tests                             |
 | `@axiora-ui/ui-hooks`  | 🚧 ~25%        | ✅ Partial | `useToggle` only                                   |
-| `@axiora-ui/ui-core`   | ✅ ~85%        | ✅ Yes     | 33 components, Radix-based, Storybook for all      |
+| `@axiora-ui/ui-core`   | ✅ ~85%        | ✅ Yes     | 34 components, Radix-based, Storybook for all      |
 
 **Overall progress:** ~82% (foundation + theming complete; ui-core largely built; hooks pending)
 
@@ -98,7 +94,7 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 ### 5. @axiora-ui/ui-core — ✅ ~85%
 
-**33 components** exported with **33 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
+**34 components** exported with **34 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
 
 #### Form (Phase 1 + extras)
 
@@ -109,13 +105,13 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 | Checkbox, RadioGroup           | ✅     | ✅        |
 | Switch, Slider, Toggle         | ✅     | ✅        |
 
-#### Data display (Phase 2 — mostly complete)
+#### Data display (Phase 2 — complete)
 
 | Component           | Status | Storybook |
 | ------------------- | ------ | --------- |
 | Table, Pagination   | ✅     | ✅        |
 | Badge, Card, Avatar | ✅     | ✅        |
-| Tag / Chip          | ❌     | —         |
+| Tag / Chip          | ✅     | ✅        |
 
 #### Navigation & overlay (Phase 3 + 5 — mostly complete)
 
@@ -130,7 +126,7 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 | Toast                                     | ❌         | —         |
 | DropdownMenu                              | ❌ Removed | —         |
 
-**Not yet done for ui-core:** component-level Vitest tests, Toast, Drawer, Tag/Chip.
+**Not yet done for ui-core:** broader component Vitest coverage, Toast, Drawer.
 
 ---
 
@@ -153,17 +149,17 @@ axiora-ui-component-library/
 
 ## 📈 Progress Metrics
 
-| Metric                    | Value                           |
-| ------------------------- | ------------------------------- |
-| Complete packages         | 3 / 5 (tokens, themes, utils)   |
-| ui-core components        | 33 implemented                  |
-| ui-core Storybook stories | 33                              |
-| ui-core unit tests        | 0 (theming tested in ui-themes) |
-| Phase 1                   | ✅ Complete                     |
-| Phase 2                   | ✅ ~80% (missing Tag/Chip)      |
-| Phase 3                   | ✅ ~80% (missing Drawer)        |
-| Phase 4 (hooks)           | 🚧 ~20%                         |
-| Phase 5                   | ✅ ~80% (missing Toast)         |
+| Metric                    | Value                                       |
+| ------------------------- | ------------------------------------------- |
+| Complete packages         | 3 / 5 (tokens, themes, utils)               |
+| ui-core components        | 34 implemented (incl. Tag/Chip)             |
+| ui-core Storybook stories | 34                                          |
+| ui-core unit tests        | 43 tests — all 34 components + useTableSort |
+| Phase 1                   | ✅ Complete                                 |
+| Phase 2                   | ✅ Complete                                 |
+| Phase 3                   | ✅ ~80% (missing Drawer)                    |
+| Phase 4 (hooks)           | 🚧 ~20%                                     |
+| Phase 5                   | ✅ ~80% (missing Toast)                     |
 
 ---
 
@@ -173,10 +169,11 @@ axiora-ui-component-library/
 
 Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable theming, Storybook integration.
 
-### Phase 2: Data display — **~80% complete**
+### ✅ Phase 2: Data display — **COMPLETE**
 
-- ✅ Table, Pagination, Badge, Card, Avatar
-- ❌ Tag / Chip
+- ✅ Table (sortable headers), Pagination, Badge, Card, Avatar, Tag/Chip
+- ✅ `useTableSort` hook for client-side column sorting
+- ✅ DataDisplay story — Card + filter Tags + sortable Table + Pagination
 
 ### Phase 3: Navigation & layout — **~80% complete**
 
@@ -195,22 +192,20 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 
 ### Recommended next priorities
 
-1. ui-core component unit tests (Input, Select, ThemeProvider integration)
-2. Toast notification component
-3. Drawer side panel
-4. Phase 4 hooks (useDebounce, useMediaQuery, useClickOutside)
-5. Tag / Chip component
+1. Toast notification component
+2. Drawer side panel
+3. Phase 4 hooks (useDebounce, useMediaQuery, useClickOutside)
 
 ---
 
 ## 🛠️ Tooling
 
-| Tool                                  | Status |
-| ------------------------------------- | ------ |
-| Turborepo, pnpm, TypeScript           | ✅     |
-| Storybook 10 + axTheme toolbar        | ✅     |
-| Vitest (tokens, themes, utils, hooks) | ✅     |
-| ESLint, Prettier, Husky, lint-staged  | ✅     |
+| Tool                                           | Status |
+| ---------------------------------------------- | ------ |
+| Turborepo, pnpm, TypeScript                    | ✅     |
+| Storybook 10 + axTheme toolbar                 | ✅     |
+| Vitest (tokens, themes, utils, hooks, ui-core) | ✅     |
+| ESLint, Prettier, Husky, lint-staged           | ✅     |
 
 ---
 

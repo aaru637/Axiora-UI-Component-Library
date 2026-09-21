@@ -4,10 +4,6 @@ import { fieldWrapperStyle } from "./styles/formStyles";
 import { mergeStyles } from "./utils/mergeStyles";
 import type { CSSProperties } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Use CSS classes for theme-aware checkbox in light/dark mode
-// ACCEPTED-BY: dhinesh
-
 export interface CheckboxProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "type" | "size"

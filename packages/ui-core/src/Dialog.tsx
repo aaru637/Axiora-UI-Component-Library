@@ -8,10 +8,6 @@ import {
 import { XIcon } from "./icons";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Dialog component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogPortal = DialogPrimitive.Portal;

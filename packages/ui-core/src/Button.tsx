@@ -1,10 +1,6 @@
 import type { ButtonHTMLAttributes } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused CSSProperties import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export type ButtonVariant = "primary" | "secondary" | "danger";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

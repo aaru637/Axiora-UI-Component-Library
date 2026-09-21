@@ -12,10 +12,6 @@ import { Label } from "./Label";
 import { fieldWrapperStyle } from "./styles/formStyles";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Theme-aware error/helper text classes for Select
-// ACCEPTED-BY: dhinesh
-
 /* ---- Compound primitives (shadcn API) ---- */
 
 export const SelectRoot = SelectPrimitive.Root;

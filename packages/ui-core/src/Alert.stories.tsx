@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Alert, AlertDescription, AlertTitle } from "./Alert";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Alert Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Alert",
   component: Alert,
@@ -42,5 +38,30 @@ export const Destructive: Story = {
         Your session has expired. Please log in again.
       </AlertDescription>
     </Alert>
+  ),
+};
+
+export const DescriptionOnly: Story = {
+  render: () => (
+    <Alert>
+      <AlertDescription>
+        Your profile was updated successfully.
+      </AlertDescription>
+    </Alert>
+  ),
+};
+
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <Alert>
+        <AlertTitle>Info</AlertTitle>
+        <AlertDescription>Default informational alert.</AlertDescription>
+      </Alert>
+      <Alert variant="destructive">
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>Something went wrong.</AlertDescription>
+      </Alert>
+    </div>
   ),
 };

@@ -2,10 +2,6 @@ import { describe, expect, it } from "vitest";
 import { presets } from "../presets/presets";
 import { mergeTheme } from "./mergeTheme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add mergeTheme unit tests
-// ACCEPTED-BY: dhinesh
-
 describe("mergeTheme", () => {
   it("returns light preset by default", () => {
     const result = mergeTheme();

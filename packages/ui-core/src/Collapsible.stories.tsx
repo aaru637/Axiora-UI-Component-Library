@@ -8,10 +8,6 @@ import {
   CollapsibleTrigger,
 } from "./Collapsible";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Collapsible Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Collapsible",
   tags: ["autodocs"],
@@ -43,6 +39,47 @@ export const Default: Story = {
           <p style={{ margin: "12px 0 0", fontSize: 14 }}>
             Hidden content revealed when expanded.
           </p>
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  },
+};
+
+export const DefaultOpen: Story = {
+  render: () => (
+    <Collapsible defaultOpen>
+      <CollapsibleTrigger asChild>
+        <Button variant="secondary">Toggle section</Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p style={{ margin: "12px 0 0", fontSize: 14 }}>
+          Starts expanded via defaultOpen.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+  ),
+};
+
+export const Nested: Story = {
+  render: function Render() {
+    const [outer, setOuter] = useState(true);
+    const [inner, setInner] = useState(false);
+
+    return (
+      <Collapsible open={outer} onOpenChange={setOuter}>
+        <CollapsibleTrigger asChild>
+          <Button variant="secondary">Outer section</Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <p style={{ margin: "12px 0 8px", fontSize: 14 }}>Outer content</p>
+          <Collapsible open={inner} onOpenChange={setInner}>
+            <CollapsibleTrigger asChild>
+              <Button variant="secondary">Inner section</Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <p style={{ margin: "8px 0 0", fontSize: 14 }}>Nested content</p>
+            </CollapsibleContent>
+          </Collapsible>
         </CollapsibleContent>
       </Collapsible>
     );

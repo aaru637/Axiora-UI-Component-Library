@@ -1,10 +1,6 @@
 import { colorPrimitive } from "@axiora-ui/ui-tokens";
 import type { ThemeColors } from "../types/theme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Fix dark theme preset — background typo
-// ACCEPTED-BY: dhinesh
-
 export const darkThemeColors: ThemeColors = {
   primary: colorPrimitive.blue[500],
   primaryHover: colorPrimitive.blue[400],

@@ -1,9 +1,5 @@
 import type { ThemeConfig } from "../types/theme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add dark brand variants; simplify brand color overrides
-// ACCEPTED-BY: dhinesh
-
 export type SampleThemeKey =
   | "default"
   | "dark"

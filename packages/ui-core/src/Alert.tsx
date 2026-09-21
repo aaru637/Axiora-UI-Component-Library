@@ -3,10 +3,6 @@ import { typography } from "@axiora-ui/ui-tokens";
 import { themeVars } from "./styles/themeVars";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused CSSProperties import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export type AlertVariant = "default" | "destructive";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
