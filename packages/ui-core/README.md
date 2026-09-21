@@ -2,7 +2,7 @@
 
 React UI components for the Axiora design system — shadcn-inspired, built on **Radix UI**, styled with **CSS custom properties** from `@axiora-ui/ui-themes`.
 
-**Status:** ✅ **34 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
+**Status:** ✅ **35 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
 
 ---
 
@@ -59,7 +59,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 | Category       | Components                                                                                                                                                           | Storybook |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | **Form**       | `Button`, `Label`, `Input`, `Textarea`, `Select` (+ compound API), `NativeSelect`, `Checkbox`, `RadioGroup` / `Radio`, `Switch`, `Slider`, `Toggle`                  | ✅ All    |
-| **Overlay**    | `Dialog`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`                                                                                            | ✅ All    |
+| **Overlay**    | `Dialog`, `Drawer`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`                                                                                  | ✅ All    |
 | **Layout**     | `Card`, `Badge`, `Tag` / `Chip`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
 | **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                                   | ✅ All    |
 
@@ -68,6 +68,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 - **Select** — Radix dropdown with groups, checkmarks, error auto-clear on valid selection
 - **Switch** — Button-like track (secondary off, primary on) for settings toggles
 - **Toggle** — Formatting chip (subtle border; primary tint when pressed) for toolbar actions
+- **Drawer** — Side panel built on Radix Dialog; `side` prop (`left`, `right`, `top`, `bottom`)
 - **AlertDialog** — Native alert-dialog primitives; Cancel (secondary) + Action (primary/danger)
 - **Table** — Sortable column headers via `sortable`, `sortDirection`, `onSort` on `TableHead`
 - **Tag / Chip** — Dismissable filter labels with `default`, `secondary`, and `outline` variants
@@ -148,6 +149,39 @@ import {
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
+```
+
+### Drawer (side panel)
+
+```tsx
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@axiora-ui/ui-core";
+
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="secondary">Settings</Button>
+  </DrawerTrigger>
+  <DrawerContent side="right">
+    <DrawerHeader>
+      <DrawerTitle>Settings</DrawerTitle>
+      <DrawerDescription>Manage your account preferences.</DrawerDescription>
+    </DrawerHeader>
+    <DrawerFooter>
+      <DrawerClose asChild>
+        <Button variant="secondary">Close</Button>
+      </DrawerClose>
+      <Button>Save</Button>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>;
 ```
 
 ### Data display (Table, Tag, Pagination)
@@ -286,10 +320,9 @@ Browse **Core/** for all component stories. Use the **Theme** toolbar to preview
 | Component      | Notes                                              |
 | -------------- | -------------------------------------------------- |
 | `Toast`        | Non-blocking notifications                         |
-| `Drawer`       | Side panel                                         |
 | `DropdownMenu` | Removed from scope (use `ContextMenu` or `Select`) |
 
-All 34 components have Vitest coverage (render, variants, interactions). Run:
+All 35 components have Vitest coverage (render, variants, interactions). Run:
 
 ```bash
 pnpm test --filter @axiora-ui/ui-core

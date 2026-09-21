@@ -8,13 +8,13 @@
 
 ## 📊 Executive Summary
 
-| Package                | Implementation | UI-Ready   | Notes                                              |
-| ---------------------- | -------------- | ---------- | -------------------------------------------------- |
-| `@axiora-ui/ui-tokens` | ✅ 100%        | ✅ Yes     | Foundation layer — complete                        |
-| `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes     | ThemeProvider, CSS vars, validation, brand presets |
-| `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes     | 12 modules, 300+ tests                             |
-| `@axiora-ui/ui-hooks`  | 🚧 ~25%        | ✅ Partial | `useToggle` only                                   |
-| `@axiora-ui/ui-core`   | ✅ ~85%        | ✅ Yes     | 34 components, Radix-based, Storybook for all      |
+| Package                | Implementation | UI-Ready | Notes                                              |
+| ---------------------- | -------------- | -------- | -------------------------------------------------- |
+| `@axiora-ui/ui-tokens` | ✅ 100%        | ✅ Yes   | Foundation layer — complete                        |
+| `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets |
+| `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                             |
+| `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 6 Phase 4 hooks with stories and tests             |
+| `@axiora-ui/ui-core`   | ✅ ~90%        | ✅ Yes   | 35 components, Radix-based, Storybook for all      |
 
 **Overall progress:** ~82% (foundation + theming complete; ui-core largely built; hooks pending)
 
@@ -84,17 +84,22 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 ---
 
-### 4. @axiora-ui/ui-hooks — 🚧 ~25%
+### 4. @axiora-ui/ui-hooks — ✅ 100% (Phase 4 scope)
 
-| Hook      | Status | Storybook | Tests |
-| --------- | ------ | --------- | ----- |
-| useToggle | ✅     | ✅        | ✅    |
+| Hook            | Status | Storybook | Tests |
+| --------------- | ------ | --------- | ----- |
+| useToggle       | ✅     | ✅        | ✅    |
+| useDebounce     | ✅     | ✅        | ✅    |
+| useLocalStorage | ✅     | ✅        | ✅    |
+| useMediaQuery   | ✅     | ✅        | ✅    |
+| useClickOutside | ✅     | ✅        | ✅    |
+| useFetch        | ✅     | ✅        | ✅    |
 
 ---
 
 ### 5. @axiora-ui/ui-core — ✅ ~85%
 
-**34 components** exported with **34 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
+**35 components** exported with **35 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
 
 #### Form (Phase 1 + extras)
 
@@ -122,11 +127,11 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 | Popover, Tooltip, HoverCard, ContextMenu  | ✅         | ✅        |
 | Alert, Separator, ScrollArea, AspectRatio | ✅         | ✅        |
 | Spinner, Progress, Skeleton               | ✅         | ✅        |
-| Drawer                                    | ❌         | —         |
+| Drawer                                    | ✅         | ✅        |
 | Toast                                     | ❌         | —         |
 | DropdownMenu                              | ❌ Removed | —         |
 
-**Not yet done for ui-core:** broader component Vitest coverage, Toast, Drawer.
+**Not yet done for ui-core:** Toast.
 
 ---
 
@@ -138,7 +143,7 @@ axiora-ui-component-library/
 │   ├── ui-tokens/          Layer 0 — primitive tokens ✅
 │   ├── ui-themes/          Layer 1 — ThemeProvider, mergeTheme, CSS vars ✅
 │   ├── ui-core/            Layer 2 — 33 React + Radix components ✅ ~85%
-│   ├── ui-hooks/           useToggle ✅; 24+ hooks planned
+│   ├── ui-hooks/           6 hooks ✅ (Phase 4 complete)
 │   └── utils/              Standalone utilities ✅
 ├── .storybook/             Global ThemeProvider, axTheme toolbar ✅
 ├── turbo.json / vitest     Build & test ✅
@@ -152,13 +157,13 @@ axiora-ui-component-library/
 | Metric                    | Value                                       |
 | ------------------------- | ------------------------------------------- |
 | Complete packages         | 3 / 5 (tokens, themes, utils)               |
-| ui-core components        | 34 implemented (incl. Tag/Chip)             |
-| ui-core Storybook stories | 34                                          |
-| ui-core unit tests        | 43 tests — all 34 components + useTableSort |
+| ui-core components        | 35 implemented (incl. Drawer)               |
+| ui-core Storybook stories | 35                                          |
+| ui-core unit tests        | 45 tests — all 35 components + useTableSort |
 | Phase 1                   | ✅ Complete                                 |
 | Phase 2                   | ✅ Complete                                 |
-| Phase 3                   | ✅ ~80% (missing Drawer)                    |
-| Phase 4 (hooks)           | 🚧 ~20%                                     |
+| Phase 3                   | ✅ Complete                                 |
+| Phase 4 (hooks)           | ✅ Complete (6 hooks)                       |
 | Phase 5                   | ✅ ~80% (missing Toast)                     |
 
 ---
@@ -175,15 +180,14 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 - ✅ `useTableSort` hook for client-side column sorting
 - ✅ DataDisplay story — Card + filter Tags + sortable Table + Pagination
 
-### Phase 3: Navigation & layout — **~80% complete**
+### ✅ Phase 3: Navigation & layout — **COMPLETE**
 
-- ✅ Dialog, AlertDialog, Tabs, Accordion, Collapsible, Breadcrumb, Separator
-- ❌ Drawer
+- ✅ Dialog, AlertDialog, Drawer, Tabs, Accordion, Collapsible, Breadcrumb, Separator
 
-### Phase 4: Additional hooks — **~20% complete**
+### ✅ Phase 4: Additional hooks — **COMPLETE**
 
-- ✅ useToggle
-- ❌ useLocalStorage, useDebounce, useMediaQuery, useClickOutside, useFetch, …
+- ✅ useToggle, useDebounce, useLocalStorage, useMediaQuery, useClickOutside, useFetch
+- ✅ Storybook stories and Vitest tests for every hook
 
 ### Phase 5: Enhancement & feedback — **~80% complete**
 
@@ -193,8 +197,7 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 ### Recommended next priorities
 
 1. Toast notification component
-2. Drawer side panel
-3. Phase 4 hooks (useDebounce, useMediaQuery, useClickOutside)
+2. Extended hooks roadmap (useIntersectionObserver, useAsync, useForm, …)
 
 ---
 

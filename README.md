@@ -11,7 +11,7 @@ A TypeScript-first monorepo that provides a complete design system for building 
 | `@axiora-ui/ui-tokens` | 100%     | ✅ Complete | Design tokens, fully tested                      |
 | `@axiora-ui/ui-themes` | 100%     | ✅ Complete | Runtime `ThemeProvider`, CSS vars, brand presets |
 | `@axiora-ui/utils`     | 100%     | ✅ Complete | 12 utility modules, 300+ tests                   |
-| `@axiora-ui/ui-hooks`  | ~25%     | 🚧 Partial  | `useToggle` implemented                          |
+| `@axiora-ui/ui-hooks`  | 100%     | ✅ Complete | 6 hooks with stories and tests                   |
 | `@axiora-ui/ui-core`   | ~85%     | ✅ Active   | 33 components, Storybook stories, Radix-based    |
 
 **Stack:** React 19 · Radix UI · CSS custom properties · Storybook 10 · Vitest · Turborepo · pnpm
@@ -52,7 +52,7 @@ Consumers configure a theme once via `ThemeProvider`; components pick up colors 
 | [ui-tokens](./packages/ui-tokens/) | Raw design tokens: colors, spacing, typography, shadows, breakpoints  |
 | [ui-themes](./packages/ui-themes/) | `ThemeProvider`, theme merging/validation, light/dark + brand presets |
 | [ui-core](./packages/ui-core/)     | React components (forms, overlays, layout, navigation) + `styles.css` |
-| [ui-hooks](./packages/ui-hooks/)   | Reusable React hooks (`useToggle`, more planned)                      |
+| [ui-hooks](./packages/ui-hooks/)   | Reusable React hooks (useToggle, useDebounce, useFetch, …)            |
 | [utils](./packages/utils/)         | Pure TypeScript utilities (string, array, object, date, URL, …)       |
 
 See each package README for API details and usage examples.
@@ -148,7 +148,7 @@ Storybook is the primary component explorer:
 
 - **Tokens** — color, spacing, typography scales
 - **Themes** — `ThemeProvider` demos (light, dark, violet, emerald)
-- **Hooks** — `useToggle`
+- **Hooks** — `useToggle`, `useDebounce`, `useLocalStorage`, `useMediaQuery`, `useClickOutside`, `useFetch`
 - **Core** — all 33 ui-core components with stories
 
 Use the **Theme** toolbar (`axTheme`) to switch between Default, Dark, Violet Brand, Emerald Brand, Violet Dark, and Emerald Dark presets.

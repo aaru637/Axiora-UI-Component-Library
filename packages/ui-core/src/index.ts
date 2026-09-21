@@ -73,6 +73,20 @@ export {
 } from "./Dialog";
 
 export {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+  DrawerOverlay,
+  DrawerPortal,
+} from "./Drawer";
+export type { DrawerSide } from "./Drawer";
+
+export {
   AlertDialog,
   AlertDialogTrigger,
   AlertDialogContent,
