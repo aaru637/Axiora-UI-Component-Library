@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-21  
 **Strategy:** UI-First Implementation  
-**Latest commits:** `PHASE 1 Completed` · `PHASE 2 Completed` · `PHASE 3 Completed` (includes Phase 4 hooks)
+**Latest commits:** `PHASE 1` → `PHASE 5 Completed` · Phase 6 on `phase-6` branch
 
 ---
 
@@ -16,24 +16,25 @@
 | `@axiora-ui/ui-themes` | ✅ 100% | ThemeProvider, light/dark, brand presets       |
 | `@axiora-ui/utils`     | ✅ 100% | 12 modules, 134+ functions, full test coverage |
 
-### UI Packages (100% Complete — current roadmap)
+### UI Packages (100% Complete — Phases 1–6)
 
 | Package               | Status  | Highlights                                                        |
 | --------------------- | ------- | ----------------------------------------------------------------- |
 | `@axiora-ui/ui-core`  | ✅ 100% | **36 components** — forms, overlays, layout, navigation, feedback |
-| `@axiora-ui/ui-hooks` | ✅ 100% | **6 hooks** — useToggle, useDebounce, useLocalStorage, and more   |
+| `@axiora-ui/ui-hooks` | ✅ 100% | **12 hooks** — Phase 4 core + Phase 6 extended hooks              |
 
 ---
 
 ## 📋 Phase Completion
 
-| Phase | Scope                          | Status      | Git commit                 |
-| ----- | ------------------------------ | ----------- | -------------------------- |
-| 1     | Form components + theming      | ✅ Complete | `PHASE 1 Completed`        |
-| 2     | Data display (Table, Tag, …)   | ✅ Complete | `PHASE 2 Completed`        |
-| 3     | Navigation & layout (Drawer)   | ✅ Complete | `PHASE 3 Completed`        |
-| 4     | Additional hooks (6 hooks)     | ✅ Complete | Included in Phase 3 commit |
-| 5     | Enhancement & feedback (Toast) | ✅ Complete | `phase-5` branch           |
+| Phase | Scope                          | Status      | Git commit          |
+| ----- | ------------------------------ | ----------- | ------------------- |
+| 1     | Form components + theming      | ✅ Complete | `PHASE 1 Completed` |
+| 2     | Data display (Table, Tag, …)   | ✅ Complete | `PHASE 2 Completed` |
+| 3     | Navigation & layout (Drawer)   | ✅ Complete | `PHASE 3 Completed` |
+| 4     | Core hooks (6 hooks)           | ✅ Complete | `PHASE 4 Completed` |
+| 5     | Enhancement & feedback (Toast) | ✅ Complete | `PHASE 5 Completed` |
+| 6     | Extended hooks (6 hooks)       | ✅ Complete | `phase-6` branch    |
 
 ---
 
@@ -42,10 +43,11 @@
 | Metric                    | Value                        |
 | ------------------------- | ---------------------------- |
 | Complete packages         | **5 / 5**                    |
-| ui-core components        | **36** (incl. Drawer, Toast) |
+| ui-core components        | **36**                       |
 | ui-core Storybook stories | **37** (incl. Core/Feedback) |
 | ui-core unit tests        | **55**                       |
-| ui-hooks unit tests       | **14**                       |
+| ui-hooks                  | **12**                       |
+| ui-hooks unit tests       | **31**                       |
 
 ---
 
@@ -57,13 +59,18 @@ pnpm storybook    # → http://localhost:6006
 pnpm test         # all packages
 ```
 
-### Toast (Phase 5)
+### Phase 6 hooks
 
 ```tsx
-import { Toaster, toast } from "@axiora-ui/ui-core";
+import {
+  useAsync,
+  useForm,
+  useIntersectionObserver,
+} from "@axiora-ui/ui-hooks";
 
-<Toaster />;
-toast({ title: "Saved", description: "Changes saved." });
+const { data, loading, execute } = useAsync(fetchProfile);
+const isVisible = useIntersectionObserver(ref);
+const { values, handleSubmit } = useForm({ initialValues: { email: "" } });
 ```
 
 ---
@@ -78,4 +85,4 @@ toast({ title: "Saved", description: "Changes saved." });
 
 ## 🔮 Recommended Next
 
-Extended hooks (`useIntersectionObserver`, `useAsync`, `useForm`) or optional components (Combobox, DatePicker, Command palette).
+Optional ui-core components (Combobox, DatePicker, Command palette) or additional hooks (`useKeyPress`, `useWindowSize`, `useResizeObserver`).

@@ -2,7 +2,7 @@
 
 Reusable React hooks for common UI interaction patterns. Every hook is standalone — no cross-hook dependencies. Drop them into any React 19 application.
 
-**Status:** ✅ **6 hooks implemented** · Storybook stories for all · Vitest coverage
+**Status:** ✅ **12 hooks implemented** · Storybook stories for all · Vitest coverage
 
 ---
 
@@ -10,6 +10,8 @@ Reusable React hooks for common UI interaction patterns. Every hook is standalon
 
 - [Installation](#installation)
 - [Hooks inventory](#hooks-inventory)
+- [Phase 4 hooks](#phase-4-hooks)
+- [Phase 6 hooks](#phase-6-hooks)
 - [Usage examples](#usage-examples)
 - [Build & test](#build--test)
 - [Future hooks](#future-hooks)
@@ -30,16 +32,32 @@ Reusable React hooks for common UI interaction patterns. Every hook is standalon
 
 ## Hooks inventory
 
-| Hook              | Description                                      | Storybook | Tests |
-| ----------------- | ------------------------------------------------ | --------- | ----- |
-| `useToggle`       | Boolean state with `toggle` / `setOn` / `setOff` | ✅        | ✅    |
-| `useDebounce`     | Debounce a value by delay (search, filters)      | ✅        | ✅    |
-| `useLocalStorage` | Sync state with `localStorage`                   | ✅        | ✅    |
-| `useMediaQuery`   | React to CSS media query changes                 | ✅        | ✅    |
-| `useClickOutside` | Detect clicks outside a ref element              | ✅        | ✅    |
-| `useFetch`        | Minimal fetch with loading, error, refetch       | ✅        | ✅    |
+| Hook                      | Phase | Description                                | Storybook | Tests |
+| ------------------------- | ----- | ------------------------------------------ | --------- | ----- |
+| `useToggle`               | 4     | Boolean state with toggle / setOn / setOff | ✅        | ✅    |
+| `useDebounce`             | 4     | Debounce a value by delay                  | ✅        | ✅    |
+| `useLocalStorage`         | 4     | Sync state with `localStorage`             | ✅        | ✅    |
+| `useMediaQuery`           | 4     | React to CSS media query changes           | ✅        | ✅    |
+| `useClickOutside`         | 4     | Detect clicks outside a ref element        | ✅        | ✅    |
+| `useFetch`                | 4     | Minimal fetch with loading, error, refetch | ✅        | ✅    |
+| `useAsync`                | 6     | Run async functions with loading/error     | ✅        | ✅    |
+| `usePrevious`             | 6     | Track the previous render value            | ✅        | ✅    |
+| `useThrottle`             | 6     | Throttle a value by delay                  | ✅        | ✅    |
+| `useSessionStorage`       | 6     | Sync state with `sessionStorage`           | ✅        | ✅    |
+| `useIntersectionObserver` | 6     | Detect element visibility in viewport      | ✅        | ✅    |
+| `useForm`                 | 6     | Lightweight form state, validation, submit | ✅        | ✅    |
 
 Browse **Hooks/** in Storybook for interactive demos.
+
+---
+
+## Phase 4 hooks
+
+Core interaction hooks for toggles, persistence, responsiveness, and data fetching.
+
+## Phase 6 hooks
+
+Extended hooks for async workflows, performance (throttle/previous), session persistence, visibility detection, and form handling.
 
 ---
 
@@ -62,30 +80,61 @@ const [query, setQuery] = useState("");
 const debouncedQuery = useDebounce(query, 300);
 ```
 
-### useLocalStorage
+### useAsync
 
 ```tsx
-import { useLocalStorage } from "@axiora-ui/ui-hooks";
+import { useAsync } from "@axiora-ui/ui-hooks";
 
-const [theme, setTheme, removeTheme] = useLocalStorage("theme", "light");
+const { data, error, loading, execute } = useAsync(async () => {
+  const response = await fetch("/api/profile");
+  return response.json();
+});
 ```
 
-### useMediaQuery
+### usePrevious
 
 ```tsx
-import { useMediaQuery } from "@axiora-ui/ui-hooks";
+import { usePrevious } from "@axiora-ui/ui-hooks";
 
-const isDesktop = useMediaQuery("(min-width: 1024px)");
+const previousCount = usePrevious(count);
 ```
 
-### useClickOutside
+### useThrottle
+
+```tsx
+import { useThrottle } from "@axiora-ui/ui-hooks";
+
+const throttledScroll = useThrottle(scrollY, 200);
+```
+
+### useSessionStorage
+
+```tsx
+import { useSessionStorage } from "@axiora-ui/ui-hooks";
+
+const [tab, setTab] = useSessionStorage("active-tab", "home");
+```
+
+### useIntersectionObserver
 
 ```tsx
 import { useRef } from "react";
-import { useClickOutside } from "@axiora-ui/ui-hooks";
+import { useIntersectionObserver } from "@axiora-ui/ui-hooks";
 
 const ref = useRef<HTMLDivElement>(null);
-useClickOutside(ref, () => setOpen(false));
+const isVisible = useIntersectionObserver(ref, { threshold: 0.5 });
+```
+
+### useForm
+
+```tsx
+import { useForm } from "@axiora-ui/ui-hooks";
+
+const { values, errors, handleChange, handleSubmit } = useForm({
+  initialValues: { email: "", password: "" },
+  validate: (formValues) => (formValues.email ? {} : { email: "Required" }),
+  onSubmit: async (formValues) => save(formValues),
+});
 ```
 
 ### useFetch
@@ -111,6 +160,6 @@ Output: `dist/index.js` + `dist/index.d.ts` (React is externalized).
 
 ## Future hooks
 
-Additional hooks from the roadmap (not yet implemented): `useSessionStorage`, `useThrottle`, `usePrevious`, `useKeyPress`, `useIntersectionObserver`, `useAsync`, `useForm`, and others.
+Additional hooks from the roadmap (not yet implemented): `useKeyPress`, `useWindowSize`, `useScrollPosition`, `useResizeObserver`, `useCounter`, `useCopyToClipboard`, `useEventListener`, `useTimeout`, `useInterval`, and others.
 
 See [IMPLEMENTATION_STATUS.md](../../IMPLEMENTATION_STATUS.md) for overall project progress.

@@ -13,10 +13,10 @@
 | `@axiora-ui/ui-tokens` | ✅ 100%        | ✅ Yes   | Foundation layer — complete                        |
 | `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets |
 | `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                             |
-| `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 6 Phase 4 hooks with stories and tests             |
+| `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 12 hooks (Phase 4 + Phase 6) with stories & tests  |
 | `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 36 components, 37 Storybook stories, Radix-based   |
 
-**Overall progress:** ✅ **100%** for Phases 1–5 (see git commits: `PHASE 1` → `PHASE 2` → `PHASE 3` → `PHASE 4`; Phase 5 on `phase-5` branch)
+**Overall progress:** ✅ **100%** for Phases 1–6 (see git commits: `PHASE 1` → `PHASE 5`; Phase 6 extended hooks on `phase-6` branch)
 
 ---
 
@@ -87,7 +87,9 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 ---
 
-### 4. @axiora-ui/ui-hooks — ✅ 100% (Phase 4 scope)
+### 4. @axiora-ui/ui-hooks — ✅ 100% (Phases 4 + 6)
+
+#### Phase 4 hooks
 
 | Hook            | Status | Storybook | Tests |
 | --------------- | ------ | --------- | ----- |
@@ -97,6 +99,17 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 | useMediaQuery   | ✅     | ✅        | ✅    |
 | useClickOutside | ✅     | ✅        | ✅    |
 | useFetch        | ✅     | ✅        | ✅    |
+
+#### Phase 6 hooks (extended)
+
+| Hook                    | Status | Storybook | Tests |
+| ----------------------- | ------ | --------- | ----- |
+| useAsync                | ✅     | ✅        | ✅    |
+| usePrevious             | ✅     | ✅        | ✅    |
+| useThrottle             | ✅     | ✅        | ✅    |
+| useSessionStorage       | ✅     | ✅        | ✅    |
+| useIntersectionObserver | ✅     | ✅        | ✅    |
+| useForm                 | ✅     | ✅        | ✅    |
 
 ---
 
@@ -150,7 +163,7 @@ axiora-ui-component-library/
 │   ├── ui-tokens/          Layer 0 — primitive tokens ✅
 │   ├── ui-themes/          Layer 1 — ThemeProvider, mergeTheme, CSS vars ✅
 │   ├── ui-core/            Layer 2 — 36 React + Radix components ✅
-│   ├── ui-hooks/           6 hooks ✅ (Phase 4 complete)
+│   ├── ui-hooks/           12 hooks ✅ (Phases 4 + 6 complete)
 │   └── utils/              Standalone utilities ✅
 ├── .storybook/             Global ThemeProvider, axTheme toolbar ✅
 ├── turbo.json / vitest     Build & test ✅
@@ -161,18 +174,20 @@ axiora-ui-component-library/
 
 ## 📈 Progress Metrics
 
-| Metric                    | Value                                               |
-| ------------------------- | --------------------------------------------------- |
-| Complete packages         | 5 / 5 (tokens, themes, utils, hooks, ui-core)       |
-| ui-core components        | 36 implemented (incl. Drawer, Toast)                |
-| ui-core Storybook stories | 37 (incl. Core/Feedback showcase)                   |
-| ui-core unit tests        | 55 tests — all components + useTableSort + useToast |
-| ui-hooks unit tests       | 14 tests                                            |
-| Phase 1                   | ✅ Complete                                         |
-| Phase 2                   | ✅ Complete                                         |
-| Phase 3                   | ✅ Complete                                         |
-| Phase 4 (hooks)           | ✅ Complete (6 hooks)                               |
-| Phase 5                   | ✅ Complete                                         |
+| Metric                     | Value                                               |
+| -------------------------- | --------------------------------------------------- |
+| Complete packages          | 5 / 5 (tokens, themes, utils, hooks, ui-core)       |
+| ui-core components         | 36 implemented (incl. Drawer, Toast)                |
+| ui-core Storybook stories  | 37 (incl. Core/Feedback showcase)                   |
+| ui-core unit tests         | 55 tests — all components + useTableSort + useToast |
+| ui-hooks unit tests        | 31 tests (12 hook modules)                          |
+| ui-hooks Storybook stories | 12                                                  |
+| Phase 1                    | ✅ Complete                                         |
+| Phase 2                    | ✅ Complete                                         |
+| Phase 3                    | ✅ Complete                                         |
+| Phase 4 (hooks)            | ✅ Complete (6 hooks)                               |
+| Phase 5                    | ✅ Complete                                         |
+| Phase 6 (extended hooks)   | ✅ Complete (6 hooks)                               |
 
 ---
 
@@ -187,7 +202,8 @@ axiora-ui-component-library/
 | `PHASE 3 Completed` | Phase 3 | Drawer, Dialog, Tabs, Accordion, overlays, navigation     |
 | _(same commit)_     | Phase 4 | 6 ui-hooks with stories and tests                         |
 | `PHASE 4 Completed` | Phase 4 | Toast — `Toaster`, `toast()`, `useToast()` (initial)      |
-| `phase-5` branch    | Phase 5 | Toast actions, `Core/Feedback` story, full test coverage  |
+| `PHASE 5 Completed` | Phase 5 | Toast actions, `Core/Feedback` story, full test coverage  |
+| `phase-6` branch    | Phase 6 | Extended hooks — async, form, throttle, intersection, …   |
 
 ### ✅ Phase 1: Form components + automatic theming — **COMPLETE**
 
@@ -215,10 +231,20 @@ Button, Label, Input, Textarea, Select, NativeSelect, Checkbox, RadioGroup, Swit
 - ✅ Toast — `Toaster`, `toast()`, `useToast()`, destructive variant, action button, swipe dismiss
 - ✅ `Core/Feedback` Storybook — combined demo of all Phase 5 feedback components
 
+### ✅ Phase 6: Extended hooks — **COMPLETE**
+
+- ✅ useAsync — async execution with loading, error, reset
+- ✅ usePrevious — track previous render value
+- ✅ useThrottle — throttle value updates (pairs with useDebounce)
+- ✅ useSessionStorage — session-scoped persistence (pairs with useLocalStorage)
+- ✅ useIntersectionObserver — viewport visibility detection
+- ✅ useForm — lightweight form state, validation, and submit handling
+- ✅ Storybook stories and Vitest tests for every Phase 6 hook
+
 ### Recommended next priorities
 
-1. Extended hooks roadmap (useIntersectionObserver, useAsync, useForm, …)
-2. Optional: Combobox, DatePicker, Command palette
+1. Optional ui-core components: Combobox, DatePicker, Command palette
+2. Additional hooks: useKeyPress, useWindowSize, useResizeObserver, useCounter, …
 
 ---
 
