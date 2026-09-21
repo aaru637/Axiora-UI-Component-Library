@@ -150,7 +150,7 @@ Storybook is the primary component explorer:
 - **Tokens** — color, spacing, typography scales
 - **Themes** — `ThemeProvider` demos (light, dark, violet, emerald)
 - **Hooks** — `useToggle`, `useDebounce`, `useLocalStorage`, `useMediaQuery`, `useClickOutside`, `useFetch`
-- **Core** — all 36 ui-core components with stories (incl. Toast, Drawer)
+- **Core** — all 36 ui-core components + `Core/Feedback` showcase (Toast, Alert, Spinner, …)
 
 Use the **Theme** toolbar (`axTheme`) to switch between Default, Dark, Violet Brand, Emerald Brand, Violet Dark, and Emerald Dark presets.
 

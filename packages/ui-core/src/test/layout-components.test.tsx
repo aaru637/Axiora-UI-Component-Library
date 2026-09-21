@@ -81,13 +81,25 @@ describe("Card", () => {
 describe("Alert", () => {
   it("renders title and description", () => {
     renderWithTheme(
+      <Alert>
+        <AlertTitle>Info</AlertTitle>
+        <AlertDescription>All systems operational.</AlertDescription>
+      </Alert>,
+    );
+    expect(screen.getByText("Info")).toBeInTheDocument();
+    expect(screen.getByText("All systems operational.")).toBeInTheDocument();
+  });
+
+  it("applies destructive variant class", () => {
+    renderWithTheme(
       <Alert variant="destructive">
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>Failed to save.</AlertDescription>
       </Alert>,
     );
-    expect(screen.getByText("Error")).toBeInTheDocument();
-    expect(screen.getByText("Failed to save.")).toBeInTheDocument();
+    expect(screen.getByText("Error").closest(".ax-alert")).toHaveClass(
+      "ax-alert-destructive",
+    );
   });
 });
 
