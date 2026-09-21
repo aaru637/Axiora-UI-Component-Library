@@ -1,11 +1,15 @@
-import { Scale } from "@axiora-ui/ui-tokens";
+import type { scale } from "@axiora-ui/ui-tokens";
+
+// AI-ASSISTED: Cursor
+// PROMPT: Fix theme types — background typo, simplify mode/radius unions
+// ACCEPTED-BY: dhinesh
 
 export interface ThemeColors {
   primary: string;
   primaryHover?: string;
   secondary: string;
   secondaryHover?: string;
-  backgroud: string;
+  background: string;
   foreground: string;
   surface: string;
 
@@ -31,17 +35,21 @@ export interface ThemeColors {
   };
 }
 
-export const ThemeMode = {
-  Light: "light",
-  Dark: "dark",
-} as const;
+export type ThemeMode = "light" | "dark";
 
-export type ThemeMode = (typeof ThemeMode)[keyof typeof ThemeMode];
+export type ThemeRadius = keyof typeof scale;
+
+/** Allows nested partial overrides (e.g. `{ menu: { background: '#111' } }`). */
+export type DeepPartialThemeColors = {
+  [K in keyof ThemeColors]?: ThemeColors[K] extends object
+    ? Partial<ThemeColors[K]>
+    : ThemeColors[K];
+};
 
 export interface ThemeConfig {
   name?: string;
   mode?: ThemeMode;
-  colors?: Partial<ThemeColors>;
-  radius?: Scale | number | keyof Scale;
+  colors?: DeepPartialThemeColors;
+  radius?: ThemeRadius;
   fontFamily?: string;
 }

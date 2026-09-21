@@ -1,5 +1,9 @@
 # @axiora-ui/ui-tokens
 
+<!-- AI-ASSISTED: Cursor
+     PROMPT: Refresh ui-tokens README status and downstream usage notes
+     ACCEPTED-BY: dhinesh -->
+
 ## 📊 Implementation Status
 
 ### ✅ Fully Implemented (UI-Ready)
@@ -438,8 +442,8 @@ This package is **fully implemented** and **production-ready**. All design token
 - ✅ **Exported** from the package root
 - ✅ **Tested** with comprehensive Vitest test coverage
 - ✅ **Documented** with Storybook stories and Typedoc API docs
-- ✅ **Used** in UI components (Button uses colors, spacing, typography)
-- ✅ **Stable** with version 1.1.0
+- ✅ **Used** by `@axiora-ui/ui-themes` (semantic presets) and `@axiora-ui/ui-core` (typography/spacing in components)
+- ✅ **Stable** at version 1.1.0
 
 ### Token Categories
 
@@ -455,12 +459,13 @@ This package is **fully implemented** and **production-ready**. All design token
 | Duration    | `src/duration/duration.ts`       | ✅ Complete | ✅ Storybook                 | ✅ Storybook             |
 | Opacity     | `src/opacity/opacity.ts`         | ✅ Complete | ✅ Storybook                 | ✅ Storybook             |
 
-### Next Steps for UI Implementation
+### Downstream usage
 
-No additional work needed for this package. All tokens are ready to be used in:
+This package is **complete**. Tokens flow into:
 
-- `@axiora-ui/ui-core` (React components)
-- `@axiora-ui/ui-themes` (Theme presets)
-- Custom component development
+- `@axiora-ui/ui-themes` — semantic color/radius mapping and CSS variable injection
+- `@axiora-ui/ui-core` — spacing, typography, and fallback values in `themeVars.ts`
+
+No further token work is required for the current component set.
 
 ---

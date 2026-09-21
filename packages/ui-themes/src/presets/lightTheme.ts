@@ -1,13 +1,17 @@
 import { colorPrimitive } from "@axiora-ui/ui-tokens";
 import type { ThemeColors } from "../types/theme";
 
+// AI-ASSISTED: Cursor
+// PROMPT: Fix light theme preset — background typo and menu.text color
+// ACCEPTED-BY: dhinesh
+
 export const lightThemeColors: ThemeColors = {
   primary: colorPrimitive.blue[600],
   primaryHover: colorPrimitive.blue[700],
   secondary: colorPrimitive.gray[500],
   secondaryHover: colorPrimitive.gray[600],
 
-  backgroud: colorPrimitive.gray[50],
+  background: colorPrimitive.gray[50],
   foreground: colorPrimitive.gray[900],
   surface: "#ffffff",
 
@@ -20,7 +24,7 @@ export const lightThemeColors: ThemeColors = {
 
   menu: {
     background: colorPrimitive.gray[900],
-    text: colorPrimitive.yellow[600],
+    text: colorPrimitive.gray[300],
     textActive: "#ffffff",
     itemHoverBackground: colorPrimitive.gray[800],
   },

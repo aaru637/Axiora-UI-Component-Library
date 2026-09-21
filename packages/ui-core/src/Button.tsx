@@ -1,6 +1,9 @@
-import type { ButtonHTMLAttributes, CSSProperties } from "react";
+import type { ButtonHTMLAttributes } from "react";
+import { mergeStyles } from "./utils/mergeStyles";
 
-import { colorPrimitive, spacing, typography } from "@axiora-ui/ui-tokens";
+// AI-ASSISTED: Cursor
+// PROMPT: Remove unused CSSProperties import (eslint)
+// ACCEPTED-BY: dhinesh
 
 export type ButtonVariant = "primary" | "secondary" | "danger";
 
@@ -8,33 +11,16 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
 }
 
-const variantStyles: Record<ButtonVariant, CSSProperties> = {
-  primary: {
-    backgroundColor: colorPrimitive.blue[600],
-    color: "#ffffff",
-  },
-  secondary: {
-    backgroundColor: colorPrimitive.gray[100],
-    color: colorPrimitive.gray[900],
-  },
-  danger: {
-    backgroundColor: colorPrimitive.red[600],
-    color: "#ffffff",
-  },
-};
-
-const baseStyle: CSSProperties = {
-  border: "none",
-  borderRadius: spacing[2],
-  cursor: "pointer",
-  fontFamily: typography.fontFamily.sans,
-  fontSize: typography.fontSize.base,
-  fontWeight: typography.fontWeight.medium,
-  padding: `${spacing[2]} ${spacing[4]}`,
+const variantClass: Record<ButtonVariant, string> = {
+  primary: "ax-button-primary",
+  secondary: "ax-button-secondary",
+  danger: "ax-button-danger",
 };
 
 export function Button({
   variant = "primary",
+  disabled,
+  className,
   style,
   children,
   ...props
@@ -43,7 +29,12 @@ export function Button({
     <button
       type="button"
       data-variant={variant}
-      style={{ ...baseStyle, ...variantStyles[variant], ...style }}
+      disabled={disabled}
+      aria-disabled={disabled || undefined}
+      className={["ax-button", variantClass[variant], className]
+        .filter(Boolean)
+        .join(" ")}
+      style={mergeStyles(undefined, style)}
       {...props}
     >
       {children}
