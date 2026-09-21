@@ -714,7 +714,7 @@ export type { ResolvedTheme } from "./utils/mergeTheme";
 
 ## 16. Migration Plan from the Current Package
 
-Because `@axiora-ui/ui-themes` is already published-shaped (`package.json` exists, version `1.1.0`), this isn't a greenfield build — it's an evolution. Recommended sequencing:
+Because `@axiora-ui/ui-themes` is already published-shaped (`package.json` exists, version `2.0.0`), this isn't a greenfield build — it's an evolution. Recommended sequencing:
 
 ### 16.1 Current Implementation Status
 

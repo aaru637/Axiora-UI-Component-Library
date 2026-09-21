@@ -1,6 +1,6 @@
 {
   "name": "@axiora-ui/ui-hooks",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Reusable React hooks for the Axiora UI design system.",
   "author": "axiora-ui",
   "license": "MIT",

@@ -439,7 +439,7 @@ This package is **fully implemented** and **production-ready**. All design token
 - ✅ **Tested** with comprehensive Vitest test coverage
 - ✅ **Documented** with Storybook stories and Typedoc API docs
 - ✅ **Used** by `@axiora-ui/ui-themes` (semantic presets) and `@axiora-ui/ui-core` (typography/spacing in components)
-- ✅ **Stable** at version 1.1.0
+- ✅ **Stable** at version 2.0.0
 
 ### Token Categories
 

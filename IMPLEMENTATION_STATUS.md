@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-09-21  
 **Implementation Strategy:** UI-First Approach  
-**Version:** 1.1.0
+**Version:** 2.0.0
 
 ---
 
@@ -366,5 +366,5 @@ export function Input({ label, error, className, ...props }: InputProps) {
 
 ---
 
-**Version:** 1.1.0  
+**Version:** 2.0.0  
 **Last Updated:** 2026-09-21
