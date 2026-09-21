@@ -2,7 +2,7 @@
 
 React UI components for the Axiora design system — shadcn-inspired, built on **Radix UI**, styled with **CSS custom properties** from `@axiora-ui/ui-themes`.
 
-**Status:** ✅ **40 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
+**Status:** ✅ **42 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
 
 ---
 
@@ -63,7 +63,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 | **Overlay**    | `Dialog`, `Drawer`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`, `Toast`                                                                         | ✅ All    |
 | **Layout**     | `Card`, `Badge`, `Tag` / `Chip`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
 | **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                                   | ✅ All    |
-| **Advanced**   | `Combobox`, `Calendar`, `DatePicker`, `Command` (palette)                                                                                                          | ✅ All    |
+| **Advanced**   | `Combobox`, `Calendar`, `DatePicker`, `TimePicker`, `MultiSelect`, `Command` (palette)                                                                               | ✅ All    |
 
 ### Highlights
 
@@ -79,6 +79,9 @@ Without both steps, components render but won't follow your theme (labels, surfa
 - **Combobox** — Searchable select with filterable listbox inside a Popover
 - **DatePicker** — Popover date input built on Calendar with month navigation
 - **Command** — Command palette with `CommandDialog`, filterable `CommandInput`, groups, and keyboard navigation
+- **TimePicker** — Hour/minute popover picker with 12h/24h display; errors clear on selection
+- **MultiSelect** — Searchable multi-value select with checkbox items
+- **useTableFilter** / **useTablePagination** — Client-side table search and paging (see `Core/Table/FullDataTable`)
 - **Form fields** — Shared label, helper text, and error styling via `.ax-label`, `.ax-input`, etc.
 
 ---
@@ -384,7 +387,7 @@ toast({
 | -------------- | ------------------------------------- |
 | `DropdownMenu` | Use `ContextMenu` or `Select` instead |
 
-All 40 components have Vitest coverage (render, variants, interactions). Run:
+All 42 components have Vitest coverage (render, variants, interactions). Run:
 
 ```bash
 pnpm test --filter @axiora-ui/ui-core

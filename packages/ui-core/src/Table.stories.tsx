@@ -3,7 +3,10 @@ import { useMemo, useState } from "react";
 
 import { Badge } from "./Badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./Card";
+import { useTableFilter } from "./hooks/useTableFilter";
+import { useTablePagination } from "./hooks/useTablePagination";
 import { useTableSort } from "./hooks/useTableSort";
+import { Input } from "./Input";
 import { Pagination } from "./Pagination";
 import { Tag } from "./Tag";
 import {
@@ -300,6 +303,108 @@ export const DataDisplay: Story = {
           />
         </CardContent>
       </Card>
+    );
+  },
+};
+
+/** Full data table — search filter + sort + pagination via table hooks. */
+export const FullDataTable: Story = {
+  render: function Render() {
+    const [query, setQuery] = useState("");
+
+    const { filteredData, resultCount } = useTableFilter({
+      data: invoices,
+      query,
+      getSearchableText: (item) =>
+        `${item.id} ${item.status} ${item.method} ${item.amount}`,
+    });
+
+    const { sortedData, toggleSort, getSortDirection } = useTableSort<
+      Invoice,
+      "id" | "status" | "method" | "amount"
+    >({
+      data: filteredData,
+      getSortValue: (item, column) =>
+        column === "amount" ? item.amount : item[column],
+    });
+
+    const { page, setPage, pageData, totalPages, totalItems } =
+      useTablePagination(sortedData, { pageSize: 4 });
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div className="ax-data-table-toolbar">
+          <Input
+            placeholder="Search invoices…"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setPage(1);
+            }}
+            style={{ maxWidth: 280 }}
+          />
+          <span className="ax-data-table-meta">
+            {resultCount} of {totalItems} rows
+          </span>
+        </div>
+
+        <Table>
+          <TableCaption>
+            Filter, sort, and paginate client-side data.
+          </TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead
+                sortable
+                sortDirection={getSortDirection("id")}
+                onSort={() => toggleSort("id")}
+              >
+                Invoice
+              </TableHead>
+              <TableHead
+                sortable
+                sortDirection={getSortDirection("status")}
+                onSort={() => toggleSort("status")}
+              >
+                Status
+              </TableHead>
+              <TableHead
+                sortable
+                sortDirection={getSortDirection("method")}
+                onSort={() => toggleSort("method")}
+              >
+                Method
+              </TableHead>
+              <TableHead
+                sortable
+                sortDirection={getSortDirection("amount")}
+                onSort={() => toggleSort("amount")}
+                style={{ textAlign: "right" }}
+              >
+                Amount
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {pageData.map((invoice) => (
+              <TableRow key={invoice.id}>
+                <TableCell>{invoice.id}</TableCell>
+                <TableCell>{invoice.status}</TableCell>
+                <TableCell>{invoice.method}</TableCell>
+                <TableCell style={{ textAlign: "right" }}>
+                  ${invoice.amount.toFixed(2)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+      </div>
     );
   },
 };

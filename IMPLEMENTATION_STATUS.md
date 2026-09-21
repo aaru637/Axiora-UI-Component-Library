@@ -8,15 +8,15 @@
 
 ## 📊 Executive Summary
 
-| Package                | Implementation | UI-Ready | Notes                                              |
-| ---------------------- | -------------- | -------- | -------------------------------------------------- |
-| `@axiora-ui/ui-tokens` | ✅ 100%        | ✅ Yes   | Foundation layer — complete                        |
-| `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets |
-| `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                             |
-| `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 12 hooks (Phase 4 + Phase 6) with stories & tests  |
-| `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 40 components, 41 Storybook stories, Radix-based   |
+| Package                | Implementation | UI-Ready | Notes                                                   |
+| ---------------------- | -------------- | -------- | ------------------------------------------------------- |
+| `@axiora-ui/ui-tokens` | ✅ 100%        | ✅ Yes   | Foundation layer — complete                             |
+| `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets      |
+| `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                                  |
+| `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 16 hooks (Phases 4 + 6 + optional) with stories & tests |
+| `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 42 components, 45 Storybook stories, Radix-based        |
 
-**Overall progress:** ✅ **100%** for Phases 1–7 (Phases 1–6 committed; Phase 7 advanced components on `phase-7` branch)
+**Overall progress:** ✅ **100%** for Phases 1–7 + optional enhancements
 
 ---
 
@@ -111,11 +111,20 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 | useIntersectionObserver | ✅     | ✅        | ✅    |
 | useForm                 | ✅     | ✅        | ✅    |
 
+#### Optional hooks
+
+| Hook              | Status | Storybook | Tests |
+| ----------------- | ------ | --------- | ----- |
+| useKeyPress       | ✅     | ✅        | ✅    |
+| useWindowSize     | ✅     | ✅        | ✅    |
+| useResizeObserver | ✅     | ✅        | ✅    |
+| useCounter        | ✅     | ✅        | ✅    |
+
 ---
 
 ### 5. @axiora-ui/ui-core — ✅ 100%
 
-**40 components** exported with **41 Storybook stories** (40 component stories + `Core/Feedback` showcase). Built on Radix UI; styled via `components.css` + theme CSS variables.
+**42 components** exported with **45 Storybook stories** (44 component stories + `Core/Feedback` showcase). Built on Radix UI; styled via `components.css` + theme CSS variables.
 
 #### Form (Phase 1 + extras)
 
@@ -153,12 +162,21 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 #### Advanced inputs (Phase 7 — complete)
 
-| Component | Status | Storybook | Tests |
-| --------- | ------ | --------- | ----- |
-| Combobox  | ✅     | ✅        | ✅    |
-| Calendar  | ✅     | ✅        | ✅    |
-| DatePicker| ✅     | ✅        | ✅    |
-| Command   | ✅     | ✅        | ✅    |
+| Component  | Status | Storybook | Tests |
+| ---------- | ------ | --------- | ----- |
+| Combobox   | ✅     | ✅        | ✅    |
+| Calendar   | ✅     | ✅        | ✅    |
+| DatePicker | ✅     | ✅        | ✅    |
+| Command    | ✅     | ✅        | ✅    |
+
+#### Optional enhancements
+
+| Component / Hook   | Status | Storybook | Tests |
+| ------------------ | ------ | --------- | ----- |
+| TimePicker         | ✅     | ✅        | ✅    |
+| MultiSelect        | ✅     | ✅        | ✅    |
+| useTableFilter     | ✅     | ✅        | ✅    |
+| useTablePagination | ✅     | ✅        | ✅    |
 
 **Removed from scope:** `DropdownMenu` (use `ContextMenu` or `Select` instead).
 
@@ -171,8 +189,8 @@ axiora-ui-component-library/
 ├── packages/
 │   ├── ui-tokens/          Layer 0 — primitive tokens ✅
 │   ├── ui-themes/          Layer 1 — ThemeProvider, mergeTheme, CSS vars ✅
-│   ├── ui-core/            Layer 2 — 40 React + Radix components ✅
-│   ├── ui-hooks/           12 hooks ✅ (Phases 4 + 6 complete)
+│   ├── ui-core/            Layer 2 — 42 React + Radix components ✅
+│   ├── ui-hooks/           16 hooks ✅ (Phases 4 + 6 + optional)
 │   └── utils/              Standalone utilities ✅
 ├── .storybook/             Global ThemeProvider, axTheme toolbar ✅
 ├── turbo.json / vitest     Build & test ✅
@@ -183,21 +201,22 @@ axiora-ui-component-library/
 
 ## 📈 Progress Metrics
 
-| Metric                     | Value                                               |
-| -------------------------- | --------------------------------------------------- |
-| Complete packages          | 5 / 5 (tokens, themes, utils, hooks, ui-core)       |
-| ui-core components         | 40 implemented (incl. Combobox, DatePicker, Command)  |
-| ui-core Storybook stories  | 41 (incl. Core/Feedback showcase)                   |
-| ui-core unit tests         | 71 tests — all components + useTableSort + useToast |
-| ui-hooks unit tests        | 31 tests (12 hook modules)                          |
-| ui-hooks Storybook stories | 12                                                  |
-| Phase 1                    | ✅ Complete                                         |
-| Phase 2                    | ✅ Complete                                         |
-| Phase 3                    | ✅ Complete                                         |
-| Phase 4 (hooks)            | ✅ Complete (6 hooks)                               |
-| Phase 5                    | ✅ Complete                                         |
-| Phase 6 (extended hooks)   | ✅ Complete (6 hooks)                               |
-| Phase 7 (advanced UI)      | ✅ Complete (4 components)                          |
+| Metric                     | Value                                                |
+| -------------------------- | ---------------------------------------------------- |
+| Complete packages          | 5 / 5 (tokens, themes, utils, hooks, ui-core)        |
+| ui-core components         | 42 implemented (incl. TimePicker, MultiSelect)       |
+| ui-core Storybook stories  | 45 (incl. Core/Feedback + FullDataTable)             |
+| ui-core unit tests         | 84 tests — components + table hooks + useToast       |
+| ui-hooks unit tests        | 40 tests (16 hook modules)                           |
+| ui-hooks Storybook stories | 16                                                   |
+| Phase 1                    | ✅ Complete                                          |
+| Phase 2                    | ✅ Complete                                          |
+| Phase 3                    | ✅ Complete                                          |
+| Phase 4 (hooks)            | ✅ Complete (6 hooks)                                |
+| Phase 5                    | ✅ Complete                                          |
+| Phase 6 (extended hooks)   | ✅ Complete (6 hooks)                                |
+| Phase 7 (advanced UI)      | ✅ Complete (4 components)                           |
+| Optional enhancements      | ✅ Complete (2 components, 4 hooks, table utilities) |
 
 ---
 
@@ -214,7 +233,7 @@ axiora-ui-component-library/
 | `PHASE 4 Completed` | Phase 4 | Toast — `Toaster`, `toast()`, `useToast()` (initial)      |
 | `PHASE 5 Completed` | Phase 5 | Toast actions, `Core/Feedback` story, full test coverage  |
 | `PHASE 6 Completed` | Phase 6 | Extended hooks — async, form, throttle, intersection, …   |
-| `phase-7` branch    | Phase 7 | Combobox, Calendar, DatePicker, Command palette             |
+| `phase-7` branch    | Phase 7 | Combobox, Calendar, DatePicker, Command palette           |
 
 ### ✅ Phase 1: Form components + automatic theming — **COMPLETE**
 
@@ -260,10 +279,20 @@ Button, Label, Input, Textarea, Select, NativeSelect, Checkbox, RadioGroup, Swit
 - ✅ **Command** — command palette (`CommandDialog`, `CommandInput`, `CommandItem`, groups, filter)
 - ✅ Storybook stories and Vitest tests for all Phase 7 components
 
+### ✅ Optional enhancements — **COMPLETE**
+
+- ✅ **TimePicker** — hour/minute popover picker with 12h/24h display
+- ✅ **MultiSelect** — searchable multi-value select with checkboxes
+- ✅ **useTableFilter** — client-side row search/filter
+- ✅ **useTablePagination** — client-side page slicing
+- ✅ **FullDataTable** Storybook — filter + sort + pagination demo
+- ✅ **useKeyPress**, **useWindowSize**, **useResizeObserver**, **useCounter** hooks
+
 ### Recommended next priorities
 
-1. Additional hooks: useKeyPress, useWindowSize, useResizeObserver, useCounter, …
-2. Optional: TimePicker, MultiSelect, DataTable enhancements
+1. Column resize / virtualized rows for large tables
+2. DateTimePicker (combined date + time)
+3. a11y audit (axe) and visual regression tooling
 
 ---
 

@@ -2,7 +2,7 @@
 
 Reusable React hooks for common UI interaction patterns. Every hook is standalone — no cross-hook dependencies. Drop them into any React 19 application.
 
-**Status:** ✅ **12 hooks implemented** · Storybook stories for all · Vitest coverage
+**Status:** ✅ **16 hooks implemented** · Storybook stories for all · Vitest coverage
 
 ---
 
@@ -46,6 +46,10 @@ Reusable React hooks for common UI interaction patterns. Every hook is standalon
 | `useSessionStorage`       | 6     | Sync state with `sessionStorage`           | ✅        | ✅    |
 | `useIntersectionObserver` | 6     | Detect element visibility in viewport      | ✅        | ✅    |
 | `useForm`                 | 6     | Lightweight form state, validation, submit | ✅        | ✅    |
+| `useKeyPress`             | Opt.  | Detect keyboard key press/hold             | ✅        | ✅    |
+| `useWindowSize`           | Opt.  | Track `window.innerWidth/Height`           | ✅        | ✅    |
+| `useResizeObserver`       | Opt.  | Observe element resize dimensions          | ✅        | ✅    |
+| `useCounter`              | Opt.  | Counter with min/max/step bounds           | ✅        | ✅    |
 
 Browse **Hooks/** in Storybook for interactive demos.
 
@@ -160,6 +164,6 @@ Output: `dist/index.js` + `dist/index.d.ts` (React is externalized).
 
 ## Future hooks
 
-Additional hooks from the roadmap (not yet implemented): `useKeyPress`, `useWindowSize`, `useScrollPosition`, `useResizeObserver`, `useCounter`, `useCopyToClipboard`, `useEventListener`, `useTimeout`, `useInterval`, and others.
+Additional hooks not yet implemented: `useScrollPosition`, `useCopyToClipboard`, `useEventListener`, `useTimeout`, `useInterval`, and others.
 
 See [IMPLEMENTATION_STATUS.md](../../IMPLEMENTATION_STATUS.md) for overall project progress.
