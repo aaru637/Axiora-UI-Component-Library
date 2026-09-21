@@ -1,6 +1,6 @@
-import { screen } from "@testing-library/react";
+import { act, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,6 +35,7 @@ import {
 } from "../Drawer";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../HoverCard";
 import { Popover, PopoverContent, PopoverTrigger } from "../Popover";
+import { Toaster } from "../Toast";
 import {
   Tooltip,
   TooltipContent,
@@ -42,6 +43,7 @@ import {
   TooltipTrigger,
   TooltipWrapper,
 } from "../Tooltip";
+import { resetToasts, toast } from "../useToast";
 import { renderWithTheme } from "./test-utils";
 
 describe("Dialog", () => {
@@ -212,5 +214,45 @@ describe("ContextMenu", () => {
     expect(
       await screen.findByRole("menuitem", { name: "Copy" }),
     ).toBeInTheDocument();
+  });
+});
+
+describe("Toast", () => {
+  afterEach(() => {
+    resetToasts();
+  });
+
+  it("renders toast notification when toast() is called", async () => {
+    renderWithTheme(<Toaster />);
+
+    act(() => {
+      toast({
+        title: "Saved",
+        description: "Your profile was updated.",
+      });
+    });
+
+    expect(await screen.findByText("Saved")).toBeInTheDocument();
+    expect(screen.getByText("Your profile was updated.")).toBeInTheDocument();
+  });
+
+  it("dismisses toast when close button is clicked", async () => {
+    const user = userEvent.setup();
+    renderWithTheme(<Toaster />);
+
+    act(() => {
+      toast({ title: "Dismiss me" });
+    });
+
+    const toastItem = (await screen.findByText("Dismiss me")).closest("li");
+    expect(toastItem).not.toBeNull();
+
+    await user.click(
+      within(toastItem as HTMLElement).getByRole("button", {
+        name: "Dismiss notification",
+      }),
+    );
+
+    expect(screen.queryByText("Dismiss me")).not.toBeInTheDocument();
   });
 });

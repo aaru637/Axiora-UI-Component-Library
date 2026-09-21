@@ -143,6 +143,21 @@ export type {
 export { Alert, AlertTitle, AlertDescription } from "./Alert";
 export type { AlertProps, AlertVariant } from "./Alert";
 
+export {
+  Toast,
+  ToastProvider,
+  ToastViewport,
+  ToastTitle,
+  ToastDescription,
+  ToastAction,
+  ToastClose,
+  Toaster,
+} from "./Toast";
+export type { ToastProps, ToasterProps, ToastActionElement } from "./Toast";
+
+export { toast, useToast, dismissToast } from "./useToast";
+export type { ToastData, ToastVariant } from "./useToast";
+
 export { Separator } from "./Separator";
 
 export { Avatar, AvatarImage, AvatarFallback } from "./Avatar";

@@ -2,7 +2,7 @@
 
 React UI components for the Axiora design system — shadcn-inspired, built on **Radix UI**, styled with **CSS custom properties** from `@axiora-ui/ui-themes`.
 
-**Status:** ✅ **35 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
+**Status:** ✅ **36 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
 
 ---
 
@@ -14,7 +14,8 @@ React UI components for the Axiora design system — shadcn-inspired, built on *
 - [Usage examples](#usage-examples)
 - [Theming](#theming)
 - [Storybook](#storybook)
-- [Not yet implemented](#not-yet-implemented)
+- [Toast notifications](#toast-notifications)
+- [Removed from scope](#removed-from-scope)
 - [Build](#build)
 
 ---
@@ -59,7 +60,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 | Category       | Components                                                                                                                                                           | Storybook |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | **Form**       | `Button`, `Label`, `Input`, `Textarea`, `Select` (+ compound API), `NativeSelect`, `Checkbox`, `RadioGroup` / `Radio`, `Switch`, `Slider`, `Toggle`                  | ✅ All    |
-| **Overlay**    | `Dialog`, `Drawer`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`                                                                                  | ✅ All    |
+| **Overlay**    | `Dialog`, `Drawer`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`, `Toast`                                                                         | ✅ All    |
 | **Layout**     | `Card`, `Badge`, `Tag` / `Chip`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
 | **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                                   | ✅ All    |
 
@@ -69,6 +70,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 - **Switch** — Button-like track (secondary off, primary on) for settings toggles
 - **Toggle** — Formatting chip (subtle border; primary tint when pressed) for toolbar actions
 - **Drawer** — Side panel built on Radix Dialog; `side` prop (`left`, `right`, `top`, `bottom`)
+- **Toast** — Non-blocking notifications via `Toaster` + imperative `toast()` API; destructive variant, swipe dismiss
 - **AlertDialog** — Native alert-dialog primitives; Cancel (secondary) + Action (primary/danger)
 - **Table** — Sortable column headers via `sortable`, `sortDirection`, `onSort` on `TableHead`
 - **Tag / Chip** — Dismissable filter labels with `default`, `secondary`, and `outline` variants
@@ -315,14 +317,25 @@ Browse **Core/** for all component stories. Use the **Theme** toolbar to preview
 
 ---
 
-## Not yet implemented
+## Toast notifications
 
-| Component      | Notes                                              |
-| -------------- | -------------------------------------------------- |
-| `Toast`        | Non-blocking notifications                         |
-| `DropdownMenu` | Removed from scope (use `ContextMenu` or `Select`) |
+Mount `<Toaster />` once at the app root, then call `toast()` from anywhere:
 
-All 35 components have Vitest coverage (render, variants, interactions). Run:
+```tsx
+import { Toaster, toast } from "@axiora-ui/ui-core";
+
+<Toaster />;
+toast({ title: "Saved", description: "Your changes were saved." });
+toast({ variant: "destructive", title: "Error", description: "Try again." });
+```
+
+## Removed from scope
+
+| Component      | Notes                                 |
+| -------------- | ------------------------------------- |
+| `DropdownMenu` | Use `ContextMenu` or `Select` instead |
+
+All 36 components have Vitest coverage (render, variants, interactions). Run:
 
 ```bash
 pnpm test --filter @axiora-ui/ui-core

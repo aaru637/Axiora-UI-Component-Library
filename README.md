@@ -12,7 +12,7 @@ A TypeScript-first monorepo that provides a complete design system for building 
 | `@axiora-ui/ui-themes` | 100%     | ✅ Complete | Runtime `ThemeProvider`, CSS vars, brand presets |
 | `@axiora-ui/utils`     | 100%     | ✅ Complete | 12 utility modules, 300+ tests                   |
 | `@axiora-ui/ui-hooks`  | 100%     | ✅ Complete | 6 hooks with stories and tests                   |
-| `@axiora-ui/ui-core`   | ~85%     | ✅ Active   | 33 components, Storybook stories, Radix-based    |
+| `@axiora-ui/ui-core`   | 100%     | ✅ Complete | 36 components, Storybook stories, Radix-based    |
 
 **Stack:** React 19 · Radix UI · CSS custom properties · Storybook 10 · Vitest · Turborepo · pnpm
 
@@ -79,12 +79,12 @@ pnpm storybook
 ```tsx
 import "@axiora-ui/ui-core/styles.css";
 import { ThemeProvider } from "@axiora-ui/ui-themes";
-import { Button, Input, Select } from "@axiora-ui/ui-core";
+import { Button, Input, Select, Toaster, toast } from "@axiora-ui/ui-core";
 
 function App() {
   return (
     <ThemeProvider theme={{ mode: "dark" }}>
-      <Button>Save</Button>
+      <Button onClick={() => toast({ title: "Saved" })}>Save</Button>
       <Input label="Email" placeholder="you@example.com" />
       <Select
         label="Country"
@@ -94,6 +94,7 @@ function App() {
           { value: "in", label: "India" },
         ]}
       />
+      <Toaster />
     </ThemeProvider>
   );
 }
@@ -149,7 +150,7 @@ Storybook is the primary component explorer:
 - **Tokens** — color, spacing, typography scales
 - **Themes** — `ThemeProvider` demos (light, dark, violet, emerald)
 - **Hooks** — `useToggle`, `useDebounce`, `useLocalStorage`, `useMediaQuery`, `useClickOutside`, `useFetch`
-- **Core** — all 33 ui-core components with stories
+- **Core** — all 36 ui-core components with stories (incl. Toast, Drawer)
 
 Use the **Theme** toolbar (`axTheme`) to switch between Default, Dark, Violet Brand, Emerald Brand, Violet Dark, and Emerald Dark presets.
 
