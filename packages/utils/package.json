@@ -1,6 +1,6 @@
 {
   "name": "@axiora-ui/utils",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "TypeScript utility library for strings, arrays, objects, dates, JSON, and more.",
   "author": "axiora-ui",
   "license": "MIT",
