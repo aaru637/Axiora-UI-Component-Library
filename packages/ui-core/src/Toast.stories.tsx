@@ -99,3 +99,28 @@ export const Destructive: Story = {
     </>
   ),
 };
+
+export const WithAction: Story = {
+  render: () => (
+    <>
+      <Button
+        variant="secondary"
+        onClick={() =>
+          toast({
+            title: "Email archived",
+            description: "You can undo this action.",
+            actionLabel: "Undo",
+            onAction: () =>
+              toast({
+                title: "Restored",
+                description: "Email moved back to inbox.",
+              }),
+          })
+        }
+      >
+        Show toast with action
+      </Button>
+      <Toaster />
+    </>
+  ),
+};

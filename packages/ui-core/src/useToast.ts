@@ -9,6 +9,8 @@ export interface ToastData {
   variant?: ToastVariant;
   duration?: number;
   open?: boolean;
+  actionLabel?: string;
+  onAction?: () => void;
 }
 
 type ToastInput = Omit<ToastData, "id"> & { id?: string };

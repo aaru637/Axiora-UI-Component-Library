@@ -14,9 +14,9 @@
 | `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets |
 | `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                             |
 | `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 6 Phase 4 hooks with stories and tests             |
-| `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 36 components, Radix-based, Storybook for all      |
+| `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 36 components, 37 Storybook stories, Radix-based   |
 
-**Overall progress:** ✅ **100%** for Phases 1–5 (see git commits: `PHASE 1` → `PHASE 2` → `PHASE 3`; Phase 4 hooks shipped in Phase 3 commit; Phase 5 Toast completed on `phase-4` branch)
+**Overall progress:** ✅ **100%** for Phases 1–5 (see git commits: `PHASE 1` → `PHASE 2` → `PHASE 3` → `PHASE 4`; Phase 5 on `phase-5` branch)
 
 ---
 
@@ -48,6 +48,9 @@
 | NativeSelect       | ✅     | ✅        | ✅    |
 | Checkbox           | ✅     | ✅        | ✅    |
 | RadioGroup / Radio | ✅     | ✅        | ✅    |
+| Switch             | ✅     | ✅        | ✅    |
+| Slider             | ✅     | ✅        | ✅    |
+| Toggle             | ✅     | ✅        | ✅    |
 
 **Consumer setup:**
 
@@ -99,7 +102,7 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 ### 5. @axiora-ui/ui-core — ✅ 100%
 
-**36 components** exported with **36 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
+**36 components** exported with **37 Storybook stories** (36 component stories + `Core/Feedback` showcase). Built on Radix UI; styled via `components.css` + theme CSS variables.
 
 #### Form (Phase 1 + extras)
 
@@ -162,8 +165,8 @@ axiora-ui-component-library/
 | ------------------------- | --------------------------------------------------- |
 | Complete packages         | 5 / 5 (tokens, themes, utils, hooks, ui-core)       |
 | ui-core components        | 36 implemented (incl. Drawer, Toast)                |
-| ui-core Storybook stories | 36                                                  |
-| ui-core unit tests        | 51 tests — all components + useTableSort + useToast |
+| ui-core Storybook stories | 37 (incl. Core/Feedback showcase)                   |
+| ui-core unit tests        | 55 tests — all components + useTableSort + useToast |
 | ui-hooks unit tests       | 14 tests                                            |
 | Phase 1                   | ✅ Complete                                         |
 | Phase 2                   | ✅ Complete                                         |
@@ -183,11 +186,12 @@ axiora-ui-component-library/
 | `PHASE 2 Completed` | Phase 2 | Table, Pagination, Badge, Card, Avatar, Tag, useTableSort |
 | `PHASE 3 Completed` | Phase 3 | Drawer, Dialog, Tabs, Accordion, overlays, navigation     |
 | _(same commit)_     | Phase 4 | 6 ui-hooks with stories and tests                         |
-| `phase-4` branch    | Phase 5 | Toast — `Toaster`, `toast()`, `useToast()`                |
+| `PHASE 4 Completed` | Phase 4 | Toast — `Toaster`, `toast()`, `useToast()` (initial)      |
+| `phase-5` branch    | Phase 5 | Toast actions, `Core/Feedback` story, full test coverage  |
 
 ### ✅ Phase 1: Form components + automatic theming — **COMPLETE**
 
-Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable theming, Storybook integration.
+Button, Label, Input, Textarea, Select, NativeSelect, Checkbox, RadioGroup, Switch, Slider, Toggle, ThemeProvider, CSS variable theming, Storybook integration.
 
 ### ✅ Phase 2: Data display — **COMPLETE**
 
@@ -207,8 +211,9 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 
 ### ✅ Phase 5: Enhancement & feedback — **COMPLETE**
 
-- ✅ Spinner, Progress, Skeleton, Tooltip, Alert, Popover, HoverCard, ContextMenu
-- ✅ Toast — `Toaster`, `toast()`, `useToast()`, destructive variant, swipe dismiss
+- ✅ Alert, Spinner, Progress, Skeleton (inline feedback & loading states)
+- ✅ Toast — `Toaster`, `toast()`, `useToast()`, destructive variant, action button, swipe dismiss
+- ✅ `Core/Feedback` Storybook — combined demo of all Phase 5 feedback components
 
 ### Recommended next priorities
 

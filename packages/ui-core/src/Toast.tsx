@@ -106,7 +106,16 @@ export function Toaster({ duration = 5000 }: ToasterProps) {
   return (
     <ToastProvider swipeDirection="right" duration={duration}>
       {toasts.map(
-        ({ id, title, description, variant, open, duration: itemDuration }) => (
+        ({
+          id,
+          title,
+          description,
+          variant,
+          open,
+          duration: itemDuration,
+          actionLabel,
+          onAction,
+        }) => (
           <Toast
             key={id}
             open={open}
@@ -124,6 +133,11 @@ export function Toaster({ duration = 5000 }: ToasterProps) {
                 <ToastDescription>{description}</ToastDescription>
               )}
             </div>
+            {actionLabel && onAction && (
+              <ToastAction altText={actionLabel} onClick={onAction}>
+                {actionLabel}
+              </ToastAction>
+            )}
             <ToastClose />
           </Toast>
         ),

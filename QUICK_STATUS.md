@@ -33,7 +33,7 @@
 | 2     | Data display (Table, Tag, …)   | ✅ Complete | `PHASE 2 Completed`        |
 | 3     | Navigation & layout (Drawer)   | ✅ Complete | `PHASE 3 Completed`        |
 | 4     | Additional hooks (6 hooks)     | ✅ Complete | Included in Phase 3 commit |
-| 5     | Enhancement & feedback (Toast) | ✅ Complete | Uncommitted / in progress  |
+| 5     | Enhancement & feedback (Toast) | ✅ Complete | `phase-5` branch           |
 
 ---
 
@@ -43,8 +43,8 @@
 | ------------------------- | ---------------------------- |
 | Complete packages         | **5 / 5**                    |
 | ui-core components        | **36** (incl. Drawer, Toast) |
-| ui-core Storybook stories | **36**                       |
-| ui-core unit tests        | **51**                       |
+| ui-core Storybook stories | **37** (incl. Core/Feedback) |
+| ui-core unit tests        | **55**                       |
 | ui-hooks unit tests       | **14**                       |
 
 ---

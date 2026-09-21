@@ -327,6 +327,12 @@ import { Toaster, toast } from "@axiora-ui/ui-core";
 <Toaster />;
 toast({ title: "Saved", description: "Your changes were saved." });
 toast({ variant: "destructive", title: "Error", description: "Try again." });
+toast({
+  title: "Archived",
+  description: "You can undo this action.",
+  actionLabel: "Undo",
+  onAction: () => toast({ title: "Restored" }),
+});
 ```
 
 ## Removed from scope

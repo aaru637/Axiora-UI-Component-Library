@@ -1,6 +1,6 @@
 import { act, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -234,6 +234,38 @@ describe("Toast", () => {
 
     expect(await screen.findByText("Saved")).toBeInTheDocument();
     expect(screen.getByText("Your profile was updated.")).toBeInTheDocument();
+  });
+
+  it("renders destructive variant", async () => {
+    renderWithTheme(<Toaster />);
+
+    act(() => {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Request failed.",
+      });
+    });
+
+    const toastItem = (await screen.findByText("Error")).closest("li");
+    expect(toastItem).toHaveClass("ax-toast-destructive");
+  });
+
+  it("renders action button when actionLabel is provided", async () => {
+    const user = userEvent.setup();
+    const onAction = vi.fn();
+    renderWithTheme(<Toaster />);
+
+    act(() => {
+      toast({
+        title: "Archived",
+        actionLabel: "Undo",
+        onAction,
+      });
+    });
+
+    await user.click(await screen.findByRole("button", { name: "Undo" }));
+    expect(onAction).toHaveBeenCalledTimes(1);
   });
 
   it("dismisses toast when close button is clicked", async () => {

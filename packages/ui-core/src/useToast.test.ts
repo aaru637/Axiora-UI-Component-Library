@@ -47,6 +47,22 @@ describe("useToast", () => {
     expect(result.current.toasts[0]?.open).toBe(false);
   });
 
+  it("stores action metadata", () => {
+    const { result } = renderHook(() => useToast());
+    const onAction = () => undefined;
+
+    act(() => {
+      toast({
+        title: "Archived",
+        actionLabel: "Undo",
+        onAction,
+      });
+    });
+
+    expect(result.current.toasts[0]?.actionLabel).toBe("Undo");
+    expect(result.current.toasts[0]?.onAction).toBe(onAction);
+  });
+
   it("limits visible toasts to five", () => {
     const { result } = renderHook(() => useToast());
 
