@@ -26,6 +26,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../Dialog";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../Drawer";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../HoverCard";
 import { Popover, PopoverContent, PopoverTrigger } from "../Popover";
 import {
@@ -54,6 +61,43 @@ describe("Dialog", () => {
     await user.click(screen.getByRole("button", { name: "Open" }));
     expect(await screen.findByRole("dialog")).toBeInTheDocument();
     expect(screen.getByText("Edit profile")).toBeInTheDocument();
+  });
+});
+
+describe("Drawer", () => {
+  it("opens side panel when trigger is clicked", async () => {
+    const user = userEvent.setup();
+    renderWithTheme(
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Open drawer</Button>
+        </DrawerTrigger>
+        <DrawerContent side="right">
+          <DrawerTitle>Settings</DrawerTitle>
+          <DrawerDescription>Manage your preferences.</DrawerDescription>
+        </DrawerContent>
+      </Drawer>,
+    );
+    await user.click(screen.getByRole("button", { name: "Open drawer" }));
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByText("Settings")).toBeInTheDocument();
+  });
+
+  it("applies side data attribute", async () => {
+    const user = userEvent.setup();
+    renderWithTheme(
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Open left</Button>
+        </DrawerTrigger>
+        <DrawerContent side="left">
+          <DrawerTitle>Menu</DrawerTitle>
+        </DrawerContent>
+      </Drawer>,
+    );
+    await user.click(screen.getByRole("button", { name: "Open left" }));
+    const panel = await screen.findByRole("dialog");
+    expect(panel).toHaveAttribute("data-side", "left");
   });
 });
 
