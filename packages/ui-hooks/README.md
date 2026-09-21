@@ -1,14 +1,18 @@
 # @axiora-ui/ui-hooks
 
+<!-- AI-ASSISTED: Cursor
+     PROMPT: Refresh ui-hooks README current status
+     ACCEPTED-BY: dhinesh -->
+
 ## 📊 Implementation Status
 
 ### ✅ Partially Implemented - UI Hooks Ready
 
 Reusable React hooks for common UI interaction patterns. Current status:
 
-| Hook      | Status         | Description                        | Storybook                  | Tests     |
-| --------- | -------------- | ---------------------------------- | -------------------------- | --------- |
-| useToggle | ✅ Implemented | Toggle state with on/off callbacks | ✅ `UseToggle.stories.tsx` | ✅ Tested |
+| Hook      | Status         | Description                                | Storybook                  | Tests     |
+| --------- | -------------- | ------------------------------------------ | -------------------------- | --------- |
+| useToggle | ✅ Implemented | Boolean state with toggle/on/off callbacks | ✅ `UseToggle.stories.tsx` | ✅ Tested |
 
 ---
 
@@ -200,15 +204,15 @@ return (
 
 ---
 
-## UI Implementation Status
+## Roadmap
 
-### ✅ Implemented Hooks
+### ✅ Implemented
 
-| Hook          | Status         | Description                                | Storybook                  | Tests     | Priority |
-| ------------- | -------------- | ------------------------------------------ | -------------------------- | --------- | -------- |
-| **useToggle** | ✅ Implemented | Boolean state with toggle/on/off callbacks | ✅ `UseToggle.stories.tsx` | ✅ Tested | High     |
+| Hook        | Description                                                       | Storybook | Tests |
+| ----------- | ----------------------------------------------------------------- | --------- | ----- |
+| `useToggle` | Boolean state with stable `toggle` / `setOn` / `setOff` callbacks | ✅        | ✅    |
 
-### 🚧 Planned Hooks (UI Implementation Queue)
+### 🚧 Planned
 
 The following hooks are planned for implementation. They will follow the same pattern as `useToggle`:
 

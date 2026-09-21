@@ -2,6 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Button } from "./Button";
 
+// AI-ASSISTED: Cursor
+// PROMPT: Add DisabledVariants story for Button disabled state
+// ACCEPTED-BY: dhinesh
+
 const meta = {
   title: "Core/Button",
   component: Button,
@@ -37,4 +41,18 @@ export const Danger: Story = {
 
 export const Disabled: Story = {
   args: { disabled: true },
+};
+
+export const DisabledVariants: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+      <Button disabled>Primary</Button>
+      <Button variant="secondary" disabled>
+        Secondary
+      </Button>
+      <Button variant="danger" disabled>
+        Danger
+      </Button>
+    </div>
+  ),
 };
