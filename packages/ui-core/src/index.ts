@@ -50,6 +50,12 @@ export type { CalendarProps } from "./Calendar";
 export { DatePicker } from "./DatePicker";
 export type { DatePickerProps } from "./DatePicker";
 
+export { TimePicker, formatDisplayTime } from "./TimePicker";
+export type { TimePickerProps, TimeValue } from "./TimePicker";
+
+export { MultiSelect } from "./MultiSelect";
+export type { MultiSelectProps, MultiSelectOption } from "./MultiSelect";
+
 /* Overlay & menus */
 export {
   ContextMenu,
@@ -164,6 +170,12 @@ export type {
   SortState,
   UseTableSortOptions,
 } from "./hooks/useTableSort";
+
+export { useTableFilter } from "./hooks/useTableFilter";
+export type { UseTableFilterOptions } from "./hooks/useTableFilter";
+
+export { useTablePagination } from "./hooks/useTablePagination";
+export type { UseTablePaginationOptions } from "./hooks/useTablePagination";
 
 export { Alert, AlertTitle, AlertDescription } from "./Alert";
 export type { AlertProps, AlertVariant } from "./Alert";

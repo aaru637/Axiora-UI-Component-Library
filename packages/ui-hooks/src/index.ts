@@ -20,3 +20,18 @@ export type { UseIntersectionObserverOptions } from "./useIntersectionObserver";
 
 export { useForm } from "./useForm";
 export type { FormErrors, UseFormOptions } from "./useForm";
+
+export { useKeyPress } from "./useKeyPress";
+export type { UseKeyPressOptions } from "./useKeyPress";
+
+export { useWindowSize } from "./useWindowSize";
+export type { WindowSize } from "./useWindowSize";
+
+export { useResizeObserver } from "./useResizeObserver";
+export type {
+  ElementSize,
+  UseResizeObserverOptions,
+} from "./useResizeObserver";
+
+export { useCounter } from "./useCounter";
+export type { UseCounterOptions } from "./useCounter";

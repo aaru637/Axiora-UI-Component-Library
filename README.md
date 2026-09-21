@@ -11,8 +11,8 @@ A TypeScript-first monorepo that provides a complete design system for building 
 | `@axiora-ui/ui-tokens` | 100%     | ✅ Complete | Design tokens, fully tested                      |
 | `@axiora-ui/ui-themes` | 100%     | ✅ Complete | Runtime `ThemeProvider`, CSS vars, brand presets |
 | `@axiora-ui/utils`     | 100%     | ✅ Complete | 12 utility modules, 300+ tests                   |
-| `@axiora-ui/ui-hooks`  | 100%     | ✅ Complete | 12 hooks with stories and tests (Phases 4 + 6)   |
-| `@axiora-ui/ui-core`   | 100%     | ✅ Complete | 40 components, Storybook stories, Radix-based    |
+| `@axiora-ui/ui-hooks`  | 100%     | ✅ Complete | 16 hooks with stories and tests                  |
+| `@axiora-ui/ui-core`   | 100%     | ✅ Complete | 42 components, Storybook stories, Radix-based    |
 
 **Stack:** React 19 · Radix UI · CSS custom properties · Storybook 10 · Vitest · Turborepo · pnpm
 
@@ -149,8 +149,8 @@ Storybook is the primary component explorer:
 
 - **Tokens** — color, spacing, typography scales
 - **Themes** — `ThemeProvider` demos (light, dark, violet, emerald)
-- **Hooks** — 12 hooks including `useToggle`, `useDebounce`, `useFetch`, `useAsync`, `useForm`, `useIntersectionObserver`, and more
-- **Core** — all 40 ui-core components + `Core/Feedback` showcase (Toast, Alert, Spinner, Combobox, DatePicker, Command, …)
+- **Hooks** — 16 hooks including `useToggle`, `useDebounce`, `useKeyPress`, `useWindowSize`, `useCounter`, and more
+- **Core** — all 42 ui-core components + `Core/Feedback` showcase + `Core/Table/FullDataTable`
 
 Use the **Theme** toolbar (`axTheme`) to switch between Default, Dark, Violet Brand, Emerald Brand, Violet Dark, and Emerald Dark presets.
 
