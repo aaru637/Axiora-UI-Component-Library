@@ -791,6 +791,176 @@
   color: var(--color-danger, #dc2626);
 }
 
+/* ---- Toast ---- */
+.ax-toast-viewport {
+  position: fixed;
+  top: 0;
+  z-index: 1600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .ax-toast-viewport {
+    top: auto;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.ax-toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  font-family: var(--font-family-base, "Inter", sans-serif);
+  border-radius: var(--radius-base, 8px);
+  border: 1px solid var(--color-border, #e5e7eb);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.ax-toast[data-state="open"] {
+  animation: ax-toast-in 0.25s ease;
+}
+
+.ax-toast[data-state="closed"] {
+  animation: ax-toast-out 0.2s ease forwards;
+}
+
+.ax-toast[data-swipe="move"] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.ax-toast[data-swipe="cancel"] {
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.ax-toast[data-swipe="end"] {
+  animation: ax-toast-out 0.2s ease forwards;
+}
+
+.ax-toast-default {
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-foreground, #111827);
+}
+
+.ax-toast-destructive {
+  background-color: color-mix(
+    in srgb,
+    var(--color-danger, #dc2626) 8%,
+    transparent
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--color-danger, #dc2626) 30%,
+    transparent
+  );
+  color: var(--color-danger, #dc2626);
+}
+
+.ax-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.ax-toast-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ax-toast-description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.ax-toast-action {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm, 4px);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.ax-toast-action:hover {
+  opacity: 0.85;
+}
+
+.ax-toast-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm, 4px);
+  opacity: 0.6;
+  cursor: pointer;
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.ax-toast-close:hover {
+  opacity: 1;
+  background-color: color-mix(
+    in srgb,
+    var(--color-foreground, #111827) 8%,
+    transparent
+  );
+}
+
+@keyframes ax-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ax-toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
 /* ---- Accordion ---- */
 .ax-accordion-item {
   border-bottom: 1px solid var(--color-border, #e5e7eb);

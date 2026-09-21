@@ -14,9 +14,9 @@
 | `@axiora-ui/ui-themes` | ✅ 100%        | ✅ Yes   | ThemeProvider, CSS vars, validation, brand presets |
 | `@axiora-ui/utils`     | ✅ 100%        | ✅ Yes   | 12 modules, 300+ tests                             |
 | `@axiora-ui/ui-hooks`  | ✅ 100%        | ✅ Yes   | 6 Phase 4 hooks with stories and tests             |
-| `@axiora-ui/ui-core`   | ✅ ~90%        | ✅ Yes   | 35 components, Radix-based, Storybook for all      |
+| `@axiora-ui/ui-core`   | ✅ 100%        | ✅ Yes   | 36 components, Radix-based, Storybook for all      |
 
-**Overall progress:** ~82% (foundation + theming complete; ui-core largely built; hooks pending)
+**Overall progress:** ✅ **100%** for Phases 1–5 (see git commits: `PHASE 1` → `PHASE 2` → `PHASE 3`; Phase 4 hooks shipped in Phase 3 commit; Phase 5 Toast completed on `phase-4` branch)
 
 ---
 
@@ -40,14 +40,14 @@
 
 | Component          | Status | Storybook | Tests |
 | ------------------ | ------ | --------- | ----- |
-| Button             | ✅     | ✅        | ❌    |
-| Label              | ✅     | ✅        | ❌    |
-| Input              | ✅     | ✅        | ❌    |
-| Textarea           | ✅     | ✅        | ❌    |
-| Select (Radix)     | ✅     | ✅        | ❌    |
-| NativeSelect       | ✅     | ✅        | ❌    |
-| Checkbox           | ✅     | ✅        | ❌    |
-| RadioGroup / Radio | ✅     | ✅        | ❌    |
+| Button             | ✅     | ✅        | ✅    |
+| Label              | ✅     | ✅        | ✅    |
+| Input              | ✅     | ✅        | ✅    |
+| Textarea           | ✅     | ✅        | ✅    |
+| Select (Radix)     | ✅     | ✅        | ✅    |
+| NativeSelect       | ✅     | ✅        | ✅    |
+| Checkbox           | ✅     | ✅        | ✅    |
+| RadioGroup / Radio | ✅     | ✅        | ✅    |
 
 **Consumer setup:**
 
@@ -97,41 +97,45 @@ All token categories implemented and tested (colors, spacing, typography, scale,
 
 ---
 
-### 5. @axiora-ui/ui-core — ✅ ~85%
+### 5. @axiora-ui/ui-core — ✅ 100%
 
-**35 components** exported with **35 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
+**36 components** exported with **36 Storybook stories**. Built on Radix UI; styled via `components.css` + theme CSS variables.
 
 #### Form (Phase 1 + extras)
 
-| Component                      | Status | Storybook |
-| ------------------------------ | ------ | --------- |
-| Button, Label, Input, Textarea | ✅     | ✅        |
-| Select, NativeSelect           | ✅     | ✅        |
-| Checkbox, RadioGroup           | ✅     | ✅        |
-| Switch, Slider, Toggle         | ✅     | ✅        |
+| Component                      | Status | Storybook | Tests |
+| ------------------------------ | ------ | --------- | ----- |
+| Button, Label, Input, Textarea | ✅     | ✅        | ✅    |
+| Select, NativeSelect           | ✅     | ✅        | ✅    |
+| Checkbox, RadioGroup           | ✅     | ✅        | ✅    |
+| Switch, Slider, Toggle         | ✅     | ✅        | ✅    |
 
 #### Data display (Phase 2 — complete)
 
-| Component           | Status | Storybook |
-| ------------------- | ------ | --------- |
-| Table, Pagination   | ✅     | ✅        |
-| Badge, Card, Avatar | ✅     | ✅        |
-| Tag / Chip          | ✅     | ✅        |
+| Component           | Status | Storybook | Tests |
+| ------------------- | ------ | --------- | ----- |
+| Table, Pagination   | ✅     | ✅        | ✅    |
+| Badge, Card, Avatar | ✅     | ✅        | ✅    |
+| Tag / Chip          | ✅     | ✅        | ✅    |
 
-#### Navigation & overlay (Phase 3 + 5 — mostly complete)
+#### Navigation & overlay (Phase 3 — complete)
 
-| Component                                 | Status     | Storybook |
-| ----------------------------------------- | ---------- | --------- |
-| Dialog, AlertDialog                       | ✅         | ✅        |
-| Tabs, Accordion, Collapsible, Breadcrumb  | ✅         | ✅        |
-| Popover, Tooltip, HoverCard, ContextMenu  | ✅         | ✅        |
-| Alert, Separator, ScrollArea, AspectRatio | ✅         | ✅        |
-| Spinner, Progress, Skeleton               | ✅         | ✅        |
-| Drawer                                    | ✅         | ✅        |
-| Toast                                     | ❌         | —         |
-| DropdownMenu                              | ❌ Removed | —         |
+| Component                                | Status | Storybook | Tests |
+| ---------------------------------------- | ------ | --------- | ----- |
+| Dialog, AlertDialog, Drawer              | ✅     | ✅        | ✅    |
+| Tabs, Accordion, Collapsible, Breadcrumb | ✅     | ✅        | ✅    |
+| Popover, Tooltip, HoverCard, ContextMenu | ✅     | ✅        | ✅    |
+| Separator, ScrollArea, AspectRatio       | ✅     | ✅        | ✅    |
 
-**Not yet done for ui-core:** Toast.
+#### Feedback (Phase 5 — complete)
+
+| Component                   | Status | Storybook | Tests |
+| --------------------------- | ------ | --------- | ----- |
+| Alert                       | ✅     | ✅        | ✅    |
+| Spinner, Progress, Skeleton | ✅     | ✅        | ✅    |
+| Toast (`Toaster`, `toast`)  | ✅     | ✅        | ✅    |
+
+**Removed from scope:** `DropdownMenu` (use `ContextMenu` or `Select` instead).
 
 ---
 
@@ -142,7 +146,7 @@ axiora-ui-component-library/
 ├── packages/
 │   ├── ui-tokens/          Layer 0 — primitive tokens ✅
 │   ├── ui-themes/          Layer 1 — ThemeProvider, mergeTheme, CSS vars ✅
-│   ├── ui-core/            Layer 2 — 33 React + Radix components ✅ ~85%
+│   ├── ui-core/            Layer 2 — 36 React + Radix components ✅
 │   ├── ui-hooks/           6 hooks ✅ (Phase 4 complete)
 │   └── utils/              Standalone utilities ✅
 ├── .storybook/             Global ThemeProvider, axTheme toolbar ✅
@@ -154,21 +158,32 @@ axiora-ui-component-library/
 
 ## 📈 Progress Metrics
 
-| Metric                    | Value                                       |
-| ------------------------- | ------------------------------------------- |
-| Complete packages         | 3 / 5 (tokens, themes, utils)               |
-| ui-core components        | 35 implemented (incl. Drawer)               |
-| ui-core Storybook stories | 35                                          |
-| ui-core unit tests        | 45 tests — all 35 components + useTableSort |
-| Phase 1                   | ✅ Complete                                 |
-| Phase 2                   | ✅ Complete                                 |
-| Phase 3                   | ✅ Complete                                 |
-| Phase 4 (hooks)           | ✅ Complete (6 hooks)                       |
-| Phase 5                   | ✅ ~80% (missing Toast)                     |
+| Metric                    | Value                                               |
+| ------------------------- | --------------------------------------------------- |
+| Complete packages         | 5 / 5 (tokens, themes, utils, hooks, ui-core)       |
+| ui-core components        | 36 implemented (incl. Drawer, Toast)                |
+| ui-core Storybook stories | 36                                                  |
+| ui-core unit tests        | 51 tests — all components + useTableSort + useToast |
+| ui-hooks unit tests       | 14 tests                                            |
+| Phase 1                   | ✅ Complete                                         |
+| Phase 2                   | ✅ Complete                                         |
+| Phase 3                   | ✅ Complete                                         |
+| Phase 4 (hooks)           | ✅ Complete (6 hooks)                               |
+| Phase 5                   | ✅ Complete                                         |
 
 ---
 
 ## 🎯 Roadmap
+
+### Git commit timeline
+
+| Commit              | Phase   | Deliverables                                              |
+| ------------------- | ------- | --------------------------------------------------------- |
+| `PHASE 1 Completed` | Phase 1 | Form components, ThemeProvider, CSS variable theming      |
+| `PHASE 2 Completed` | Phase 2 | Table, Pagination, Badge, Card, Avatar, Tag, useTableSort |
+| `PHASE 3 Completed` | Phase 3 | Drawer, Dialog, Tabs, Accordion, overlays, navigation     |
+| _(same commit)_     | Phase 4 | 6 ui-hooks with stories and tests                         |
+| `phase-4` branch    | Phase 5 | Toast — `Toaster`, `toast()`, `useToast()`                |
 
 ### ✅ Phase 1: Form components + automatic theming — **COMPLETE**
 
@@ -183,21 +198,22 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 ### ✅ Phase 3: Navigation & layout — **COMPLETE**
 
 - ✅ Dialog, AlertDialog, Drawer, Tabs, Accordion, Collapsible, Breadcrumb, Separator
+- ✅ Popover, Tooltip, HoverCard, ContextMenu, ScrollArea, AspectRatio
 
 ### ✅ Phase 4: Additional hooks — **COMPLETE**
 
 - ✅ useToggle, useDebounce, useLocalStorage, useMediaQuery, useClickOutside, useFetch
 - ✅ Storybook stories and Vitest tests for every hook
 
-### Phase 5: Enhancement & feedback — **~80% complete**
+### ✅ Phase 5: Enhancement & feedback — **COMPLETE**
 
 - ✅ Spinner, Progress, Skeleton, Tooltip, Alert, Popover, HoverCard, ContextMenu
-- ❌ Toast
+- ✅ Toast — `Toaster`, `toast()`, `useToast()`, destructive variant, swipe dismiss
 
 ### Recommended next priorities
 
-1. Toast notification component
-2. Extended hooks roadmap (useIntersectionObserver, useAsync, useForm, …)
+1. Extended hooks roadmap (useIntersectionObserver, useAsync, useForm, …)
+2. Optional: Combobox, DatePicker, Command palette
 
 ---
 
@@ -220,6 +236,25 @@ Input, Textarea, Select, Checkbox, RadioGroup, ThemeProvider, CSS variable themi
 2. Consumer imports `@axiora-ui/ui-core/styles.css` once
 3. Components use CSS classes (`.ax-button-primary`, `.ax-input`, `.ax-label`) that reference `var(--color-*)`
 4. No per-component theme props required in app code
+
+### Toast usage
+
+```tsx
+import { Toaster, toast } from "@axiora-ui/ui-core";
+
+function App() {
+  return (
+    <>
+      <button
+        onClick={() => toast({ title: "Saved", description: "Changes saved." })}
+      >
+        Save
+      </button>
+      <Toaster />
+    </>
+  );
+}
+```
 
 ### Component pattern
 
