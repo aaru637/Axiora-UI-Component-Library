@@ -12,8 +12,9 @@ import {
 
 const meta = {
   title: "Core/Popover",
+  component: Popover,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 

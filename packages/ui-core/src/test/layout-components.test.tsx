@@ -35,13 +35,23 @@ import {
   TableHeader,
   TableRow,
 } from "../Table";
-import { Tag } from "../Tag";
+import { Chip, Tag } from "../Tag";
 import { renderWithTheme } from "./test-utils";
 
 describe("Badge", () => {
   it("applies variant class", () => {
     renderWithTheme(<Badge variant="destructive">Error</Badge>);
     expect(screen.getByText("Error")).toHaveClass("ax-badge-destructive");
+  });
+});
+
+describe("Chip", () => {
+  it("renders as Tag alias with chip styling", () => {
+    renderWithTheme(<Chip variant="outline">Filter</Chip>);
+    expect(screen.getByText("Filter")).toHaveClass("ax-tag-label");
+    expect(screen.getByText("Filter").closest(".ax-tag")).toHaveClass(
+      "ax-tag-outline",
+    );
   });
 });
 

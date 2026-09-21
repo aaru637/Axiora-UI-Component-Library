@@ -18,6 +18,7 @@ import {
 
 const meta = {
   title: "Core/Table",
+  component: Table,
   tags: ["autodocs"],
   decorators: [
     (Story) => (

@@ -16,8 +16,9 @@ import { Input } from "./Input";
 
 const meta = {
   title: "Core/Dialog",
+  component: Dialog,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof Dialog>;
 
 export default meta;
 

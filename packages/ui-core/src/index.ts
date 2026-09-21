@@ -41,6 +41,15 @@ export { Slider } from "./Slider";
 
 export { Toggle } from "./Toggle";
 
+export { Combobox } from "./Combobox";
+export type { ComboboxProps, ComboboxOption } from "./Combobox";
+
+export { Calendar, formatDisplayDate } from "./Calendar";
+export type { CalendarProps } from "./Calendar";
+
+export { DatePicker } from "./DatePicker";
+export type { DatePickerProps } from "./DatePicker";
+
 /* Overlay & menus */
 export {
   ContextMenu,
@@ -71,6 +80,22 @@ export {
   DialogOverlay,
   DialogPortal,
 } from "./Dialog";
+
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandSeparator,
+} from "./Command";
+export type {
+  CommandProps,
+  CommandDialogProps,
+  CommandItemProps,
+} from "./Command";
 
 export {
   Drawer,

@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./Tabs";
 
 const meta = {
   title: "Core/Tabs",
+  component: Tabs,
   tags: ["autodocs"],
   decorators: [
     (Story) => (

@@ -10,6 +10,7 @@ import {
 
 const meta = {
   title: "Core/Collapsible",
+  component: Collapsible,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
