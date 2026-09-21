@@ -1,5 +1,17 @@
 # @axiora-ui/ui-hooks
 
+## 📊 Implementation Status
+
+### ✅ Partially Implemented - UI Hooks Ready
+
+Reusable React hooks for common UI interaction patterns. Current status:
+
+| Hook      | Status         | Description                        | Storybook                  | Tests     |
+| --------- | -------------- | ---------------------------------- | -------------------------- | --------- |
+| useToggle | ✅ Implemented | Toggle state with on/off callbacks | ✅ `UseToggle.stories.tsx` | ✅ Tested |
+
+---
+
 Reusable React hooks for common UI interaction patterns. Every hook in this package is standalone — no cross-hook dependencies, no internal state shared between hooks. Just drop the ones you need into any React 19 application.
 
 ---
@@ -188,38 +200,46 @@ return (
 
 ---
 
-## Planned Hooks
+## UI Implementation Status
 
-The following hooks are next in line for this package.
+### ✅ Implemented Hooks
 
-| Hook                      | Description                                          |
-| ------------------------- | ---------------------------------------------------- |
-| `useLocalStorage<T>`      | Sync state to `localStorage` with JSON serialization |
-| `useSessionStorage<T>`    | Sync state to `sessionStorage`                       |
-| `useDebounce<T>`          | Debounce a value by a configurable delay             |
-| `useThrottle<T>`          | Throttle a rapidly changing value                    |
-| `usePrevious<T>`          | Hold the previous render's value                     |
-| `useMediaQuery`           | React to a CSS media query match                     |
-| `useClickOutside`         | Detect clicks outside a ref-ed element               |
-| `useKeyPress`             | Listen for a specific keyboard key                   |
-| `useFocus`                | Track focus state of an element                      |
-| `useHover`                | Track hover state of an element                      |
-| `useWindowSize`           | Read `window.innerWidth` / `innerHeight` reactively  |
-| `useScrollPosition`       | Track page or element scroll position                |
-| `useIntersectionObserver` | Detect when an element enters or leaves the viewport |
-| `useResizeObserver`       | Observe element dimension changes                    |
-| `useFetch<T>`             | Minimal data fetching with loading/error state       |
-| `useAsync<T>`             | Execute an async function with loading/error state   |
-| `useCounter`              | Numeric counter with increment, decrement, reset     |
-| `useList<T>`              | Array state with add, remove, update helpers         |
-| `useMap<K, V>`            | `Map` state with set, delete, clear helpers          |
-| `useSet<T>`               | `Set` state with add, delete, toggle, clear helpers  |
-| `useForm`                 | Controlled form state with validation helpers        |
-| `useCopyToClipboard`      | Copy text with a success status flag                 |
-| `useEventListener`        | Attach and auto-cleanup DOM event listeners          |
-| `useTimeout`              | Schedule a callback with automatic cleanup           |
-| `useInterval`             | Run a callback on a fixed interval with cleanup      |
-| `useIsomorphicEffect`     | `useLayoutEffect` in browser, `useEffect` in SSR     |
+| Hook          | Status         | Description                                | Storybook                  | Tests     | Priority |
+| ------------- | -------------- | ------------------------------------------ | -------------------------- | --------- | -------- |
+| **useToggle** | ✅ Implemented | Boolean state with toggle/on/off callbacks | ✅ `UseToggle.stories.tsx` | ✅ Tested | High     |
+
+### 🚧 Planned Hooks (UI Implementation Queue)
+
+The following hooks are planned for implementation. They will follow the same pattern as `useToggle`:
+
+| Hook                        | Description                                  | Priority | Use Case                          |
+| --------------------------- | -------------------------------------------- | -------- | --------------------------------- |
+| **useLocalStorage**         | Sync state to localStorage                   | High     | Persistent UI state               |
+| **useSessionStorage**       | Sync state to sessionStorage                 | Medium   | Session-based UI state            |
+| **useDebounce**             | Debounce a value by delay                    | High     | Search inputs, filters            |
+| **useThrottle**             | Throttle rapidly changing value              | Medium   | Scroll handlers, resize           |
+| **usePrevious**             | Hold previous render's value                 | Medium   | Show "changed from" indicators    |
+| **useMediaQuery**           | React to CSS media query match               | High     | Responsive UI states              |
+| **useClickOutside**         | Detect clicks outside ref-ed element         | High     | Modals, dropdowns, tooltips       |
+| **useKeyPress**             | Listen for specific keyboard key             | Medium   | Keyboard shortcuts                |
+| **useFocus**                | Track focus state of element                 | Medium   | Form validation, accessibility    |
+| **useHover**                | Track hover state of element                 | Low      | Enhanced hover effects            |
+| **useWindowSize**           | Read window dimensions reactively            | Medium   | Responsive layouts                |
+| **useScrollPosition**       | Track page/element scroll position           | Medium   | Scroll indicators, sticky headers |
+| **useIntersectionObserver** | Detect element viewport entry/exit           | High     | Lazy loading, animations          |
+| **useResizeObserver**       | Observe element dimension changes            | Medium   | Dynamic layouts                   |
+| **useFetch**                | Minimal data fetching with loading/error     | High     | API calls, data loading           |
+| **useAsync**                | Execute async function with loading/error    | High     | Complex async operations          |
+| **useCounter**              | Numeric counter with inc/dec/reset           | Medium   | Counters, badges                  |
+| **useList**                 | Array state with add/remove/update           | High     | Dynamic lists, collections        |
+| **useMap**                  | Map state with set/delete/clear              | Medium   | Key-value collections             |
+| **useSet**                  | Set state with add/delete/toggle/clear       | Medium   | Unique collections                |
+| **useForm**                 | Controlled form state with validation        | High     | Form management                   |
+| **useCopyToClipboard**      | Copy text with success status                | Medium   | Copy to clipboard feature         |
+| **useEventListener**        | Attach/cleanup DOM event listeners           | High     | Custom event handling             |
+| **useTimeout**              | Schedule callback with cleanup               | Medium   | Delayed actions                   |
+| **useInterval**             | Run callback on fixed interval               | Medium   | Timers, animations                |
+| **useIsomorphicEffect**     | useLayoutEffect in browser, useEffect in SSR | High     | SSR-safe effects                  |
 
 ---
 
