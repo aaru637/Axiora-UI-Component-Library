@@ -4,10 +4,6 @@ import { Button } from "./Button";
 import { Label } from "./Label";
 import { Switch } from "./Switch";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Switch stories with button-like design and label layout
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Switch",
   component: Switch,

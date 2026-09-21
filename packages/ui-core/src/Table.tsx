@@ -1,9 +1,7 @@
 import type { HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from "react";
+import { ChevronDownIcon } from "./icons";
+import type { SortDirection } from "./hooks/useTableSort";
 import { mergeStyles } from "./utils/mergeStyles";
-
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused CSSProperties import (eslint)
-// ACCEPTED-BY: dhinesh
 
 export function Table({
   className,
@@ -40,11 +38,55 @@ export function TableRow({
   return <tr style={mergeStyles(undefined, style)} {...props} />;
 }
 
+export interface TableHeadProps extends ThHTMLAttributes<HTMLTableCellElement> {
+  sortable?: boolean;
+  sortDirection?: SortDirection | null;
+  onSort?: () => void;
+}
+
 export function TableHead({
+  sortable,
+  sortDirection = null,
+  onSort,
   style,
+  children,
   ...props
-}: ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th style={mergeStyles(undefined, style)} {...props} />;
+}: TableHeadProps) {
+  if (!sortable) {
+    return (
+      <th style={mergeStyles(undefined, style)} {...props}>
+        {children}
+      </th>
+    );
+  }
+
+  return (
+    <th style={mergeStyles(undefined, style)} {...props}>
+      <button
+        type="button"
+        className="ax-table-sort"
+        onClick={onSort}
+        aria-sort={
+          sortDirection === "asc"
+            ? "ascending"
+            : sortDirection === "desc"
+              ? "descending"
+              : "none"
+        }
+      >
+        <span>{children}</span>
+        <ChevronDownIcon
+          className={[
+            "ax-table-sort-icon",
+            sortDirection === "asc" && "ax-table-sort-icon-asc",
+            sortDirection === "desc" && "ax-table-sort-icon-desc",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        />
+      </button>
+    </th>
+  );
 }
 
 export function TableCell({
@@ -60,10 +102,8 @@ export function TableCaption({
 }: HTMLAttributes<HTMLTableCaptionElement>) {
   return (
     <caption
-      style={mergeStyles(
-        { marginTop: 16, fontSize: 14, color: "var(--color-secondary)" },
-        style,
-      )}
+      className="ax-table-caption"
+      style={mergeStyles(undefined, style)}
       {...props}
     />
   );

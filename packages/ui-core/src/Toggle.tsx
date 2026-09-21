@@ -6,10 +6,6 @@ import {
 } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Revert Toggle to CSS-only formatting chip styles
-// ACCEPTED-BY: dhinesh
-
 export const Toggle = forwardRef<
   HTMLButtonElement,
   ComponentPropsWithoutRef<typeof TogglePrimitive.Root> & {

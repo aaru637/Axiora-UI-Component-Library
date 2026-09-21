@@ -5,10 +5,6 @@ import { ChevronRightIcon } from "./icons";
 import { themeVars } from "./styles/themeVars";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Pagination component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export interface PaginationProps extends HTMLAttributes<HTMLElement> {
   page: number;
   totalPages: number;

@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Input } from "./Input";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Input Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Input",
   component: Input,

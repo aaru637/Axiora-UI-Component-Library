@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { NativeSelect } from "./NativeSelect";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add NativeSelect Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const options = [
   { value: "us", label: "United States" },
   { value: "uk", label: "United Kingdom" },
@@ -44,6 +40,22 @@ export const WithError: Story = {
   args: { error: "Please select a country." },
 };
 
+export const Required: Story = {
+  args: { required: true },
+};
+
 export const Disabled: Story = {
   args: { disabled: true },
+};
+
+export const WithDisabledOption: Story = {
+  args: {
+    options: [
+      { value: "", label: "Select a plan", disabled: true },
+      { value: "free", label: "Free" },
+      { value: "pro", label: "Pro" },
+      { value: "enterprise", label: "Enterprise", disabled: true },
+    ],
+    label: "Plan",
+  },
 };

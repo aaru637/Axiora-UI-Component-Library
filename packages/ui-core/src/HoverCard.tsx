@@ -6,10 +6,6 @@ import {
 } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add HoverCard component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const HoverCard = HoverCardPrimitive.Root;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
 

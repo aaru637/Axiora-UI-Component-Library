@@ -1,10 +1,6 @@
 import { spacing } from "@axiora-ui/ui-tokens";
 import type { CSSProperties, FocusEvent } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Form layout styles; theme colors moved to CSS classes
-// ACCEPTED-BY: dhinesh
-
 export const fieldWrapperStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",

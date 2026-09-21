@@ -1,9 +1,5 @@
 import { colorPrimitive, scale, typography } from "@axiora-ui/ui-tokens";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add mutedForeground token for helper text
-// ACCEPTED-BY: dhinesh
-
 /** CSS custom property references — components pick up ThemeProvider vars automatically. */
 export const themeVars = {
   color: {

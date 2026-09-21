@@ -10,10 +10,6 @@ import { mergeTheme } from "../utils/mergeTheme";
 import { validateTheme } from "../validation/validateTheme";
 import { ThemeContext } from "./ThemeContext";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove duplicate ax-themed wrapper; vars applied via root + inline style
-// ACCEPTED-BY: dhinesh
-
 export interface ThemeProviderProps {
   theme?: ThemeConfig;
   children: ReactNode;

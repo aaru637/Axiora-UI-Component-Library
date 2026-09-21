@@ -3,10 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Radio, RadioGroup } from "./RadioGroup";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Fix RadioGroup Storybook story types for compound component
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/RadioGroup",
   tags: ["autodocs"],

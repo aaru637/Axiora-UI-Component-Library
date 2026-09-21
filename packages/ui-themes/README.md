@@ -1,9 +1,5 @@
 # @axiora-ui/ui-themes
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Update ui-themes README — ThemeProvider, CSS vars, brand presets, validation
-     ACCEPTED-BY: dhinesh -->
-
 Runtime theme layer for the Axiora design system. Maps primitive tokens from `@axiora-ui/ui-tokens` into semantic theme configs, injects **CSS custom properties** on `:root`, and powers automatic styling in `@axiora-ui/ui-core`.
 
 **Status:** ✅ **Complete** — `ThemeProvider`, `mergeTheme`, `validateTheme`, light/dark presets, brand themes, Vitest coverage

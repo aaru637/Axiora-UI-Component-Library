@@ -7,10 +7,6 @@ import {
   AccordionTrigger,
 } from "./Accordion";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Accordion Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Accordion",
   tags: ["autodocs"],
@@ -62,6 +58,36 @@ export const Multiple: Story = {
       <AccordionItem value="item-2">
         <AccordionTrigger>Section two</AccordionTrigger>
         <AccordionContent>Content for section two.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
+export const AllCollapsed: Story = {
+  render: () => (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Section one</AccordionTrigger>
+        <AccordionContent>Starts fully collapsed.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Section two</AccordionTrigger>
+        <AccordionContent>Click to expand.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
+export const WithDisabledItem: Story = {
+  render: () => (
+    <Accordion type="single" collapsible defaultValue="item-1">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Available section</AccordionTrigger>
+        <AccordionContent>This section can be toggled.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2" disabled>
+        <AccordionTrigger>Disabled section</AccordionTrigger>
+        <AccordionContent>Not accessible.</AccordionContent>
       </AccordionItem>
     </Accordion>
   ),

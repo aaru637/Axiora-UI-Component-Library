@@ -7,10 +7,6 @@ import {
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "./icons";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add ContextMenu component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const ContextMenu = ContextMenuPrimitive.Root;
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 export const ContextMenuGroup = ContextMenuPrimitive.Group;

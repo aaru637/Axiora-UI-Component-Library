@@ -12,10 +12,6 @@ import { Label } from "./Label";
 import { fieldWrapperStyle } from "./styles/formStyles";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Use CSS classes for theme-aware radio group in light/dark mode
-// ACCEPTED-BY: dhinesh
-
 interface RadioGroupContextValue {
   name: string;
   value?: string;

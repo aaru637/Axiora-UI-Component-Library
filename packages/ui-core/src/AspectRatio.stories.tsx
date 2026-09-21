@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { AspectRatio } from "./AspectRatio";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add AspectRatio Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/AspectRatio",
   tags: ["autodocs"],

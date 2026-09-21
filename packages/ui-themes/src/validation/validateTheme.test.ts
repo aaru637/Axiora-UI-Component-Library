@@ -2,10 +2,6 @@ import { describe, expect, it } from "vitest";
 import { sampleThemes } from "../presets/sampleThemes";
 import { validateTheme } from "./validateTheme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Test brand presets and partial nested color validation
-// ACCEPTED-BY: dhinesh
-
 describe("validateTheme", () => {
   it("accepts a partial valid theme", () => {
     const result = validateTheme({

@@ -1,7 +1,3 @@
-/* AI-ASSISTED: Cursor
-   PROMPT: Switch button-like theming; revert Toggle to formatting chip style
-   ACCEPTED-BY: dhinesh */
-
 /* ---- Theme base (inherits from :root vars set by ThemeProvider) ---- */
 .ax-themed {
   color: var(--color-foreground);
@@ -831,6 +827,124 @@
     var(--color-foreground, #111827) 3%,
     transparent
   );
+}
+
+.ax-table-caption {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--color-secondary, #6b7280);
+}
+
+.ax-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ax-table-sort:hover {
+  color: var(--color-primary, #2563eb);
+}
+
+.ax-table-sort-icon {
+  opacity: 0.45;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.ax-table-sort:hover .ax-table-sort-icon {
+  opacity: 1;
+}
+
+.ax-table-sort-icon-asc {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.ax-table-sort-icon-desc {
+  opacity: 1;
+}
+
+/* ---- Tag / Chip ---- */
+.ax-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 4px 8px;
+  font-family: var(--font-family-base, "Inter", sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  border-radius: calc(var(--radius-base, 8px) - 2px);
+  white-space: nowrap;
+}
+
+.ax-tag-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ax-tag-default {
+  color: var(--color-text-on-primary, #ffffff);
+  background-color: var(--color-primary, #2563eb);
+}
+
+.ax-tag-secondary {
+  color: var(--color-foreground, #111827);
+  background-color: color-mix(
+    in srgb,
+    var(--color-foreground, #111827) 8%,
+    var(--color-surface, #ffffff)
+  );
+  border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.ax-tag-outline {
+  color: var(--color-foreground, #111827);
+  background-color: transparent;
+  border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.ax-tag-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-left: 2px;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.ax-tag-remove:hover {
+  opacity: 1;
+  background-color: color-mix(
+    in srgb,
+    var(--color-foreground, #111827) 10%,
+    transparent
+  );
+}
+
+.ax-tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* ---- Scroll area ---- */

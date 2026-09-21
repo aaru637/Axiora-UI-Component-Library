@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Checkbox } from "./Checkbox";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Checkbox Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Checkbox",
   component: Checkbox,

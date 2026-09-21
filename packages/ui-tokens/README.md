@@ -1,9 +1,5 @@
 # @axiora-ui/ui-tokens
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Refresh ui-tokens README status and downstream usage notes
-     ACCEPTED-BY: dhinesh -->
-
 ## 📊 Implementation Status
 
 ### ✅ Fully Implemented (UI-Ready)

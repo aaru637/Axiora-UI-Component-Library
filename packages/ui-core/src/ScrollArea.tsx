@@ -1,10 +1,6 @@
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add ScrollArea component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const ScrollArea = forwardRef<
   HTMLDivElement,
   ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>

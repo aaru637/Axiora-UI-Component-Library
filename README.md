@@ -1,9 +1,5 @@
 # Axiora UI Component Library
 
-<!-- AI-ASSISTED: Cursor
-     PROMPT: Update root README with current monorepo implementation status
-     ACCEPTED-BY: dhinesh -->
-
 A TypeScript-first monorepo that provides a complete design system for building React applications — from raw design tokens through runtime theming to shadcn-style Radix UI components.
 
 ---

@@ -11,10 +11,6 @@ import {
   SelectValue,
 } from "./Select";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Center Select stories; remove Validate button from error demo
-// ACCEPTED-BY: dhinesh
-
 const options = [
   { value: "us", label: "United States" },
   { value: "uk", label: "United Kingdom" },

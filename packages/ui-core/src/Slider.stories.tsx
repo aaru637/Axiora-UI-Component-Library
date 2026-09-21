@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Slider } from "./Slider";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Slider Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Slider",
   component: Slider,

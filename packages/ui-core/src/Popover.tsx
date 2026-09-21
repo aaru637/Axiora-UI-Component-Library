@@ -6,10 +6,6 @@ import {
 } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Popover component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 export const PopoverAnchor = PopoverPrimitive.Anchor;

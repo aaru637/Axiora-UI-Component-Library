@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Textarea } from "./Textarea";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Textarea Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Textarea",
   component: Textarea,
@@ -30,6 +26,14 @@ export const WithError: Story = {
   args: { error: "Message is required." },
 };
 
+export const Required: Story = {
+  args: { required: true },
+};
+
 export const Disabled: Story = {
   args: { disabled: true, defaultValue: "Cannot edit this." },
+};
+
+export const CustomRows: Story = {
+  args: { rows: 8, helperText: "Taller textarea with 8 rows." },
 };

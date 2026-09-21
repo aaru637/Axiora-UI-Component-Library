@@ -1,7 +1,3 @@
-// AI-ASSISTED: Cursor
-// PROMPT: Export resolveSampleTheme and sampleThemeOptions
-// ACCEPTED-BY: dhinesh
-
 export { ThemeProvider } from "./context/ThemeProvider";
 export type { ThemeProviderProps } from "./context/ThemeProvider";
 export { useTheme } from "./context/useTheme";

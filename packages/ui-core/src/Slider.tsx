@@ -2,10 +2,6 @@ import * as SliderPrimitive from "@radix-ui/react-slider";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { themeVars } from "./styles/themeVars";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Slider component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Slider = forwardRef<
   HTMLSpanElement,
   ComponentPropsWithoutRef<typeof SliderPrimitive.Root>

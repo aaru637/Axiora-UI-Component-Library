@@ -2,10 +2,6 @@ import type { HTMLAttributes } from "react";
 import { themeVars } from "./styles/themeVars";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused CSSProperties import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export type SpinnerSize = "sm" | "md" | "lg";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {

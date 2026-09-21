@@ -1,10 +1,6 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Avatar component (shadcn-style)
-// ACCEPTED-BY: dhinesh
-
 export const Avatar = forwardRef<
   HTMLSpanElement,
   ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>

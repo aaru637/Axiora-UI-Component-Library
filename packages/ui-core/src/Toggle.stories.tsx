@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Toggle } from "./Toggle";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Revert Toggle stories — formatting chip, not button style
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Toggle",
   component: Toggle,

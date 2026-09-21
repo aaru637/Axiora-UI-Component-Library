@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "../../../ui-core/src/Button";
 import { Input } from "../../../ui-core/src/Input";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Use Storybook globals for themes — no nested ThemeProvider
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Themes/ThemeProvider",
   tags: ["autodocs"],

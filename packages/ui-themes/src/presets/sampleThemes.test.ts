@@ -2,10 +2,6 @@ import { describe, expect, it } from "vitest";
 import { mergeTheme } from "../utils/mergeTheme";
 import { resolveSampleTheme } from "./sampleThemes";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Test brand theme presets resolve primary colors correctly
-// ACCEPTED-BY: dhinesh
-
 describe("resolveSampleTheme", () => {
   it("resolves emerald brand primary color", () => {
     const resolved = mergeTheme(resolveSampleTheme("emerald"));

@@ -3,10 +3,6 @@ import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "./ThemeProvider";
 import { useTheme } from "./useTheme";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Update tests for root-level CSS variable injection
-// ACCEPTED-BY: dhinesh
-
 function ThemeConsumer() {
   const theme = useTheme();
   return <span data-testid="primary">{theme.colors.primary}</span>;

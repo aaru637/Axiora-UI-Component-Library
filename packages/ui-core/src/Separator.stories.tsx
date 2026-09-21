@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Separator } from "./Separator";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add Separator Storybook stories
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Separator",
   component: Separator,

@@ -1,10 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Remove unused CSSProperties import (eslint)
-// ACCEPTED-BY: dhinesh
-
 export type BadgeVariant = "default" | "secondary" | "outline" | "destructive";
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {

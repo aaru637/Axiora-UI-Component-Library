@@ -2,10 +2,6 @@ import { describe, expect, it } from "vitest";
 import { mergeTheme } from "../utils/mergeTheme";
 import { themeToCSSVars } from "./apply-theme-vars";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add themeToCSSVars unit tests
-// ACCEPTED-BY: dhinesh
-
 describe("themeToCSSVars", () => {
   it("maps resolved theme to CSS custom properties", () => {
     const theme = mergeTheme({ colors: { primary: "#7c3aed" } });

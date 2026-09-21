@@ -6,10 +6,6 @@ import {
 } from "react";
 import { mergeStyles } from "./utils/mergeStyles";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Fix AlertDialog — use alert-dialog primitives for overlay/title/action
-// ACCEPTED-BY: dhinesh
-
 export const AlertDialog = AlertDialogPrimitive.Root;
 export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
 export const AlertDialogPortal = AlertDialogPrimitive.Portal;

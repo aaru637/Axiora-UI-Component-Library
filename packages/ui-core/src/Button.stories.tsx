@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Button } from "./Button";
 
-// AI-ASSISTED: Cursor
-// PROMPT: Add DisabledVariants story for Button disabled state
-// ACCEPTED-BY: dhinesh
-
 const meta = {
   title: "Core/Button",
   component: Button,
