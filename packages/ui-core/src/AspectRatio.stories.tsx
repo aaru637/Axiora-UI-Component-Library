@@ -4,6 +4,7 @@ import { AspectRatio } from "./AspectRatio";
 
 const meta = {
   title: "Core/AspectRatio",
+  component: AspectRatio,
   tags: ["autodocs"],
   decorators: [
     (Story) => (

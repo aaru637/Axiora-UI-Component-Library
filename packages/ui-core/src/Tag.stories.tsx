@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 
-import { Tag } from "./Tag";
+import { Chip, Tag } from "./Tag";
 
 const meta = {
   title: "Core/Tag",
@@ -66,6 +66,18 @@ export const AllVariants: Story = {
       <Tag variant="secondary" onRemove={() => undefined}>
         Removable
       </Tag>
+    </div>
+  ),
+};
+
+/** `Chip` is an alias for `Tag` — same API, suited for filter chips. */
+export const ChipAlias: Story = {
+  render: () => (
+    <div className="ax-tag-group">
+      <Chip variant="secondary">Chip filter</Chip>
+      <Chip variant="outline" onRemove={() => undefined}>
+        Removable chip
+      </Chip>
     </div>
   ),
 };

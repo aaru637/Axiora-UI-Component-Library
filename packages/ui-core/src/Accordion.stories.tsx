@@ -9,6 +9,7 @@ import {
 
 const meta = {
   title: "Core/Accordion",
+  component: Accordion,
   tags: ["autodocs"],
   decorators: [
     (Story) => (

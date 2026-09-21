@@ -7,8 +7,9 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./HoverCard";
 
 const meta = {
   title: "Core/HoverCard",
+  component: HoverCard,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof HoverCard>;
 
 export default meta;
 

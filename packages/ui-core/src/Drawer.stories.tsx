@@ -17,8 +17,9 @@ import { Separator } from "./Separator";
 
 const meta = {
   title: "Core/Drawer",
+  component: Drawer,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof Drawer>;
 
 export default meta;
 

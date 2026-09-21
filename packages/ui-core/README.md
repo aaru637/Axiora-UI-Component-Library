@@ -2,7 +2,7 @@
 
 React UI components for the Axiora design system — shadcn-inspired, built on **Radix UI**, styled with **CSS custom properties** from `@axiora-ui/ui-themes`.
 
-**Status:** ✅ **36 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
+**Status:** ✅ **40 components implemented** · Storybook stories for all · Theme-aware light/dark + brand presets
 
 ---
 
@@ -63,6 +63,7 @@ Without both steps, components render but won't follow your theme (labels, surfa
 | **Overlay**    | `Dialog`, `Drawer`, `AlertDialog`, `Popover`, `Tooltip`, `HoverCard`, `ContextMenu`, `Toast`                                                                         | ✅ All    |
 | **Layout**     | `Card`, `Badge`, `Tag` / `Chip`, `Alert`, `Separator`, `Avatar`, `Skeleton`, `Progress`, `Spinner`, `AspectRatio`, `Table`, `Pagination`, `Breadcrumb`, `ScrollArea` | ✅ All    |
 | **Navigation** | `Tabs`, `Accordion`, `Collapsible`                                                                                                                                   | ✅ All    |
+| **Advanced**   | `Combobox`, `Calendar`, `DatePicker`, `Command` (palette)                                                                                                          | ✅ All    |
 
 ### Highlights
 
@@ -75,6 +76,9 @@ Without both steps, components render but won't follow your theme (labels, surfa
 - **Table** — Sortable column headers via `sortable`, `sortDirection`, `onSort` on `TableHead`
 - **Tag / Chip** — Dismissable filter labels with `default`, `secondary`, and `outline` variants
 - **useTableSort** — Client-side column sorting hook for tables
+- **Combobox** — Searchable select with filterable listbox inside a Popover
+- **DatePicker** — Popover date input built on Calendar with month navigation
+- **Command** — Command palette with `CommandDialog`, filterable `CommandInput`, groups, and keyboard navigation
 - **Form fields** — Shared label, helper text, and error styling via `.ax-label`, `.ax-input`, etc.
 
 ---
@@ -256,6 +260,45 @@ function UserTable() {
 
 See **Core/Table → DataDisplay** in Storybook for a full Card + Tags + Table + Pagination example.
 
+### Advanced inputs (Combobox, DatePicker, Command)
+
+```tsx
+import {
+  Combobox,
+  DatePicker,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "@axiora-ui/ui-core";
+
+<Combobox
+  label="Framework"
+  placeholder="Search frameworks…"
+  options={[
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+  ]}
+  value="react"
+  onValueChange={() => {}}
+/>;
+
+<DatePicker label="Start date" value={new Date()} onChange={() => {}} />;
+
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <CommandInput placeholder="Type a command…" />
+  <CommandList>
+    <CommandEmpty>No results.</CommandEmpty>
+    <CommandGroup heading="Actions">
+      <CommandItem onSelect={() => {}}>New file</CommandItem>
+      <CommandItem onSelect={() => {}}>Open settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</CommandDialog>;
+```
+
 ### Button variants
 
 | Variant     | Use for             |
@@ -341,7 +384,7 @@ toast({
 | -------------- | ------------------------------------- |
 | `DropdownMenu` | Use `ContextMenu` or `Select` instead |
 
-All 36 components have Vitest coverage (render, variants, interactions). Run:
+All 40 components have Vitest coverage (render, variants, interactions). Run:
 
 ```bash
 pnpm test --filter @axiora-ui/ui-core

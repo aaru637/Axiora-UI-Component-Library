@@ -19,8 +19,9 @@ import {
 
 const meta = {
   title: "Core/ContextMenu",
+  component: ContextMenu,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof ContextMenu>;
 
 export default meta;
 

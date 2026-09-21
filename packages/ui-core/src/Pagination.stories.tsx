@@ -5,8 +5,9 @@ import { Pagination } from "./Pagination";
 
 const meta = {
   title: "Core/Pagination",
+  component: Pagination,
   tags: ["autodocs"],
-} satisfies Meta;
+} satisfies Meta<typeof Pagination>;
 
 export default meta;
 

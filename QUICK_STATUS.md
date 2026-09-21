@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-21  
 **Strategy:** UI-First Implementation  
-**Latest commits:** `PHASE 1` → `PHASE 5 Completed` · Phase 6 on `phase-6` branch
+**Latest:** Phases 1–6 committed · Phase 7 on `phase-7` branch
 
 ---
 
@@ -16,11 +16,11 @@
 | `@axiora-ui/ui-themes` | ✅ 100% | ThemeProvider, light/dark, brand presets       |
 | `@axiora-ui/utils`     | ✅ 100% | 12 modules, 134+ functions, full test coverage |
 
-### UI Packages (100% Complete — Phases 1–6)
+### UI Packages (100% Complete — Phases 1–7)
 
 | Package               | Status  | Highlights                                                        |
 | --------------------- | ------- | ----------------------------------------------------------------- |
-| `@axiora-ui/ui-core`  | ✅ 100% | **36 components** — forms, overlays, layout, navigation, feedback |
+| `@axiora-ui/ui-core`  | ✅ 100% | **40 components** — forms, overlays, layout, navigation, feedback, advanced inputs |
 | `@axiora-ui/ui-hooks` | ✅ 100% | **12 hooks** — Phase 4 core + Phase 6 extended hooks              |
 
 ---
@@ -34,7 +34,8 @@
 | 3     | Navigation & layout (Drawer)   | ✅ Complete | `PHASE 3 Completed` |
 | 4     | Core hooks (6 hooks)           | ✅ Complete | `PHASE 4 Completed` |
 | 5     | Enhancement & feedback (Toast) | ✅ Complete | `PHASE 5 Completed` |
-| 6     | Extended hooks (6 hooks)       | ✅ Complete | `phase-6` branch    |
+| 6     | Extended hooks (6 hooks)       | ✅ Complete | `PHASE 6 Completed` |
+| 7     | Advanced UI (Combobox, …)      | ✅ Complete | `phase-7` branch    |
 
 ---
 
@@ -43,9 +44,9 @@
 | Metric                    | Value                        |
 | ------------------------- | ---------------------------- |
 | Complete packages         | **5 / 5**                    |
-| ui-core components        | **36**                       |
-| ui-core Storybook stories | **37** (incl. Core/Feedback) |
-| ui-core unit tests        | **55**                       |
+| ui-core components        | **40**                       |
+| ui-core Storybook stories | **41** (incl. Core/Feedback) |
+| ui-core unit tests        | **59**                       |
 | ui-hooks                  | **12**                       |
 | ui-hooks unit tests       | **31**                       |
 
@@ -57,6 +58,19 @@
 pnpm install
 pnpm storybook    # → http://localhost:6006
 pnpm test         # all packages
+```
+
+### Phase 7 components
+
+```tsx
+import {
+  Combobox,
+  DatePicker,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandItem,
+} from "@axiora-ui/ui-core";
 ```
 
 ### Phase 6 hooks
@@ -85,4 +99,4 @@ const { values, handleSubmit } = useForm({ initialValues: { email: "" } });
 
 ## 🔮 Recommended Next
 
-Optional ui-core components (Combobox, DatePicker, Command palette) or additional hooks (`useKeyPress`, `useWindowSize`, `useResizeObserver`).
+Additional hooks (`useKeyPress`, `useWindowSize`, `useResizeObserver`) or optional components (TimePicker, MultiSelect, DataTable enhancements).
